@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim/nixos-24.11";
+    agenix.url = "github:ryantm/agenix";
     nix-jmu-cs345.url = "github:Eclypsed/nix-jmu-cs345/main";
     nix-jmu-cs345-dev.url = "path:/home/eclypse/programming-projects/nix-jmu-cs345";
   };

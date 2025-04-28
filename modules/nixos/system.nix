@@ -1,5 +1,13 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
+{
+  imports = [
+    inputs.agenix.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader = {
@@ -32,6 +40,8 @@
     wineWowPackages.stable
     wineWowPackages.waylandFull
     winetricks
+
+    inputs.agenix.packages.${system}.default
   ];
 
   # Automatic garbage collection
@@ -66,4 +76,7 @@
     WINEPREFIX = "$HOME/.eac-prefix";
     WINEARCH = "win32";
   };
+
+  # Define secrets
+  age.secrets.eclypsecloud-credentials.file = ../../secrets/eclypsecloud-credentials.age;
 }

@@ -1,1 +1,2 @@
-eclypsecloud-credentials
+/secrets/*
+!/secrets/*.age

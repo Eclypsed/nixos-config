@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
+  config,
   pkgs,
   inputs,
   ...
@@ -115,7 +116,9 @@
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
 
       in
-      [ "${automount_opts},credentials=/etc/nixos/eclypsecloud-credentials,uid=1000,gid=100" ];
+      [
+        "${automount_opts},credentials=${config.age.secrets.eclypsecloud-credentials.path},uid=1000,gid=100"
+      ];
   };
 
   # Mount disk drive
@@ -142,7 +145,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
