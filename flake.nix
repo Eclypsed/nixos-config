@@ -18,6 +18,7 @@
     {
       nixpkgs,
       home-manager,
+      agenix,
       ...
     }@inputs:
     let
@@ -29,6 +30,9 @@
           inherit system;
           specialArgs = { inherit inputs system; };
           modules = [
+            # agenix - secrets management
+            agenix.nixosModules.default
+
             # System module
             ./system
 
