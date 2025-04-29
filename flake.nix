@@ -30,7 +30,7 @@
           specialArgs = { inherit inputs system; };
           modules = [
             # System module
-            ./modules/nixos/system.nix
+            ./system
 
             # Host configuration
             ./hosts/framework13/configuration.nix

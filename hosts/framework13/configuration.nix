@@ -107,20 +107,6 @@
     whipper
   ];
 
-  # Enable EclypseCloud share.
-  fileSystems."/mnt/EclypseCloud" = {
-    device = "//100.115.135.37/EclypseCloud";
-    fsType = "cifs";
-    options =
-      let
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
-
-      in
-      [
-        "${automount_opts},credentials=${config.age.secrets.eclypsecloud-credentials.path},uid=1000,gid=100"
-      ];
-  };
-
   # Mount disk drive
   fileSystems."/mnt/DiskDrive" = {
     device = "/dev/disk/by-id/usb-MATSHITA_BD-MLT_UJ260_574D3931202030363532383720202020-0:0";

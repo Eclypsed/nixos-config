@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.agenix.nixosModules.default
+    ./eclypsecloud.nix
   ];
 
   # Bootloader.
@@ -35,6 +36,13 @@
     nixfmt-rfc-style
     git-credential-oauth
     usbutils
+    openssl
+    nssTools
+
+    # LibreOffice
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
 
     # Wine
     wineWowPackages.stable
@@ -78,5 +86,5 @@
   };
 
   # Define secrets
-  age.secrets.eclypsecloud-credentials.file = ../../secrets/eclypsecloud-credentials.age;
+  age.secrets.eclypsecloud-credentials.file = ../secrets/eclypsecloud-credentials.age;
 }
