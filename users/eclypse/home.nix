@@ -35,17 +35,17 @@
     enable = true;
     userName = "Eclypsed";
     userEmail = "Ec1ypsed@proton.me";
-    # extraConfig = {
-    #   init = {
-    #     defaultBranch = "main";
-    #   };
-    #   credential = {
-    #     helper = [
-    #       "cache --timeout 21600"
-    #       "oauth"
-    #     ];
-    #   };
-    # };
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+      credential = {
+        helper = [
+          "cache --timeout 21600"
+          "oauth"
+        ];
+      };
+    };
   };
 
   programs.nixvim = {
