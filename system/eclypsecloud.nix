@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   automount_opts = [
     "x-systemd.automount"
@@ -11,6 +11,12 @@ let
   ];
 in
 {
+  imports = [
+    inputs.agenix.nixosModules.default
+  ];
+
+  age.secrets.eclypsecloud-credentials.file = ../secrets/eclypsecloud-credentials.age;
+
   # Enable EclypseCloud share.
   fileSystems."/mnt/EclypseCloud" = {
     device = "//100.115.135.37/EclypseCloud";

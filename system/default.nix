@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    inputs.agenix.nixosModules.default
     ./eclypsecloud.nix
   ];
 
@@ -84,7 +83,4 @@
     WINEPREFIX = "$HOME/.eac-prefix";
     WINEARCH = "win32";
   };
-
-  # Define secrets
-  age.secrets.eclypsecloud-credentials.file = ../secrets/eclypsecloud-credentials.age;
 }
