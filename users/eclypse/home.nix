@@ -1,18 +1,14 @@
 {
   pkgs,
   inputs,
-  username,
   ...
 }:
 {
   imports = [
     inputs.nix-jmu-cs345.homeManagerModules.bernstdh
     inputs.nixvim.homeManagerModules.nixvim
+    ../../home/hyprland
   ];
-
-  home.username = "${username}";
-  home.homeDirectory = "/home/${username}";
-  home.stateVersion = "24.11";
 
   # Configure default user packages.
   home.packages = with pkgs; [
@@ -20,7 +16,6 @@
     discord
     obsidian
     zoom-us
-    kitty
     soulseekqt
     puddletag
   ];
@@ -28,9 +23,7 @@
   # Enable CS345 dev environment
   programs.nix-jmu-cs345.enable = true;
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
+  # Configure git
   programs.git = {
     enable = true;
     userName = "Eclypsed";
@@ -39,6 +32,7 @@
       init = {
         defaultBranch = "main";
       };
+      # Use git-credential-oauth
       credential = {
         helper = [
           "cache --timeout 21600"

@@ -295,18 +295,6 @@
         "type": "github"
       }
     },
-    "nix-jmu-cs345-dev": {
-      "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-aAm5sj12OCIgk0uLyTonv/3gTTbR3xLdoOzPDGs08hY=",
-        "path": "/home/eclypse/programming-projects/nix-jmu-cs345",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/eclypse/programming-projects/nix-jmu-cs345",
-        "type": "path"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1744633460,
@@ -426,7 +414,6 @@
         "agenix": "agenix",
         "home-manager": "home-manager_2",
         "nix-jmu-cs345": "nix-jmu-cs345",
-        "nix-jmu-cs345-dev": "nix-jmu-cs345-dev",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim"
