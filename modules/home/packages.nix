@@ -21,5 +21,6 @@
     # CD Stuff
     picard
     heybrochecklog
+    rsgain
   ];
 }

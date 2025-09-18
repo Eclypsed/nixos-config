@@ -23,7 +23,8 @@ in
         "credentials=${config.age.secrets.eclypsecloud-eclypse.path}"
         "uid=${toString config.users.users.eclypse.uid}"
         "rw"
-      ] ++ automount_opts;
+      ]
+      ++ automount_opts;
     };
     "/mnt/Music" = {
       device = "//100.78.212.35/music";
@@ -32,7 +33,8 @@ in
         "credentials=${config.age.secrets.eclypsecloud-eclypse.path}"
         "uid=${toString config.users.users.eclypse.uid}"
         "rw"
-      ] ++ automount_opts;
+      ]
+      ++ automount_opts;
     };
   };
 

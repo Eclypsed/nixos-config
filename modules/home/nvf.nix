@@ -20,6 +20,12 @@
           wrap = false;
         };
 
+        clipboard = {
+          enable = true;
+          providers.wl-copy.enable = true;
+          registers = "unnamedplus";
+        };
+
         lsp = {
           enable = true;
           formatOnSave = true;
@@ -43,6 +49,9 @@
         # File explorer
         filetree.neo-tree = {
           enable = true;
+          setupOpts = {
+            git_status_async = true;
+          };
         };
 
         # Formatting files
@@ -59,10 +68,47 @@
 
         keymaps = [
           {
+            key = "<A-e>";
+            mode = [ "n" ];
+            silent = true;
+            action = "<cmd>Neotree focus<CR>";
+          }
+          {
             key = "<C-e>";
             mode = [ "n" ];
             silent = true;
-            action = "<cmd>Neotree toggle<CR>";
+            action = "<cmd>Neotree close<CR>";
+          }
+          {
+            key = "<C-s>";
+            mode = [
+              "n"
+              "i"
+              "v"
+            ];
+            action = "<cmd>w<CR>";
+          }
+
+          # Window Navigation
+          {
+            key = "<C-w>LEFT";
+            mode = "";
+            action = "<C-w>h";
+          }
+          {
+            key = "<C-w>DOWN";
+            mode = "";
+            action = "<C-w>j";
+          }
+          {
+            key = "<C-w>UP";
+            mode = "";
+            action = "<C-w>k";
+          }
+          {
+            key = "<C-w>RIGHT";
+            mode = "";
+            action = "<C-w>l";
           }
         ];
 
@@ -114,10 +160,41 @@
             };
             treesitter.enable = true;
           };
+
+          markdown = {
+            enable = true;
+            extensions = {
+              markview-nvim.enable = true;
+            };
+            format = {
+              enable = true;
+            };
+            lsp = {
+              enable = true;
+            };
+            treesitter = {
+              enable = true;
+            };
+          };
+
+          html = {
+            enable = true;
+            treesitter = {
+              enable = true;
+              autotagHtml = true;
+            };
+          };
         };
 
         utility = {
           sleuth.enable = true;
+          multicursors.enable = true;
+          preview = {
+            markdownPreview = {
+              enable = true;
+              autoClose = true;
+            };
+          };
         };
       };
     };

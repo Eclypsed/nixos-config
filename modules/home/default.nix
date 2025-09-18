@@ -8,7 +8,7 @@
     ./nvf.nix
     ./packages.nix
     ./plasma.nix
-    # ./vscode.nix
+    ./vscode.nix
     ./zsh.nix
   ];
 }
