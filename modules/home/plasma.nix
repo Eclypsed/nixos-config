@@ -31,7 +31,7 @@
         jade = {
           name = "Jade";
           font = {
-            name = "FiraCode";
+            name = "FiraCode Nerd Font";
           };
           extraConfig = {
             Appearance = {

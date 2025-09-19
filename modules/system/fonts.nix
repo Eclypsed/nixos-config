@@ -7,7 +7,7 @@
     enableDefaultPackages = true;
     fontconfig.enable = true;
     packages = with pkgs; [
-      fira-code
+      nerd-fonts.fira-code
     ];
   };
 }
