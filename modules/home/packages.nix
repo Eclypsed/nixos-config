@@ -9,6 +9,7 @@
     discord
     sqlitebrowser
     drawio
+    bitwarden-desktop
 
     # Libre Office
     libreoffice-qt

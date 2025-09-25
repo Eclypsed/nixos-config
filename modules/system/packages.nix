@@ -36,14 +36,6 @@
     systemPackages = with pkgs; [
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       git
-      sshfs
-      # (catppuccin-sddm.override {
-      #   flavor = "mocha";
-      #   accent = "pink";
-      #   font = "FiraCode";
-      #   background = "${../../wallpapers/lanterns_of_twilight.png}";
-      #   loginBackground = true;
-      # })
     ];
   };
 }

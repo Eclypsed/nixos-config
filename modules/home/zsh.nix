@@ -12,6 +12,9 @@
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      sessionVariables = {
+        SSH_AUTH_SOCK = "/home/eclypse/.bitwarden-ssh-agent.sock";
+      };
     };
   };
 }

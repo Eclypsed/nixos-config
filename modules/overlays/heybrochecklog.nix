@@ -1,5 +1,4 @@
-self: super: with super.python3Packages;
-let
+self: super: with super.python3Packages; rec {
   pprp = buildPythonPackage rec {
     pname = "pprp";
     version = "0.2.7";
@@ -12,14 +11,13 @@ let
     format = "setuptools";
     doCheck = false;
   };
-in
-{
-  heybrochecklog = buildPythonApplication {
+
+  heybrochecklog = buildPythonApplication rec {
     pname = "heybrochecklog";
     version = "1.4.7";
 
     src = super.fetchurl {
-      url = "https://github.com/doujincafe/hbcl/releases/download/v1.4.7/heybrochecklog-1.4.7.tar.gz";
+      url = "https://github.com/doujincafe/hbcl/releases/download/v${version}/heybrochecklog-${version}.tar.gz";
       sha256 = "sha256-nCJJvzw/BoCEGDIX62zZr1ZI/b0W5nnFOZlMw4Btcnw=";
     };
 

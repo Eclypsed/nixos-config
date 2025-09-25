@@ -23,7 +23,7 @@
       programs.home-manager.enable = true;
     };
 
-    backupFileExtension = "backup5";
+    backupFileExtension = "backup11";
   };
 
   users.mutableUsers = false;

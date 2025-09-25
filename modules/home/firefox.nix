@@ -103,9 +103,18 @@
                 ];
               }
             ];
-
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
+          };
+          chat-gpt = {
+            name = "ChatGPT";
+            urls = [
+              {
+                template = "https://chatgpt.com?q={searchTerms}&temporary-chat=true";
+              }
+            ];
+            iconMapObj."64" = "https://chatgpt.com/favicon.ico";
+            definedAliases = [ "@gpt" ];
           };
         };
       };

@@ -26,6 +26,10 @@
           registers = "unnamedplus";
         };
 
+        comments.comment-nvim = {
+          enable = true;
+        };
+
         lsp = {
           enable = true;
           formatOnSave = true;
@@ -71,22 +75,27 @@
             key = "<A-e>";
             mode = [ "n" ];
             silent = true;
-            action = "<cmd>Neotree focus<CR>";
-          }
-          {
-            key = "<C-e>";
-            mode = [ "n" ];
-            silent = true;
-            action = "<cmd>Neotree close<CR>";
+            action = "<cmd>Neotree toggle<CR>";
           }
           {
             key = "<C-s>";
+            desc = "Save";
             mode = [
               "n"
               "i"
               "v"
             ];
             action = "<cmd>w<CR>";
+          }
+          {
+            key = "<C-z>";
+            desc = "Undo";
+            mode = [
+              "n"
+              "i"
+              "v"
+            ];
+            action = "<cmd>u<CR>";
           }
 
           # Window Navigation
