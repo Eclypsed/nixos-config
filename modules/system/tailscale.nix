@@ -25,7 +25,7 @@
     wantedBy = [ "default.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.tailscale}/bin/tailscale file get --verbose --loop $HOME/Downloads/'";
+      ExecStart = "${pkgs.tailscale}/bin/tailscale file get --verbose --loop %h/Downloads/";
     };
   };
 }
