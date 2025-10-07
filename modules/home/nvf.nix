@@ -75,7 +75,13 @@
             key = "<A-e>";
             mode = [ "n" ];
             silent = true;
-            action = "<cmd>Neotree toggle<CR>";
+            action = "<cmd>Neotree focus<CR>";
+          }
+          {
+            key = "<C-e>";
+            mode = [ "n" ];
+            silent = true;
+            action = "<cmd>Neotree close<CR>";
           }
           {
             key = "<C-s>";
@@ -131,6 +137,51 @@
           enableTreesitter = true;
           enableFormat = true;
 
+          clang = {
+            enable = true;
+            cHeader = true;
+            dap.enable = true;
+            lsp = {
+              enable = true;
+              server = "clangd";
+            };
+            treesitter.enable = true;
+          };
+
+          css = {
+            enable = true;
+            format = {
+              enable = true;
+              type = "prettier";
+            };
+            lsp.enable = true;
+            treesitter.enable = true;
+          };
+
+          html = {
+            enable = true;
+            treesitter = {
+              enable = true;
+              autotagHtml = true;
+            };
+          };
+
+          markdown = {
+            enable = true;
+            extensions = {
+              markview-nvim.enable = true;
+            };
+            format = {
+              enable = true;
+            };
+            lsp = {
+              enable = true;
+            };
+            treesitter = {
+              enable = true;
+            };
+          };
+
           nix = {
             enable = true;
             format = {
@@ -170,28 +221,23 @@
             treesitter.enable = true;
           };
 
-          markdown = {
+          tailwind = {
             enable = true;
-            extensions = {
-              markview-nvim.enable = true;
-            };
-            format = {
-              enable = true;
-            };
-            lsp = {
-              enable = true;
-            };
-            treesitter = {
-              enable = true;
-            };
+            lsp.enable = true;
           };
 
-          html = {
+          ts = {
             enable = true;
-            treesitter = {
-              enable = true;
-              autotagHtml = true;
+            extensions = {
+              ts-error-translator.enable = true;
             };
+            extraDiagnostics.enable = true;
+            format = {
+              enable = true;
+              type = "prettier";
+            };
+            lsp.enable = true;
+            treesitter.enable = true;
           };
         };
 

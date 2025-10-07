@@ -16,6 +16,7 @@
           ritwickdey.liveserver
           aaron-bond.better-comments
           yzane.markdown-pdf
+          mechatroner.rainbow-csv
 
           # Remote development
           ms-vscode-remote.remote-ssh
@@ -43,12 +44,20 @@
         ];
         userSettings = {
           # General
+          "editor.formatOnSave" = true;
           "workbench.iconTheme" = "material-icon-theme";
+
+          # Prettier
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          "prettier.bracketSpacing" = true;
+          "prettier.printWidth" = 100;
+          "prettier.semi" = false;
+          "prettier.singleQuote" = true;
+          "prettier.tabWidth" = 4;
 
           # Python
           "[python]" = {
             "editor.defaultFormatter" = "ms-python.black-formatter";
-            "editor.formatOnSave" = true;
             "editor.codeActionsOnSave" = {
               "source.organizeImports" = "explicit";
             };
@@ -59,6 +68,20 @@
           ];
           "python.analysis.typeCheckingMode" = "strict";
           "python.languageServer" = "Pylance";
+
+          # JSON
+          "[json]" = {
+            "prettier.tabWidth" = 2;
+          };
+          "[jsonc]" = {
+            "prettier.tabWidth" = 2;
+          };
+
+          # Svelte
+          "svelte.enable-ts-plugin" = true;
+
+          # C / C++
+          "C_Cpp.clang_format_style" = "GNU"; # This is really just for cs361, I actually hate the GNU style
         };
       };
     };
