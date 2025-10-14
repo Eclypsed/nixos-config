@@ -78,6 +78,9 @@
           };
 
           # Svelte
+          "[svelte]" = {
+            "editor.defaultFormatter" = "svelte.svelte-vscode";
+          };
           "svelte.enable-ts-plugin" = true;
 
           # C / C++

@@ -116,6 +116,17 @@
             iconMapObj."64" = "https://chatgpt.com/favicon.ico";
             definedAliases = [ "@gpt" ];
           };
+          surugaya = {
+            name = "Surugaya";
+            urls = [
+              {
+                template = "https://www.suruga-ya.jp/search?search_word={searchTerms}";
+              }
+            ];
+            iconMapObj."32" =
+              "https://www.suruga-ya.jp/drupal/themes/surugaya_mobile/images/pwa/images/icons/favicon-32x32.png";
+            definedAliases = [ "@suru" ];
+          };
         };
       };
       settings = {
