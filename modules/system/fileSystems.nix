@@ -38,5 +38,8 @@ in
     };
   };
 
-  environment.systemPackages = with pkgs; [ cifs-utils ];
+  environment.systemPackages = with pkgs; [
+    cifs-utils
+    # rclone
+  ];
 }

@@ -10,7 +10,7 @@ in
   # Update tailscale-auth.age with `agenix -e tailscale-auth.age -i /path/to/private-ssh-key`
   # Note: Only devices with the below public keys are allowed to edit tailscale-auth.age
   "tailscale-auth.age".publicKeys = [ vanta ]; # Devices allowed to join the tailnet;
-  
+
   # Devices that can connect to EclypseCloud with the eclypse user.
   "eclypsecloud-eclypse.age".publicKeys = [ vanta ];
 
