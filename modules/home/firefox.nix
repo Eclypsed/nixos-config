@@ -85,6 +85,7 @@
       };
       search = {
         default = "google";
+        force = true;
         engines = {
           nix-packages = {
             name = "Nix Packages";
