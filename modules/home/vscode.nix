@@ -17,6 +17,7 @@
           aaron-bond.better-comments
           yzane.markdown-pdf
           mechatroner.rainbow-csv
+          catppuccin.catppuccin-vsc
 
           # Remote development
           ms-vscode-remote.remote-ssh
@@ -46,6 +47,8 @@
           # General
           "editor.formatOnSave" = true;
           "workbench.iconTheme" = "material-icon-theme";
+          "workbench.colorTheme" = "Catppuccin Mocha";
+          "catppuccin.accentColor" = "flamingo";
 
           # Prettier
           "editor.defaultFormatter" = "esbenp.prettier-vscode";

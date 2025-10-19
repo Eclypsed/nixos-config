@@ -3,6 +3,7 @@
 }:
 {
   imports = [
+    ./catppuccin.nix
     ./firefox.nix
     ./git.nix
     ./nvf.nix

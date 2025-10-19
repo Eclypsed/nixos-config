@@ -15,10 +15,6 @@
     targets = {
       kde.enable = true;
       lazygit.enable = true;
-      vscode = {
-        enable = true;
-        profileNames = [ "default" ];
-      };
     };
   };
 }
