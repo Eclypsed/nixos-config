@@ -31,21 +31,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-  };
 
-  outputs = { nixpkgs, ... }@inputs:
-  let
-    system = "x86_64-linux";
-    host = "vanta";
-  in
-  {
-    nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs host; };
-      modules = [
-        ./modules/system
-        ./hosts/${host}
-      ];
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      host = "vanta";
+    in
+    {
+      nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs host; };
+        modules = [
+          ./modules/system
+          ./hosts/${host}
+        ];
+      };
+    };
 }

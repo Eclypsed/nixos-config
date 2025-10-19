@@ -8,6 +8,7 @@
     ./nvf.nix
     ./packages.nix
     ./plasma.nix
+    ./stylix.nix
     ./vscode.nix
     ./zsh.nix
   ];
