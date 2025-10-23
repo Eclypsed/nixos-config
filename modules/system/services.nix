@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -23,7 +24,19 @@
     desktopManager.plasma6.enable = true;
 
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        gutenprint
+        cnijfilter2
+      ];
+    };
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
 
     # Enable sound with pipewire.
     pulseaudio.enable = false;
@@ -48,6 +61,16 @@
         PermitRootLogin = "prohibit-password";
         AllowUsers = [ "eclypse" ];
       };
+    };
+  };
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    sane = {
+      enable = true;
     };
   };
 }

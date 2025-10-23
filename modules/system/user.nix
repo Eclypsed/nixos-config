@@ -32,6 +32,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "scanner"
+      "lp"
     ];
     hashedPasswordFile = config.age.secrets.eclypse-password.path;
     shell = pkgs.zsh;
