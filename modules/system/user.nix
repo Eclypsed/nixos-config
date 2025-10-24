@@ -22,6 +22,8 @@
       };
       programs.home-manager.enable = true;
     };
+
+    backupFileExtension = "backup";
   };
 
   users.mutableUsers = false;

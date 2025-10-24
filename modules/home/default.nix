@@ -9,6 +9,7 @@
     ./nvf.nix
     ./packages.nix
     ./plasma.nix
+    ./ssh.nix
     ./stylix.nix
     ./vscode.nix
     ./zsh.nix
