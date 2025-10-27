@@ -50,6 +50,12 @@
           "workbench.colorTheme" = "Catppuccin Mocha";
           "catppuccin.accentColor" = "flamingo";
 
+          # Remote SSH
+          # VSCode attempts to write to ~/.ssh/config for remote ssh connections.
+          # Because ~/.ssh/config is managed with home-manager, it is not writeable.
+          # So we specify a custom ssh config path
+          "remote.SSH.configFile" = "/home/eclypse/.ssh/vscode-config";
+
           # Prettier
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "prettier.bracketSpacing" = true;
