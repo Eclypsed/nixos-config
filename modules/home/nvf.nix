@@ -61,9 +61,6 @@
         # Formatting files
         formatter.conform-nvim = {
           enable = true;
-          setupOpts = {
-
-          };
         };
 
         binds = {
@@ -218,6 +215,17 @@
             lsp = {
               enable = true;
             };
+            treesitter.enable = true;
+          };
+
+          rust = {
+            enable = true;
+            # crates = {
+            #   enable = true;
+            # };
+            dap.enable = true;
+            format.enable = true;
+            lsp.enable = true;
             treesitter.enable = true;
           };
 
