@@ -27,7 +27,7 @@ in
       };
       signing = {
         format = "ssh";
-        key = "~/.ssh/id_ed25519_sk_rk.pub";
+        key = "${config.home.homeDirectory}/.ssh/id_ed25519_sk_rk.pub";
         signByDefault = true;
       };
     };
