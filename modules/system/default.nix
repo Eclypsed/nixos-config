@@ -14,6 +14,6 @@
     ./system.nix
     ./tailscale.nix
     ./user.nix
-    ./virtualisation.nix
+    # ./virtualisation.nix
   ];
 }
