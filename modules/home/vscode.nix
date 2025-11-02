@@ -94,6 +94,13 @@
 
           # C / C++
           "C_Cpp.clang_format_style" = "GNU"; # This is really just for cs361, I actually hate the GNU style
+          "C_Cpp.default.cStandard" = "gnu17";
+          "[c]" = {
+            "editor.defaultFormatter" = "ms-vscode.cpptools";
+          };
+          "[cpp]" = {
+            "editor.defaultFormatter" = "ms-vscode.cpptools";
+          };
         };
       };
     };
