@@ -6,7 +6,6 @@
 {
   imports = [
     inputs.nur.modules.nixos.default # Adds the NUR overlay
-    inputs.catppuccin.nixosModules.catppuccin
     ../overlays
   ];
 

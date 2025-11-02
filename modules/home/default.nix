@@ -4,7 +4,6 @@
 {
   imports = [
     ./alacritty.nix
-    # ./catppuccin.nix
     ./firefox.nix
     ./git.nix
     ./nvf.nix
