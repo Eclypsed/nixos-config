@@ -5,6 +5,7 @@
   imports = [
     ./agenix.nix
     ./boot.nix
+    ./desktop.nix
     ./fileSystems.nix
     ./fonts.nix
     ./network.nix

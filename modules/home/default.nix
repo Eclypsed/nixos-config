@@ -6,6 +6,8 @@
     ./alacritty.nix
     ./firefox.nix
     ./git.nix
+    ./hyprland.nix
+    ./mango.nix
     ./nvf.nix
     ./packages.nix
     # ./plasma.nix
