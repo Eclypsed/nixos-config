@@ -37,10 +37,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mango = {
-      url = "github:DreamMaoMao/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    mango.url = "github:DreamMaoMao/mango?rev=1271832e947d3d4af27b36f687edd2f2e535f051";
 
     hyprland.url = "github:hyprwm/Hyprland";
 

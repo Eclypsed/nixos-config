@@ -37,6 +37,7 @@
         "systemctl --user enable --now waybar.service"
         "systemctl --user enable --now hyprpolkitagent.service"
         "wpaperd -d"
+        "systemctl enable --user app-com.mitchellh.ghostty.service"
       ];
 
       env = [

@@ -11,7 +11,7 @@
 
     bind = [
       "$mod, Q, killactive"
-      "$mod, W, exec, alacritty"
+      "$mod, W, exec, ghostty +new-window"
       "$mod, S, exec, rofi -show drun -show-icons"
 
       # Window Movement
