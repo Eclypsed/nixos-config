@@ -9,7 +9,7 @@
   ];
 
   environment.systemPackages = [
-    inputs.agenix.packages.${pkgs.system}.default # CLI Tool
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default # CLI Tool
   ];
 
   age.secrets = {
