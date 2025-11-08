@@ -14,25 +14,17 @@ in
   programs = {
     hyprland = {
       enable = true;
-      withUWSM = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };
     mango.enable = true;
-    # uwsm = {
-    #   enable = true;
-    #   waylandCompositors = {
-    #     mango = {
-    #       prettyName = "Mango";
-    #       comment = "Lightweight compositor based on dwl";
-    #       binPath = "/run/current-system/sw/bin/mango";
-    #     };
-    #   };
-    # };
   };
 
   environment.systemPackages = [
     sddm-theme
     sddm-theme.test
   ];
+
   services.displayManager = {
     defaultSession = "mango";
     sddm = {

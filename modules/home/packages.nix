@@ -15,12 +15,14 @@
     hunspell
     hunspellDicts.en_US
 
-    # KDE
-    kdePackages.kate
-
     # CD Stuff
     picard
     heybrochecklog
     rsgain
+
+    rofi
+    playerctl
+    pamixer
+    brightnessctl
   ];
 }
