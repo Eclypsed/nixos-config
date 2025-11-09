@@ -18,6 +18,7 @@
     ./vscode.nix
     ./wallpaper.nix
     ./xdg.nix
+    ./yazi.nix
     ./zsh.nix
   ];
 }
