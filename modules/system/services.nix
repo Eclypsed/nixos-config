@@ -49,6 +49,8 @@
       # media-session.enable = true;
     };
 
+    upower.enable = true;
+
     # Enable the OpenSSH daemon. (Look into Fail2Ban in the future)
     openssh = {
       enable = true;
