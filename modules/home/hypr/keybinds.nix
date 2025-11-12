@@ -33,6 +33,11 @@
       ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
       ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
 
+      # Screenshoting
+      ", PRINT, exec, hyprshot -m output --raw | satty --filename -"
+      "$mod, PRINT, exec, hyprshot -m window --raw | satty --filename -"
+      "SHIFT, PRINT, exec, hyprshot -m region --raw | satty --filename -"
+
       # Media Control Keys
       ", XF86AudioPrev, exec, playerctl previous"
       ", XF86AudioPlay, exec, playerctl play-pause"

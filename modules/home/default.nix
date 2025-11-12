@@ -13,6 +13,7 @@
     ./nvf.nix
     ./packages.nix
     # ./plasma.nix
+    ./screenshot.nix
     ./ssh.nix
     ./stylix.nix
     ./vscode.nix

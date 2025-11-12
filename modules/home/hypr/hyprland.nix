@@ -47,6 +47,7 @@
 
       env = [
         "NIXOS_OZONE_WL, 1"
+        "HYPRSHOT_DIR, ${config.xdg.userDirs.extraConfig.XDG_SCREENSHOTS_DIR}"
       ];
     };
   };
