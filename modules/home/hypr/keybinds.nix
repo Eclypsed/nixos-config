@@ -13,6 +13,7 @@
       "$mod, Q, killactive"
       "$mod, W, exec, ghostty +new-window"
       "$mod, S, exec, rofi -show drun -show-icons"
+      "$mod, Escape, exec, wlogout"
 
       # Window Movement
       "$mod, left, movefocus, l"

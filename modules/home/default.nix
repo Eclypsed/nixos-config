@@ -17,6 +17,7 @@
     ./stylix.nix
     ./vscode.nix
     ./wallpaper.nix
+    ./wlogout.nix
     ./xdg.nix
     ./yazi.nix
     ./zsh.nix
