@@ -20,9 +20,10 @@
     heybrochecklog
     rsgain
 
-    rofi
     playerctl
     pamixer
+    pavucontrol
     brightnessctl
+    obsidian
   ];
 }

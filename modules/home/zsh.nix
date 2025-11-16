@@ -8,6 +8,9 @@
       enable = true;
       enableZshIntegration = true;
     };
+    fastfetch = {
+      enable = true;
+    };
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -81,6 +84,7 @@
       syntaxHighlighting.enable = true;
       shellAliases = {
         stu = "ssh stu";
+        ff = "fastfetch";
       };
     };
   };

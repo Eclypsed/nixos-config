@@ -15,6 +15,7 @@
     ./ssh.nix
     ./stylix.nix
     ./vscode.nix
+    ./walker.nix
     ./wallpaper.nix
     ./waybar
     ./wlogout.nix

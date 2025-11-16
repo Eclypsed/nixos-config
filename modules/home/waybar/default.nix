@@ -38,7 +38,7 @@ let
     exec = "echo ; echo 󱓟 app launcher";
     interval = 86400;
     tooltip = true;
-    on-click = "pkill rofi || rofi -show drun -show-icons";
+    on-click = "walker";
   };
 
   hyprland-window = {
@@ -54,6 +54,25 @@ let
       "^.*pdf( .*|$)" = "";
       "^.*(- Mousepad)$" = " $1";
     };
+  };
+
+  cava = {
+    autosens = 1;
+    bars = 15;
+    bar_delimiter = 32; # ASCII for " " (space)
+    format-icons = [
+      "▁"
+      "▂"
+      "▃"
+      "▄"
+      "▅"
+      "▆"
+      "▇"
+      "█"
+    ];
+    framerate = 30;
+    input_delay = 2;
+    method = "pipewire";
   };
 
   arrow-right = {
@@ -103,9 +122,12 @@ let
   };
 
   pulseaudio = {
-    format = "{icon} {volume}%";
-    format-bluetooth = "{icon} 󰂰 {volume}";
-    format-muted = "󰖁";
+    format = "{icon} {volume}% {format_source}";
+    format-muted = "󰖁 {format_source}";
+    format-bluetooth = "󰂰 {icon} {volume}% {format_source}";
+    format-bluetooth-muted = "󰂰 󰖁 {format_source}";
+    format-source = "󰍬 {volume}%";
+    format-source-muted = "󰍭";
     format-icons = {
       headphone = "";
       hands-free = "";
@@ -119,12 +141,55 @@ let
         "󰕾"
         ""
       ];
-      ignored-sinks = [ "Easy Effects Sink" ];
     };
     scroll-step = 5.0;
-    # on-click-right = "pavucontrol -t 3";
+    on-click = "pavucontrol -t 3";
+    on-click-right = "pavucontrol -t 4";
     tooltip-format = "{icon} {desc} | {volume}%";
     smooth-scrolling-threshold = 1;
+  };
+
+  wireplumber = {
+    format = "{icon} {volume}% {format_source}";
+    format-muted = "󰖁 {format_source}";
+    format-source = "󰍬 {volume}%";
+    format-source-muted = "󰍭";
+    format-icons = {
+      headphone = "";
+      hands-free = "";
+      headset = "";
+      phone = "";
+      portable = "";
+      car = "";
+      default = [
+        ""
+        ""
+        "󰕾"
+        ""
+      ];
+    };
+    scroll-step = 5.0;
+    on-click = "pavucontrol -t 3";
+    on-click-right = "pavucontrol -t 4";
+    tooltip-format = "{node_name} {volume}%\n{source_desc} {source_volume}%";
+  };
+
+  backlight = {
+    format = "{icon} {percent}%";
+    format-icons = [
+      ""
+      ""
+      ""
+      ""
+      ""
+      ""
+      ""
+      ""
+      ""
+    ];
+    on-scroll-down = "brightnessctl set 10%-";
+    on-scroll-up = "brightnessctl set +10%";
+    tooltip = false;
   };
 
   battery = {
@@ -133,11 +198,9 @@ let
     full-at = 100;
     design-capacity = false;
     states = {
-      good = 95;
-      warning = 30;
-      critical = 15;
+      critical = 20;
     };
-    format = "{icon} {capacity}";
+    format = "{icon} {capacity}%";
     format-charging = " {capacity}%";
     format-plugged = "󱘖 {capacity}%";
     format-alt-click = "click";
@@ -192,6 +255,15 @@ let
   arrow-left = {
     format = "󰁒";
     tooltip = false;
+  };
+
+  network = {
+    format-disconnected = "󰖪 ";
+    format-wifi = " ";
+    format-ethernet = "󰈀 ";
+    format-linked = " (No IP)";
+    format-disabled = " (Disabled)";
+    tooltip-format = "{essid}: {ipaddr}/{cidr}";
   };
 
   notifications = {
@@ -252,16 +324,16 @@ in
         layer = "top";
         position = "top";
         height = 34;
-        width = 1200;
-        margin-left = 50;
-        margin-right = 50;
-        margin-top = 5;
+        margin-left = 10;
+        margin-right = 10;
+        margin-top = 10;
         fixed-center = true;
         reload_style_on_change = true;
 
         modules-left = [
           "custom/menu"
           "hyprland/window"
+          "cava"
           "group/info"
         ];
 
@@ -278,6 +350,7 @@ in
         "hyprland/workspaces#4" = hyprland-workspaces;
         "custom/menu" = menu;
         "hyprland/window" = hyprland-window;
+        "cava" = cava;
         "custom/arrow-right" = arrow-right;
         "cpu" = cpu;
         "memory" = memory;
@@ -285,6 +358,9 @@ in
         "idle_inhibitor" = idle-inhibitor;
         "tray" = tray;
         "pulseaudio" = pulseaudio;
+        "network" = network;
+        "wireplumber" = wireplumber;
+        "backlight" = backlight;
         "mpris" = mpris;
         "battery" = battery;
         "custom/arrow-left" = arrow-left;
@@ -310,7 +386,10 @@ in
           orientation = "inherit";
           modules = [
             "tray"
-            "pulseaudio"
+            "network"
+            "wireplumber"
+            # "pulseaudio"
+            "backlight"
             "mpris"
             "battery"
           ];

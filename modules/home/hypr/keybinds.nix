@@ -12,7 +12,7 @@
     bind = [
       "$mod, Q, killactive"
       "$mod, W, exec, ghostty +new-window"
-      "$mod, S, exec, rofi -show drun -show-icons"
+      "$mod, S, exec, walker"
       "$mod, Escape, exec, wlogout"
 
       # Window Movement
@@ -43,11 +43,7 @@
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioMute, exec, pamixer -t"
-      ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-      ", XF86AudioLowerVolume, exec, pamixer -d 5"
       "ALT, XF86AudioMute, exec, pamixer --default-source -t"
-      "ALT, XF86AudioRaiseVolume, exec, pamixer --default-source -i 5"
-      "ALT, XF86AudioLowerVolume, exec, pamixer --default-source -d 5"
     ]
     ++ (
       # workspaces
@@ -70,6 +66,14 @@
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
       "$mod ALT, mouse:272, resizewindow"
+    ];
+
+    binde = [
+      ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+      ", XF86AudioLowerVolume, exec, pamixer -d 5"
+      "ALT, XF86AudioRaiseVolume, exec, pamixer --default-source -i 5"
+      "ALT, XF86AudioLowerVolume, exec, pamixer --default-source -d 5"
+
     ];
   };
 }
