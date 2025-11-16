@@ -18,9 +18,13 @@
         "${config.xdg.configHome}/hypr/monitors.conf"
       ];
 
-      # monitor = [
-      #   "eDP-1, 2256x1504@60, 0x0, 1"
-      # ];
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 2;
+        "col.active_border" = "rgb(4479A4)";
+        "col.inactive_border" = "rgba(4479A480)";
+      };
 
       decoration = {
         rounding = 10;
@@ -36,6 +40,12 @@
           new_optimizations = true;
         };
       };
+
+      layerrule = [
+        "blur, waybar" # Add blur to waybar
+        "blurpopups, waybar" # Blur waybar popups too!
+        "ignorealpha 0.2, waybar" # Make it so transparent parts are ignored
+      ];
 
       exec-once = [
         "systemctl --user enable --now hyprpolkitagent.service"

@@ -3,11 +3,9 @@
 }:
 {
   imports = [
-    # ./alacritty.nix
     ./firefox.nix
     ./ghostty.nix
     ./git.nix
-    # ./kitty.nix
     ./hypr
     ./mango.nix
     ./nvf.nix

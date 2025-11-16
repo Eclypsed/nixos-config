@@ -18,6 +18,7 @@
       DisableProfileImport = true;
       DisableProfileRefresh = true;
       DisableTelemetry = true;
+      DisplayBookmarksToolbar = "never";
       DontCheckDefaultBrowser = true;
       EnableTrackingProtection = {
         Value = true; # Tracking protection is enabled by default in both the regular browser and private browsing

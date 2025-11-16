@@ -18,7 +18,7 @@ in
         mode = "center";
       };
       any = {
-        path = "${wallpapers}/lanterns_of_twilight.png";
+        path = "${wallpapers}/sunset_bay.jpg";
       };
     };
   };
