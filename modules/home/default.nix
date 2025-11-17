@@ -22,6 +22,7 @@
     ./wlogout.nix
     ./xdg.nix
     ./yazi.nix
+    ./zed.nix
     ./zsh.nix
   ];
 }
