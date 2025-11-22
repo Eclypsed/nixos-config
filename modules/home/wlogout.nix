@@ -44,6 +44,10 @@
         keybind = "r";
       }
     ];
+    # * IMPORTANT
+    # * The for some reason the SVG icons will not be rendered when wlogout is called
+    # * from a hyprland keybind unless librsvg is installed.
+    # * See packages.nix (programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];)
     style = with config.lib.stylix.colors.withHashtag; ''
       * {
         font-family: "Rubik Light";
@@ -52,7 +56,7 @@
       }
 
       window {
-        background: url("${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/lanterns_of_twilight.png");
+        background: url("${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/sunset_bay.jpg");
         background-size: cover;
       }
 

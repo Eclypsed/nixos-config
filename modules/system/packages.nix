@@ -17,6 +17,7 @@
     #   enable = true;
     #   enableSSHSupport = true;
     # };
+    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
     nix-ld.enable = true;
     zsh.enable = true;
   };
