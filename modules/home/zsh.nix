@@ -17,25 +17,43 @@
       settings = {
         add_newline = true;
         format = pkgs.lib.concatStrings [
-          "[░▒▓](#f38ba8)"
-          "[ 󱄅 ](fg:#1e1e2e bg:#f38ba8)"
-          "[](fg:#f38ba8 bg:#fab387)"
-          "$directory"
-          "[](fg:#fab387 bg:#f9e2af)"
-          "$git_branch"
-          "$git_status"
-          "[](fg:#f9e2af bg:#a6e3a1)"
-          "$nodejs"
-          "$rust"
-          "$golang"
-          "$php"
-          "[](fg:#a6e3a1)"
+          "[╭─](fg:base02)"
+          "[ 󱄅 ](bg:base02 fg:base07)"
+          "[](bg:base07 fg:base02)"
+          "[( $username(@$hostname) )](bg:base07 fg:base02)"
+          "[](bg:red fg:base07)"
+          "[ $directory ](bg:red fg:base02)"
+          "[](bg:cyan fg:red)"
+          "[( $git_branch $git_status )](bg:cyan fg:base02)"
+          "[](fg:cyan bg:blue)"
+          "[(( $golang)( $nodejs)( $rust)( $python) )](bg:blue fg:base02)"
+          "[](fg:blue)"
           "$line_break"
+          "[╰─](fg:base02)"
           "$character"
         ];
+        username = {
+          show_always = true;
+          style_user = "none";
+          style_root = "none";
+          format = "[$user]($style)";
+        };
+        hostname = {
+          style = "none";
+          format = "[$hostname]($style)";
+          ssh_only = false;
+        };
+        character = {
+          success_symbol = "[❯](bold fg:green)";
+          error_symbol = "[✘](bold fg:red)";
+          vimcmd_symbol = "[❮](bold fg:green)";
+          vimcmd_replace_one_symbol = "[❮](bold fg:lavender)";
+          vimcmd_replace_symbol = "[❮](bold fg:lavender)";
+          vimcmd_visual_symbol = "[❮](bold fg:yellow)";
+        };
         directory = {
-          style = "fg:#1e1e2e bg:#fab387";
-          format = "[ $path ]($style)";
+          style = "none";
+          format = "[$path]($style)";
           truncation_length = 3;
           truncation_symbol = "…/";
           substitutions = {
@@ -47,32 +65,32 @@
         };
         git_branch = {
           symbol = "";
-          style = "bg:#f9e2af";
-          format = "[[ $symbol $branch ](fg:#1e1e2e bg:#f9e2af)]($style)";
+          style = "none";
+          format = "[$symbol $branch]($style)";
         };
         git_status = {
-          style = "bg:#f9e2af";
-          format = "[[($all_status$ahead_behind )](fg:#1e1e2e bg:#f9e2af)]($style)";
-        };
-        nodejs = {
-          symbol = "";
-          style = "bg:#a6e3a1";
-          format = "[[ $symbol ($version) ](fg:#1e1e2e bg:#a6e3a1)]($style)";
-        };
-        rust = {
-          symbol = "";
-          style = "bg:#a6e3a1";
-          format = ''[[ $symbol ($version) ](fg:#1e1e2e bg:#a6e3a1)]($style)'';
+          style = "none";
+          format = "[$all_status$ahead_behind]($style)";
         };
         golang = {
           symbol = "";
-          style = "bg:#a6e3a1";
-          format = "[[ $symbol ($version) ](fg:#1e1e2e bg#a6e3a1)]($style)";
+          style = "none";
+          format = "[$symbol( $version)]($style)";
         };
-        php = {
-          symbol = "";
-          style = "bg:#a6e3a1";
-          format = "[[ $symbol ($version) ](fg:#1e1e2e bg:#a6e3a1)]($style)";
+        nodejs = {
+          symbol = "";
+          style = "none";
+          format = "[$symbol( $version)]($style)";
+        };
+        python = {
+          symbol = "";
+          style = "none";
+          format = "[$symbol( $version)( \\($virtualenv\\))]($style)";
+        };
+        rust = {
+          symbol = "";
+          style = "none";
+          format = "[$symbol( $version)]($style)";
         };
         scan_timeout = 100;
       };

@@ -20,7 +20,6 @@
       };
     };
     targets = {
-      alacritty.enable = true;
       ghostty.enable = true;
       firefox = {
         enable = true;
@@ -29,6 +28,7 @@
         firefoxGnomeTheme.enable = true;
       };
       lazygit.enable = true;
+      starship.enable = true;
       yazi.enable = true;
     };
   };
