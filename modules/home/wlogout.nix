@@ -21,7 +21,7 @@
       }
       {
         label = "logout";
-        action = "loginctl terminate-user $USER";
+        action = "uwsm stop";
         text = "Logout";
         keybind = "e";
       }

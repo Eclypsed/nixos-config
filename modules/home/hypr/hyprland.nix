@@ -1,4 +1,5 @@
 {
+  # inputs,
   pkgs,
   config,
   ...
@@ -8,8 +9,12 @@
     hyprpolkitagent
   ];
 
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = false;
     package = null;
     portalPackage = null;
 
@@ -48,14 +53,18 @@
       ];
 
       exec-once = [
+        "systemctl --user enable --now hypridle.service"
         "systemctl --user enable --now hyprpolkitagent.service"
+        "systemctl --user enable app-com.mitchellh.ghostty.service"
         "wpaperd -d"
-        "systemctl enable --user app-com.mitchellh.ghostty.service"
       ];
 
       env = [
         "NIXOS_OZONE_WL, 1"
         "HYPRSHOT_DIR, ${config.xdg.userDirs.extraConfig.XDG_SCREENSHOTS_DIR}"
+        "XDG_CURRENT_DESKTOP, Hyprland"
+        "XDG_SESSION_TYPE, wayland"
+        "XDG_SESSION_DESKTOP, Hyprland"
       ];
     };
   };

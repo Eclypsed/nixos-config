@@ -14,11 +14,14 @@ in
   programs = {
     hyprland = {
       enable = true;
+      withUWSM = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
     };
     mango.enable = true;
+    uwsm.enable = true;
   };
 
   environment.systemPackages = [
@@ -39,6 +42,7 @@ in
           InputMethod = "qtvirtualkeyboard";
         };
       };
+      wayland.enable = true;
     };
   };
 
@@ -46,7 +50,7 @@ in
   # displayManager.sddm.enable = true;
   # desktopManager.plasma5.enable = true;
 
-  # Enable the System75 Cosmic Desktop Environment
+  # Enable the System76 Cosmic Desktop Environment
   # displayManager.cosmic-greeter.enable = true;
   # desktopManager.cosmic = {
   #   enable = true;
