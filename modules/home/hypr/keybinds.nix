@@ -44,6 +44,9 @@
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioMute, exec, pamixer -t"
       "ALT, XF86AudioMute, exec, pamixer --default-source -t"
+
+      # Scratchpads
+      "$mod, TAB, exec, pypr toggle term"
     ]
     ++ (
       # workspaces
