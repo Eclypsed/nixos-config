@@ -4,7 +4,8 @@
 {
   imports = [
     ./firefox.nix
-    ./ghostty.nix
+    ./foot.nix
+    # ./ghostty.nix
     ./git.nix
     # ./helix.nix
     ./hypr

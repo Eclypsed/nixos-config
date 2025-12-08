@@ -28,6 +28,7 @@
         colorTheme.enable = true;
         firefoxGnomeTheme.enable = true;
       };
+      foot.enable = true;
       lazygit.enable = true;
       starship.enable = true;
       yazi.enable = true;
