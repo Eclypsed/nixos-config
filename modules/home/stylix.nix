@@ -21,6 +21,7 @@
     };
     targets = {
       ghostty.enable = true;
+      gtk.enable = true;
       firefox = {
         enable = true;
         profileNames = [ "eclypse" ];
@@ -39,5 +40,14 @@
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
     size = 16;
+  };
+
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
   };
 }
