@@ -9,6 +9,7 @@
     discord
     sqlitebrowser
     drawio
+    check-capslock
 
     # Libre Office
     libreoffice-qt
