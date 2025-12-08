@@ -6,7 +6,7 @@
     ./firefox.nix
     ./ghostty.nix
     ./git.nix
-    ./helix.nix
+    # ./helix.nix
     ./hypr
     ./mango.nix
     ./nvf.nix
