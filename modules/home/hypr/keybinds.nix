@@ -29,10 +29,6 @@
       "$mod CTRL SHIFT, left, movetoworkspace, r-1"
       "$mod CTRL SHIFT, right, movetoworkspace, r+1"
 
-      # Brightness keys
-      ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
-      ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
-
       # Screenshoting
       ", PRINT, exec, hyprshot -m output --raw | satty --filename -"
       "$mod, PRINT, exec, hyprshot -m window --raw | satty --filename -"
@@ -74,12 +70,16 @@
       "$mod ALT, mouse:272, resizewindow"
     ];
 
-    binde = [
+    bindel = [
+      # Volume Controls
       ", XF86AudioRaiseVolume, exec, pamixer -i 5"
       ", XF86AudioLowerVolume, exec, pamixer -d 5"
       "ALT, XF86AudioRaiseVolume, exec, pamixer --default-source -i 5"
       "ALT, XF86AudioLowerVolume, exec, pamixer --default-source -d 5"
 
+      # Brightness Controls
+      ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+      ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
     ];
   };
 }
