@@ -15,8 +15,8 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       monospace = {
-        name = "FiraCode Nerd Font";
-        package = pkgs.nerd-fonts.fira-code;
+        name = "JetBrainsMono Nerd Font"; # "FiraCode Nerd Font";
+        package = pkgs.nerd-fonts.jetbrains-mono; # pkgs.nerd-fonts.fira-code;
       };
     };
     targets = {

@@ -2,317 +2,10 @@
   ...
 }:
 let
-  hyprland-workspaces = {
-    format = "{icon}";
-    show-special = false;
-    active-only = false;
-    on-click = "activate";
-    on-scroll-up = "hyprctl dispatch workspace e+1";
-    on-scroll-down = "hyprctl dispatch workspace e-1";
-    all-outputs = true;
-    sort-by-number = true;
-    persistent-workspaces = {
-      "1" = [ ];
-      "2" = [ ];
-      "3" = [ ];
-      "4" = [ ];
-    };
-    format-icons = {
-      "1" = " ";
-      "2" = " ";
-      "3" = " ";
-      "4" = " ";
-      "5" = "";
-      "6" = " ";
-      "7" = "";
-      "8" = " ";
-      "9" = " ";
-      "10" = "10";
-      "focused" = "";
-      "default" = "";
-    };
-  };
-
-  menu = {
-    format = "{}";
-    exec = "echo ; echo 󱓟 app launcher";
-    interval = 86400;
-    tooltip = true;
-    on-click = "walker";
-  };
-
-  hyprland-window = {
-    format = "󰣆 {title}";
-    max-length = 40;
-    separate-outputs = false;
-    rewrite = {
-      "^.*( — LibreWolf|LibreWolf)$" = "󰈹 LibreWolf";
-      "(.*) — Mozilla Firefox" = " Firefox";
-      "^.*v( .*|$)" = " Neovim";
-      "^.*~$" = "󰄛 Kitty";
-      "(.*) " = " Empty";
-      "^.*pdf( .*|$)" = "";
-      "^.*(- Mousepad)$" = " $1";
-    };
-  };
-
-  cava = {
-    autosens = 1;
-    bars = 15;
-    bar_delimiter = 32; # ASCII for " " (space)
-    format-icons = [
-      "▁"
-      "▂"
-      "▃"
-      "▄"
-      "▅"
-      "▆"
-      "▇"
-      "█"
-    ];
-    framerate = 30;
-    input_delay = 2;
-    method = "pipewire";
-  };
-
-  arrow-right = {
-    format = "󰁙";
+  separator_blank = {
+    format = "";
+    interval = "once";
     tooltip = false;
-  };
-
-  cpu = {
-    format = "󰘚 {usage}󱉸";
-  };
-
-  memory = {
-    interval = 10;
-    format = "{used:0.1f}G 󰾆";
-    format-alt = "{percentage}% 󰾆";
-    format-alt-click = "click";
-    tooltip = true;
-    tooltip-format = "{used:0.1f}GB/{total:0.1f}G";
-    # on-click-right = "kitty --title btop sh -c 'btop'";
-  };
-
-  temperature = {
-    interval = 10;
-    tooltip = true;
-    hwmon-path = [
-      "/sys/class/hwmon/hwmon6/temp1_input"
-      "/sys/class/thermal/thermal_zone0/temp"
-    ];
-    critical-threshold = 82;
-    format-critical = "{temperatureC}°C {icon}";
-    format = "{temperatureC}°C {icon}";
-    format-icons = [ "󰈸" ];
-    # on-click-right = "kitty --title nvtop sh -c 'nvtop'";
-  };
-
-  idle-inhibitor = {
-    format = "{icon}";
-    format-icons = {
-      activated = " ";
-      deactivated = " ";
-    };
-  };
-
-  tray = {
-    icon-size = 16;
-    spacing = 4;
-  };
-
-  pulseaudio = {
-    format = "{icon} {volume}% {format_source}";
-    format-muted = "󰖁 {format_source}";
-    format-bluetooth = "󰂰 {icon} {volume}% {format_source}";
-    format-bluetooth-muted = "󰂰 󰖁 {format_source}";
-    format-source = "󰍬 {volume}%";
-    format-source-muted = "󰍭";
-    format-icons = {
-      headphone = "";
-      hands-free = "";
-      headset = "";
-      phone = "";
-      portable = "";
-      car = "";
-      default = [
-        ""
-        ""
-        "󰕾"
-        ""
-      ];
-    };
-    scroll-step = 5.0;
-    on-click = "pavucontrol -t 3";
-    on-click-right = "pavucontrol -t 4";
-    tooltip-format = "{icon} {desc} | {volume}%";
-    smooth-scrolling-threshold = 1;
-  };
-
-  wireplumber = {
-    format = "{icon} {volume}% {format_source}";
-    format-muted = "󰖁 {format_source}";
-    format-source = "󰍬 {volume}%";
-    format-source-muted = "󰍭";
-    format-icons = {
-      headphone = "";
-      hands-free = "";
-      headset = "";
-      phone = "";
-      portable = "";
-      car = "";
-      default = [
-        ""
-        ""
-        "󰕾"
-        ""
-      ];
-    };
-    scroll-step = 5.0;
-    on-click = "pavucontrol -t 3";
-    on-click-right = "pavucontrol -t 4";
-    tooltip-format = "{node_name} {volume}%\n{source_desc} {source_volume}%";
-  };
-
-  backlight = {
-    format = "{icon} {percent}%";
-    format-icons = [
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-      ""
-    ];
-    on-scroll-down = "brightnessctl set 10%-";
-    on-scroll-up = "brightnessctl set +10%";
-    tooltip = false;
-  };
-
-  battery = {
-    align = 0;
-    rotate = 0;
-    full-at = 100;
-    design-capacity = false;
-    states = {
-      critical = 20;
-    };
-    format = "{icon} {capacity}%";
-    format-charging = " {capacity}%";
-    format-plugged = "󱘖 {capacity}%";
-    format-alt-click = "click";
-    format-full = "{icon} Full";
-    format-alt = "{icon} {time}";
-    format-icons = [
-      "󰂎"
-      "󰁺"
-      "󰁻"
-      "󰁼"
-      "󰁽"
-      "󰁾"
-      "󰁿"
-      "󰂀"
-      "󰂁"
-      "󰂂"
-      "󰁹"
-    ];
-    format-time = "{H}h {M}min";
-    tooltip = true;
-    tooltip-format = "{timeTo} {power}w";
-  };
-
-  mpris = {
-    interval = 10;
-    format = "{player_icon} ";
-    format-paused = "{status_icon}";
-    on-click-middle = "playerctl play-pause";
-    on-click = "playerctl previous";
-    on-click-right = "playerctl next";
-    scroll-step = 5.0;
-    smooth-scrolling-threshold = 1;
-    player-icons = {
-      chromium = "";
-      mpd = "";
-      default = "";
-      firefox = "";
-      kdeconnect = "";
-      mopidy = "";
-      mpv = "󰐹";
-      spotify = "";
-      vlc = "󰕼";
-    };
-    status-icons = {
-      paused = "󰐎";
-      playing = "";
-      stopped = "";
-    };
-    max-length = 10;
-  };
-
-  arrow-left = {
-    format = "󰁒";
-    tooltip = false;
-  };
-
-  network = {
-    format-disconnected = "󰖪 ";
-    format-wifi = " ";
-    format-ethernet = "󰈀 ";
-    format-linked = " (No IP)";
-    format-disabled = " (Disabled)";
-    tooltip-format = "{essid}: {ipaddr}/{cidr}";
-  };
-
-  notifications = {
-    tooltip = false;
-    format = "{icon} {text}";
-    format-icons = {
-      notification = "󱅫";
-      none = "󰂚";
-      dnd-notification = "󰂛";
-      dnd-none = "󰂛";
-      inhibited-notification = "󰂚";
-      inhibited-none = "󰂚";
-      dnd-inhibited-notification = "󰂛";
-      dnd-inhibited-none = "󰂛";
-    };
-    return-type = "json";
-    # exec-if = "which swaync-client";
-    # exec = "swaync-client -swb";
-    # on-click = "swaync-client -t -sw";
-    # on-click-right = "swaync-client -d -sw";
-    escape = true;
-  };
-
-  clock = {
-    interval = 1;
-    format = "{:%I:%M %p}"; # AM-PM Format
-    format-alt = " {:%H:%M  %Y, %d %B, %A}";
-    tooltip-format = "<tt><small>{calendar}</small></tt>";
-    calendar = {
-      mode = "year";
-      mode-mon-col = 3;
-      weeks-pos = "right";
-      on-scroll = 1;
-      format = {
-        months = "<span color='#ffead3'><b>{}</b></span>";
-        days = "<span color='#ecc6d9'><b>{}</b></span>";
-        weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-        weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-        today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-      };
-    };
-  };
-
-  power = {
-    format = "⏻";
-    exec = "echo ; echo 󰟡 power";
-    on-click = "wlogout";
-    interval = 86400;
-    tooltip = true;
   };
 in
 {
@@ -323,100 +16,125 @@ in
       {
         layer = "top";
         position = "top";
-        height = 34;
         margin-left = 10;
         margin-right = 10;
-        margin-top = 10;
+        margin-top = 5;
         fixed-center = true;
         reload_style_on_change = true;
 
+        "hyprland/workspaces" = import ./modules/hyprland-workspaces.nix { };
+        "custom/menu" = import ./modules/menu.nix { };
+        "hyprland/window" = import ./modules/hyprland-window.nix { };
+        "disk" = import ./modules/disk.nix { };
+        "cpu" = import ./modules/cpu.nix { };
+        "memory" = import ./modules/memory.nix { };
+        "temperature" = import ./modules/temperature.nix { };
+        "idle_inhibitor" = import ./modules/idle-inhibitor.nix { };
+        "tray" = import ./modules/tray.nix { };
+        "network" = import ./modules/network.nix { };
+        "wireplumber" = import ./modules/wireplumber.nix { };
+        "backlight" = import ./modules/backlight.nix { };
+        "mpris" = import ./modules/mpris.nix { };
+        "battery" = import ./modules/battery.nix { full-at = 80; }; # Change this to come from the TLP setting
+        "clock" = import ./modules/clock.nix { };
+        "custom/power" = import ./modules/power.nix { };
+        "custom/separator#blank" = separator_blank;
+
         modules-left = [
           "custom/menu"
-          "hyprland/window"
-          "cava"
-          "group/info"
+          "custom/separator#blank"
+          "clock"
         ];
 
         modules-center = [
-          "hyprland/workspaces#4"
+          "hyprland/workspaces"
         ];
 
         modules-right = [
-          "idle_inhibitor"
-          "group/demo"
-          "group/hub"
+          "tray"
+          "custom/separator#blank"
+          "group/motherboard"
+          "custom/separator#blank"
+          "wireplumber"
+          "custom/separator#blank"
+          "custom/power"
         ];
 
-        "hyprland/workspaces#4" = hyprland-workspaces;
-        "custom/menu" = menu;
-        "hyprland/window" = hyprland-window;
-        "cava" = cava;
-        "custom/arrow-right" = arrow-right;
-        "cpu" = cpu;
-        "memory" = memory;
-        "temperature" = temperature;
-        "idle_inhibitor" = idle-inhibitor;
-        "tray" = tray;
-        "pulseaudio" = pulseaudio;
-        "network" = network;
-        "wireplumber" = wireplumber;
-        "backlight" = backlight;
-        "mpris" = mpris;
-        "battery" = battery;
-        "custom/arrow-left" = arrow-left;
-        "custom/notifications" = notifications;
-        "clock" = clock;
-        "custom/power" = power;
-
-        "group/info" = {
+        "group/motherboard" = {
           orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            transition-left-to-right = false;
-          };
           modules = [
-            "custom/arrow-right"
             "cpu"
             "memory"
             "temperature"
-          ];
-        };
-
-        "group/demo" = {
-          orientation = "inherit";
-          modules = [
-            "tray"
-            "network"
-            "wireplumber"
-            # "pulseaudio"
-            "backlight"
-            "mpris"
-            "battery"
-          ];
-        };
-
-        "group/utils" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            transition-left-to-right = true;
-          };
-          modules = [
-            "custom/arrow-left"
-            "custom/notifications"
-          ];
-        };
-
-        "group/hub" = {
-          orientation = "inherit";
-          modules = [
-            "group/utils"
-            "clock"
-            "custom/power"
+            "disk"
           ];
         };
       }
     ];
-    style = ./style.css;
+    # style = ./style.css;
+    style = ''
+      @define-color base00 #192435; /* Darkest background (night sky / deep shadows) */
+      @define-color base01 #243449; /* Slightly lighter background */
+      @define-color base02 #36455D; /* Selection / inactive UI */
+      @define-color base03 #51637E; /* Comments / subtle foreground */
+
+      @define-color base04 #8FA3BA; /* Dark foreground (status bars) */
+      @define-color base05 #C7D2DF; /* Default foreground (text) */
+      @define-color base06 #E3EAF2; /* Light foreground (highlighted text) */
+      @define-color base07 #F4D9C7; /* Bright foreground (lantern light) */
+
+      @define-color base08 #D88C7A; /* Red / Errors (warm wood & lantern glow) */
+      @define-color base09 #E5AD97; /* Orange / Numbers / Constants */
+      @define-color base0A #E9C48A; /* Yellow / Classes / Warnings */
+      @define-color base0B #9FBFA8; /* Green / Strings */
+      @define-color base0C #8FB6C8; /* Cyan / Support / Regex */
+      @define-color base0D #7FA6D9; /* Blue / Functions / Keywords */
+      @define-color base0E #B69BCB; /* Purple / Types / Specials */
+      @define-color base0F #B0896A; /* Brown / Deprecated */
+
+      * {
+        all: unset;
+        font-family: "JetBrainsMono Nerd Font Propo"; /* The Propo(rtional) variant of the ensures icons are properly spaced */
+        font-feature-settings: '"zero", "tnum", "ss01", "ss02", "ss03", "cv01"';
+        font-weight: 700;
+        min-height: 0;
+      }
+
+      window#waybar {
+        background: transparent;
+      }
+
+      .module {
+        padding: 0 6px;
+      }
+
+      .modules-left,
+      .modules-center,
+      .modules-right {
+        background: @base00;
+        padding: 6px 8px;
+        border-color: @base03;
+        border-width: 1.5px;
+        border-style: solid;
+        border-radius: 0.75rem;
+      }
+
+      #workspaces button {
+        color: @base04;
+        font-size: 0.9rem;
+        padding: 0 7px;
+      }
+
+      #motherboard,
+      #custom-menu {
+        color: @base04;
+      }
+
+      #wireplumber,
+      #custom-power,
+      #clock {
+        color: @base05;
+      }
+    '';
   };
 }
