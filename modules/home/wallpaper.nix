@@ -1,5 +1,6 @@
 {
   config,
+  wallpaper,
   ...
 }:
 let
@@ -18,7 +19,7 @@ in
         mode = "center";
       };
       any = {
-        path = "${wallpapers}/sunset_bay.jpg";
+        path = "${wallpapers}/${wallpaper}";
       };
     };
   };

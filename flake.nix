@@ -67,6 +67,7 @@
         specialArgs = {
           inherit inputs;
           host = "vanta";
+          wallpaper = "twilight-village.png";
         };
         modules = [
           ./modules/system

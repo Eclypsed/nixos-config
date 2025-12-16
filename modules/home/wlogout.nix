@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  wallpaper,
   ...
 }:
 {
@@ -56,7 +57,7 @@
       }
 
       window {
-        background: url("${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/sunset_bay.jpg");
+        background: url("${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/${wallpaper}");
         background-size: cover;
       }
 

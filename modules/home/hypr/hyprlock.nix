@@ -1,5 +1,6 @@
 {
   config,
+  wallpaper,
   ...
 }:
 let
@@ -19,7 +20,7 @@ in
       };
       background = [
         {
-          path = "${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/sunset_bay.jpg";
+          path = "${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/${wallpaper}";
           blur_passes = 3;
         }
       ];
