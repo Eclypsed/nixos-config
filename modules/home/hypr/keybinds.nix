@@ -45,6 +45,9 @@
       ", XF86AudioMute, exec, pamixer -t"
       "ALT, XF86AudioMute, exec, pamixer --default-source -t"
 
+      # Notification Center
+      "$mod, n, exec, swaync-client -t -sw"
+
       # Scratchpads
       "$mod, TAB, exec, pypr toggle term"
     ]

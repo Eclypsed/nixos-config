@@ -31,6 +31,7 @@
       foot.enable = true;
       lazygit.enable = true;
       starship.enable = true;
+      swaync.enable = true;
       yazi.enable = true;
     };
   };

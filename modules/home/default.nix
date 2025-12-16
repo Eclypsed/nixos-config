@@ -16,6 +16,7 @@
     ./screenshot.nix
     ./ssh.nix
     ./stylix.nix
+    ./swaync.nix
     ./vscode.nix
     ./walker.nix
     ./wallpaper.nix

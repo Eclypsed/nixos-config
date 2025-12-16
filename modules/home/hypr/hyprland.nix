@@ -57,6 +57,7 @@
         "systemctl --user enable --now hyprpolkitagent.service"
         "systemctl --user enable app-com.mitchellh.ghostty.service"
         "wpaperd -d"
+        "swaync"
         "pypr"
       ];
 
