@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +65,12 @@
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      agenix-rekey,
+      ...
+    }@inputs:
     {
       nixosConfigurations.vanta = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -68,11 +78,18 @@
           inherit inputs;
           host = "vanta";
           wallpaper = "twilight-village.png";
+          # Host public SSH key (e.g. /etc/ssh/ssh_host_ed25519_key.pub).
+          hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaDVBJdMDFL8r9NQCbaLe+DPHGhGzRv2N7+7m1/U8DP";
         };
         modules = [
           ./modules/system
           ./hosts/vanta
         ];
+      };
+
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nixosConfigurations = self.nixosConfigurations;
       };
     };
 }

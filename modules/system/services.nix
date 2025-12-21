@@ -52,14 +52,10 @@
 
     upower.enable = true;
 
-    # Enable the OpenSSH daemon. (Look into Fail2Ban in the future)
+    # Disable SSH daemon but generate host keys anyway for secret rekeying
     openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "prohibit-password";
-        AllowUsers = [ "eclypse" ];
-      };
+      enable = false;
+      generateHostKeys = true;
     };
 
     system76-scheduler.settings.cfsProfiles.enable = true;
