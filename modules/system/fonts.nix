@@ -10,6 +10,7 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.symbols-only
+      nerd-fonts.geist-mono
       rubik
     ];
   };

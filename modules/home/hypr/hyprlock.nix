@@ -3,106 +3,104 @@
   wallpaper,
   ...
 }:
-let
-  primary-monitor = "eDP-1";
-
-  text-color = "rgba(${config.lib.stylix.colors.base0F}FF)";
-  entry-background-color = "rgba(${config.lib.stylix.colors.base0F}11)";
-  entry-border-color = "rgba(${config.lib.stylix.colors.base0F}55)";
-  font-family = "Rubik Light";
-in
 {
   programs.hyprlock = {
     enable = true;
-    settings = {
+    settings = with config.lib.stylix.colors; {
       general = {
         hide_cursor = true;
       };
       background = [
         {
           path = "${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}/${wallpaper}";
+          blur_size = 4;
           blur_passes = 3;
         }
       ];
       input-field = [
-        {
-          monitor = primary-monitor;
+        rec {
           size = "250, 50";
-          outline_thickness = 2;
-          dots_size = 0.1;
-          dots_spacing = 0.3;
-          outer_color = entry-border-color;
-          inner_color = entry-background-color;
-          font_color = text-color;
+          outline_thickness = 3;
+          dots_size = 0.25;
+          dots_spacing = 0.4;
+          outer_color = "rgba(${base0F}55)";
+          capslock_color = outer_color;
+          numlock_color = outer_color;
+          bothlock_color = outer_color;
+          inner_color = "rgba(${base0F}11)";
+          font_color = "rgba(${base0F}ff)";
           fade_on_empty = true;
-
-          position = "0, 20";
+          placeholder_text = "<i>Password...</i>";
+          position = "0, -60";
           halign = "center";
           valign = "center";
         }
       ];
       label = [
+        # Hours
         {
-          # Caps Lock Warning
-          monitor = primary-monitor;
-          text = "cmd[update:250] check-capslock";
-          color = text-color;
-          font_size = 13;
-          font_family = font-family;
-          position = "0, -25";
+          text = "cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
+          color = "rgb(${base0F})";
+          font_size = 112;
+          font_family = "GeistMono Nerd Font";
+          position = "0, 350";
           halign = "center";
           valign = "center";
         }
-        {
-          # Clock
-          monitor = primary-monitor;
-          text = "$TIME";
-          color = text-color;
-          font_size = 65;
-          font_family = font-family;
 
-          position = "0, 300";
+        # Minutes
+        {
+          text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>\"";
+          color = "rgb(${base0F})";
+          font_size = 112;
+          font_family = "GeistMono Nerd Font";
+          position = "0, 220";
           halign = "center";
           valign = "center";
         }
-        {
-          # Date
-          monitor = primary-monitor;
-          text = "cmd[update:5000] date +\"%A, %B %d\"";
-          color = text-color;
-          font_size = 17;
-          font_family = font-family;
 
-          position = "0, 240";
+        # Day of the Week
+        {
+          text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
+          color = "rgb(${base0F})";
+          font_size = 22;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, 115";
           halign = "center";
           valign = "center";
         }
+
+        # Date
         {
-          # User
-          monitor = primary-monitor;
-          text = "    $USER";
-          color = text-color;
-          outline_thickness = 2;
-          dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
-          dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
-          dots_center = true;
-          font_size = 20;
-          font_family = font-family;
-          position = "0, 50";
+          text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
+          color = "rgb(${base0F})";
+          font_size = 18;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, 85";
+          halign = "center";
+          valign = "center";
+        }
+
+        # Temperature
+        {
+          text = "cmd[update:18000000] echo \"<b>Feels like<big> $(curl -s 'wttr.in?format=%t' | tr -d '+') </big></b>\"";
+          color = "rgb(${base0F})";
+          font_size = 18;
+          font_family = "GeistMono Nerd Font";
+          position = "0, 40";
           halign = "center";
           valign = "bottom";
         }
-        {
-          # Status
-          monitor = primary-monitor;
-          text = "cmd[update:5000] hyprlock-status";
-          color = text-color;
-          font_size = 14;
-          font_family = font-family;
 
-          position = "30, -30";
-          halign = "left";
-          valign = "top";
+        # Caps Lock Warning
+        {
+          text = "cmd[update:250] check-capslock";
+          color = "rgb(${base0F})";
+          font_size = 13;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, -120";
+          halign = "center";
+          valign = "center";
         }
       ];
     };
