@@ -1,13 +1,6 @@
 {
   ...
 }:
-let
-  separator_blank = {
-    format = "";
-    interval = "once";
-    tooltip = false;
-  };
-in
 {
   programs.waybar = {
     enable = true;
@@ -20,7 +13,7 @@ in
         margin-right = 10;
         margin-top = 5;
         fixed-center = true;
-        reload_style_on_change = true;
+        reload_style_on_change = false;
 
         "hyprland/workspaces" = import ./modules/hyprland-workspaces.nix { };
         "custom/menu" = import ./modules/menu.nix { };
@@ -38,12 +31,19 @@ in
         "battery" = import ./modules/battery.nix { full-at = 80; }; # Change this to come from the TLP setting
         "clock" = import ./modules/clock.nix { };
         "custom/power" = import ./modules/power.nix { };
-        "custom/separator#blank" = separator_blank;
+        "custom/hyprpicker" = import ./modules/hyprpicker.nix { };
+        "custom/separator#blank" = {
+          format = "";
+          interval = "once";
+          tooltip = false;
+        };
 
         modules-left = [
           "custom/menu"
           "custom/separator#blank"
           "clock"
+          "custom/separator#blank"
+          "custom/hyprpicker"
         ];
 
         modules-center = [
@@ -56,6 +56,8 @@ in
           "group/motherboard"
           "custom/separator#blank"
           "wireplumber"
+          "custom/separator#blank"
+          "battery"
           "custom/separator#blank"
           "custom/power"
         ];
@@ -71,7 +73,6 @@ in
         };
       }
     ];
-    # style = ./style.css;
     style = ''
       @define-color base00 #192435; /* Darkest background (night sky / deep shadows) */
       @define-color base01 #243449; /* Slightly lighter background */
@@ -131,7 +132,9 @@ in
       }
 
       #wireplumber,
+      #battery,
       #custom-power,
+      #custom-hyprpicker,
       #clock {
         color: @base05;
       }

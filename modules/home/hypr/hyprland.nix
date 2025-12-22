@@ -7,6 +7,7 @@
 {
   home.packages = with pkgs; [
     hyprpolkitagent
+    hyprpicker
   ];
 
   # xdg.configFile."uwsm/env".source =

@@ -10,6 +10,7 @@
     sqlitebrowser
     drawio
     check-capslock
+    wl-clipboard-rs
 
     # Libre Office
     libreoffice-qt
