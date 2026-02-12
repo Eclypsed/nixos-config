@@ -31,37 +31,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mango.url = "github:DreamMaoMao/mango?rev=1271832e947d3d4af27b36f687edd2f2e535f051";
-
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    silentSDDM = {
-      url = "github:uiriansan/SilentSDDM";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
-
-    elephant = {
-      url = "github:abenz1267/elephant";
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    walker = {
-      url = "github:abenz1267/walker";
-      inputs.elephant.follows = "elephant";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
+
+    nix-jmu-cs345.url = "github:Eclypsed/nix-jmu-cs345";
   };
 
   outputs =
@@ -74,13 +68,7 @@
     {
       nixosConfigurations.vanta = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          host = "vanta";
-          wallpaper = "twilight-village.png";
-          # Host public SSH key (e.g. /etc/ssh/ssh_host_ed25519_key.pub).
-          hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaDVBJdMDFL8r9NQCbaLe+DPHGhGzRv2N7+7m1/U8DP";
-        };
+        specialArgs = { inherit inputs; };
         modules = [
           ./modules/system
           ./hosts/vanta

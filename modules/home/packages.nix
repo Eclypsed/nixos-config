@@ -1,21 +1,20 @@
 {
+  inputs,
   pkgs,
   ...
 }:
 {
+  imports = [
+    inputs.nix-jmu-cs345.homeManagerModules.bernstdh
+  ];
+
+  programs.nix-jmu-cs345.enable = true;
+
   home.packages = with pkgs; [
     zoom-us
     devenv
-    discord
-    sqlitebrowser
-    drawio
-    check-capslock
-    wl-clipboard-rs
-
-    # Libre Office
-    libreoffice-qt
-    hunspell
-    hunspellDicts.en_US
+    htop
+    obsidian
 
     # CD Stuff
     picard
@@ -23,9 +22,6 @@
     rsgain
 
     playerctl
-    pamixer
-    pavucontrol
     brightnessctl
-    obsidian
   ];
 }

@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  host,
+  # host,
   ...
 }:
 {
@@ -13,11 +13,19 @@
     enable = true;
     settings = {
       vim = {
-        viAlias = false;
+        viAlias = true;
         vimAlias = true;
 
+        # lazy.plugins = {
+        #   "kanagawa.nvim" = {
+        #     package = pkgs.vimPlugins.kanagawa-nvim;
+        #     setupModule = "kanagawa";
+        #     after = "vim.cmd(\"colorscheme kanagawa\")";
+        #   };
+        # };
+
         options = {
-          wrap = false;
+          wrap = true;
         };
 
         clipboard = {
@@ -65,6 +73,12 @@
 
         binds = {
           whichKey.enable = true;
+        };
+
+        theme = {
+          enable = true;
+          name = "catppuccin";
+          style = "mocha";
         };
 
         keymaps = [
@@ -124,12 +138,6 @@
           }
         ];
 
-        theme = {
-          enable = true;
-          name = "catppuccin";
-          style = "mocha";
-        };
-
         languages = {
           enableTreesitter = true;
           enableFormat = true;
@@ -140,7 +148,7 @@
             dap.enable = true;
             lsp = {
               enable = true;
-              server = "clangd";
+              servers = [ "clangd" ];
             };
             treesitter.enable = true;
           };
@@ -149,7 +157,7 @@
             enable = true;
             format = {
               enable = true;
-              type = "prettier";
+              type = [ "prettier" ];
             };
             lsp.enable = true;
             treesitter.enable = true;
@@ -170,6 +178,7 @@
             };
             format = {
               enable = true;
+              type = [ "prettierd" ];
             };
             lsp = {
               enable = true;
@@ -183,21 +192,19 @@
             enable = true;
             format = {
               enable = true;
-              package = pkgs.nixfmt;
-              type = "nixfmt";
+              type = [ "nixfmt" ];
             };
             lsp = {
               enable = true;
-              package = pkgs.nixd;
-              server = "nixd";
-              options = {
-                nixos = {
-                  expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.${host}.options";
-                };
-                home-manager = {
-                  expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []";
-                };
-              };
+              servers = [ "nixd" ];
+              # options = {
+              #   nixos = {
+              #     expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.${host}.options";
+              #   };
+              #   home-manager = {
+              #     expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []";
+              #   };
+              # };
             };
             treesitter.enable = true;
           };
@@ -210,7 +217,10 @@
             };
             format = {
               enable = true;
-              type = "black-and-isort";
+              type = [
+                "black"
+                "isort"
+              ];
             };
             lsp = {
               enable = true;
@@ -242,7 +252,7 @@
             extraDiagnostics.enable = true;
             format = {
               enable = true;
-              type = "prettier";
+              type = [ "prettier" ];
             };
             lsp.enable = true;
             treesitter.enable = true;

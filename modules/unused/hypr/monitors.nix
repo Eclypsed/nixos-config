@@ -15,5 +15,8 @@
   home.hyprdynamicmonitors = {
     enable = true;
     installExamples = false;
+    extraFlags = [
+      "--enable-lid-events"
+    ];
   };
 }

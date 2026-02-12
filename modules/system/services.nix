@@ -14,7 +14,6 @@
         layout = "us";
         variant = "";
       };
-
     };
 
     # Enable touchpad support (enabled default in most desktopManager).
@@ -92,7 +91,7 @@
   hardware = {
     bluetooth = {
       enable = true;
-      powerOnBoot = true;
+      powerOnBoot = false;
     };
     sane = {
       enable = true;

@@ -1,8 +1,6 @@
 {
   inputs,
   pkgs,
-  host,
-  wallpaper,
   config,
   ...
 }:
@@ -12,7 +10,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs host wallpaper; };
+    extraSpecialArgs = { inherit inputs; };
 
     users.eclypse = {
       imports = [ ../home ];

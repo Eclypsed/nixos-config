@@ -7,12 +7,11 @@
     enable = true;
     extensions = [
       "nix"
-      "catppuccin"
     ];
     extraPackages = [ pkgs.nixd ];
 
     userSettings = {
-      theme = "Catppuccin Mocha";
+      theme = "Noctalia Dark";
       features = {
         edit_prediction_provider = "copilot";
       };

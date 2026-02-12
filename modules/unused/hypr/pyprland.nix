@@ -16,6 +16,7 @@
     class = "term_dropdown"
     animation = "fromTop"
     margin = 150
+    size = "80% 80%"
     max_size = "1920px 1080px"
     multi = false
   '';

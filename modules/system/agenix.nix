@@ -3,8 +3,6 @@
   config,
   pkgs,
   lib,
-  host,
-  hostPubkey ? null,
   ...
 }:
 {
@@ -25,13 +23,13 @@
     rekey = {
       masterIdentities = [ "${inputs.self}/secrets/age-yubikey-identity-d9ed335b.pub" ];
       storageMode = "local";
-      localStorageDir = ../../. + "/secrets/rekeyed/${host}";
+      localStorageDir = ../../. + "/secrets/rekeyed/${config.host.name}";
     }
     # We only set the hostPubkey if one is supplied. For new hosts the pub key will not
     # exist until it is generated after the first rebuild. Runtime decryption will fail
     # but then the ssh host key will be generated in /etc/ssh and can be supplied
-    // lib.optionalAttrs (hostPubkey != null) {
-      inherit hostPubkey;
+    // lib.optionalAttrs (config.host.pubKey != null) {
+      hostPubkey = config.host.pubKey;
     };
     secrets = {
       tailscale-auth.rekeyFile = ../../secrets/tailscale-auth.age;

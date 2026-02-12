@@ -3,28 +3,24 @@
 }:
 {
   imports = [
+    ./assets.nix
     ./firefox.nix
-    ./foot.nix
-    # ./ghostty.nix
     ./git.nix
-    # ./helix.nix
-    ./hypr
-    ./mango.nix
+    ./helix.nix
+    ./kanshi.nix
+    ./niri.nix
+    ./noctalia.nix
     ./nvf.nix
     ./packages.nix
-    # ./plasma.nix
     ./screenshot.nix
     ./ssh.nix
     ./stylix.nix
-    ./swaync.nix
-    ./vscode.nix
-    ./walker.nix
-    ./wallpaper.nix
-    ./waybar
-    ./wlogout.nix
+    ./terminal.nix
+    ./vesktop.nix
+    ./vicinae.nix
     ./xdg.nix
     ./yazi.nix
     ./zed.nix
-    ./zsh.nix
+    ./zen-browser.nix
   ];
 }

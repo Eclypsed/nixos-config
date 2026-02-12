@@ -8,7 +8,7 @@
       general = {
         lock_cmd = "pidof hyprlock || hyprlock --grace 10";
         before_sleep_cmd = "loginctl lock-session";
-        fail_timeout = 1000;
+        after_sleep_cmd = "hypctl dispatch dpms on";
       };
       listener = [
         {
@@ -22,7 +22,7 @@
         }
         {
           timeout = 600;
-          on-timeout = "systemctl suspend || loginctl suspend";
+          on-timeout = "systemctl suspend";
         }
       ];
     };

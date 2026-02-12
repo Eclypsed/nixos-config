@@ -19,6 +19,7 @@
     # };
     gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
     nix-ld.enable = true;
+    xwayland.enable = true;
     zsh.enable = true;
   };
 
@@ -38,6 +39,7 @@
     systemPackages = with pkgs; [
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       git
+      disktui
     ];
     variables = {
       EDITOR = "vim";

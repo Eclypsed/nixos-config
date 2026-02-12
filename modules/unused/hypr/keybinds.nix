@@ -6,14 +6,13 @@
     exec = "hyprctl dispatch submap global";
     submap = "global";
 
-    # MY STUFF
     "$mod" = "SUPER";
 
     bind = [
       "$mod, Q, killactive"
       "$mod, W, exec, foot"
-      "$mod, S, exec, walker"
-      "$mod, Escape, exec, wlogout"
+      "$mod, S, exec, vicinae toggle"
+      "$mod, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
 
       # Window Movement
       "$mod, left, movefocus, l"
@@ -30,9 +29,8 @@
       "$mod CTRL SHIFT, right, movetoworkspace, r+1"
 
       # Screenshoting
-      ", PRINT, exec, hyprshot -m output --raw | satty --filename -"
-      "$mod, PRINT, exec, hyprshot -m window --raw | satty --filename -"
-      "SHIFT, PRINT, exec, hyprshot -m region --raw | satty --filename -"
+      ", PRINT, exec, grim -g \"$(slurp)\" - | wl-copy"
+      "SHIFT, PRINT, exec, wl-paste | swappy -f -"
 
       # Media Control Keys
       ", XF86AudioPrev, exec, playerctl previous"
@@ -42,7 +40,7 @@
       "ALT, XF86AudioMute, exec, pamixer --default-source -t"
 
       # Notification Center
-      "$mod, n, exec, swaync-client -t -sw"
+      "$mod, n, exec, noctalia-shell ipc call notifications toggleHistory"
 
       # Scratchpads
       "$mod, TAB, exec, pypr toggle term"

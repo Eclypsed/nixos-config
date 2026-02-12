@@ -12,6 +12,8 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelParams = [ "kvm.enable_virt_at_load=0" ];
+    kernelParams = [
+      "kvm.enable_virt_at_load=0" # Fixes some virtuallization issues
+    ];
   };
 }

@@ -1,5 +1,5 @@
 {
-  # inputs,
+  inputs,
   pkgs,
   config,
   ...
@@ -10,19 +10,23 @@
     hyprpicker
   ];
 
-  # xdg.configFile."uwsm/env".source =
-  #   "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
-
   wayland.windowManager.hyprland = {
     enable = true;
-    # systemd.enable = false;
-    package = null;
-    portalPackage = null;
+    systemd.enable = false;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
     settings = {
       source = [
         "${config.xdg.configHome}/hypr/monitors.conf"
+        "${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf"
       ];
+
+      # monitor = [
+      #   "desc:BOE 0x095F,2256x1504@60.00,0x0,1"
+      #   "desc:LG Electronics LG TV SSCR2 0x01010101,3840x2160@120.00,2256x0,1"
+      # ];
 
       animations = {
         # Stolen from https://github.com/Vobledoble/nixparency-dots/
@@ -54,48 +58,57 @@
         ];
       };
 
+      debug.disable_logs = false;
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(4479A4)";
-        "col.inactive_border" = "rgba(4479A480)";
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 20;
+        rounding_power = 2;
 
-        active_opacity = 0.95;
-        inactive_opacity = 0.85;
-        fullscreen_opacity = 1.0;
+        # active_opacity = 0.95;
+        # inactive_opacity = 0.85;
+        # fullscreen_opacity = 1.0;
 
         blur = {
           enabled = true;
-          size = 8;
-          passes = 3;
+          size = 3;
+          passes = 2;
+          vibrancy = 0.1696;
           new_optimizations = true;
           popups = true;
         };
 
-        shadow.enabled = false;
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = "rgba(1a1a1aee)";
+        };
+      };
+
+      input = {
+        kb_layout = "us";
+        kb_options = "compose:ralt";
       };
 
       misc = {
         vfr = true;
       };
 
-      layerrule = [
-        "blur, waybar" # Add blur to waybar
-        "blurpopups, waybar" # Blur waybar popups too!
-        "ignorealpha 0.2, waybar" # Make it so transparent parts are ignored
-      ];
+      windowrule = {
+        name = "floating-terminal-dropdown";
+        "match:class" = "term_dropdown";
+        float = "on";
+      };
 
       exec-once = [
-        "systemctl --user enable --now hypridle.service"
         "systemctl --user enable --now hyprpolkitagent.service"
-        "systemctl --user enable app-com.mitchellh.ghostty.service"
-        "wpaperd -d"
-        "swaync"
+        "noctalia-shell"
         "pypr"
       ];
 

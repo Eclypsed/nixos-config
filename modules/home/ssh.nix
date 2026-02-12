@@ -25,6 +25,11 @@
         serverAliveCountMax = 5;
         serverAliveInterval = 60;
       };
+      "cluster" = {
+        hostname = "login02.cluster.cs.jmu.edu";
+        user = "tamassno";
+        proxyJump = "stu";
+      };
     };
   };
 }
