@@ -11,7 +11,6 @@
   programs.nix-jmu-cs345.enable = true;
 
   home.packages = with pkgs; [
-    zoom-us
     devenv
     htop
     obsidian

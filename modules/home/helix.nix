@@ -26,15 +26,82 @@ in
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      basedpyright
-      ruff
-      isort
-      black
-      nixd
-      nixfmt
-      rust-analyzer
-      rustfmt
+      basedpyright # Python static type checker
+      ruff # Pyhton linter and formatter
+      nixd # Nix language server
+      nixfmt # Nix formatter
+      rust-analyzer # Rust language server
+      rustfmt # Rust formmater
+      clippy # Rust linter
+      lldb # Debugger for llvm languages
+      marksman # Markdown language server
+      markdown-oxide # Markdown PKM language server
+      rumdl # Markdown linter and formatter
+      libclang # C language family frontend for LLVM
+      typescript-language-server # Typescript language server
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
+      emmet-language-server # Emmet support based on LSP
+      prettier # Formatter for HTML/CSS/JSON/ESLint languages
+      superhtml # HTML Language Server and Templating Language Library
     ];
+    settings = {
+      editor = {
+        line-number = "relative";
+        cursorline = true;
+        auto-format = true;
+        completion-timeout = 5;
+        completion-trigger-len = 1;
+        bufferline = "always";
+        color-modes = true;
+        end-of-line-diagnostics = "hint";
+        lsp = {
+          display-inlay-hints = true;
+        };
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        indent-guides = {
+          render = true;
+          skip-levels = 1;
+        };
+        soft-wrap = {
+          enable = true;
+          max-indent-retain = 80;
+        };
+        inline-diagnostics = {
+          cursor-line = "warning";
+        };
+      };
+      keys =
+        let
+          arrow_keys = {
+            "up" = "jump_view_up";
+            "down" = "jump_view_down";
+            "left" = "jump_view_left";
+            "right" = "jump_view_right";
+          };
+        in
+        {
+          normal = {
+            "C-y" =
+              ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open %{buffer_name}";
+          }
+          // arrow_keys;
+          insert = {
+            "C-k" = "move_visual_line_up";
+            "C-j" = "move_visual_line_down";
+            "C-h" = "move_char_left";
+            "C-l" = "move_char_right";
+          }
+          // arrow_keys;
+          select = { } // arrow_keys;
+        };
+      theme = "catppuccin_mocha";
+    };
+    # Check https://github.com/helix-editor/helix/blob/master/languages.toml for default language configuration
+    # Only explictly set options you want to override / make explicit
     languages = {
       language = [
         {
@@ -45,10 +112,10 @@ in
           ];
           auto-format = true;
           formatter = {
-            command = "bash"; # We have to use bash to call both isort and black
+            command = "ruff";
             args = [
-              "-c"
-              "isort --profile black - | black --quiet --line-length=79 -" # Line length of 79 in accordance with PEP 8
+              "format"
+              "-"
             ];
           };
         }
@@ -62,75 +129,194 @@ in
         }
         {
           name = "rust";
-          language-servers = [ "rust-analyzer" ];
           auto-format = true;
-          roots = [
-            "Cargo.toml"
-            "Cargo.lock"
-          ];
           formatter = {
             command = "rustfmt";
           };
         }
+        {
+          name = "markdown";
+          auto-format = true;
+          formatter = {
+            command = "rumdl";
+            args = [
+              "fmt"
+              "-"
+            ];
+          };
+        }
+        {
+          name = "c";
+          file-types = [
+            "c"
+            "h"
+          ]; # "h" is currently missing from the default config
+          auto-format = true;
+          formatter = {
+            command = "clang-format";
+            args = [
+              "--style=WebKit"
+            ];
+          };
+        }
+        {
+          name = "typescript";
+          language-servers = [
+            "typescript-language-server"
+            "vscode-eslint-language-server"
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
+        {
+          name = "tsx";
+          language-servers = [
+            "typescript-language-server"
+            "vscode-eslint-language-server"
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
+        {
+          name = "javascript";
+          language-servers = [
+            "typescript-language-server"
+            "vscode-eslint-language-server"
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
+        {
+          name = "jsx";
+          language-servers = [
+            "typescript-language-server"
+            "vscode-eslint-language-server"
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
+        {
+          name = "json";
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "json"
+            ];
+          };
+        }
+        {
+          name = "jsonc";
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "jsonc"
+            ];
+          };
+        }
+        {
+          name = "html";
+          language-servers = [
+            "vscode-html-language-server"
+            {
+              name = "superhtml";
+              except-features = [ "format" ];
+            }
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "html"
+            ];
+          };
+        }
+        {
+          name = "css";
+          language-servers = [
+            "vscode-css-language-server"
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "css"
+            ];
+          };
+        }
+        {
+          name = "scss";
+          language-servers = [
+            "vscode-css-language-server"
+            "emmet-language-server"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "scss"
+            ];
+          };
+        }
       ];
       language-server = {
-        basedpyright.config.python.analysis = {
-          typeCheckingMode = "strict";
+        basedpyright.config.python.analysis.typeCheckingMode = "strict";
+        rust-analyzer.config.check.command = "clippy";
+        emmet-language-server = {
+          command = "emmet-language-server";
+          args = [ "--stdio" ];
         };
-        ruff = {
-          command = "ruff";
-          args = [ "server" ];
-        };
-        nixd = {
-          command = "nixd";
-        };
-        rust-analyzer = {
-          command = "rust-analyzer";
+        vscode-eslint-language-server = {
           config = {
-            inlayHints = {
-              bindingModeHints.enable = false;
-              closingBraceHints.minLines = 10;
-              closureReturnTypeHints.enable = "with_block";
-              discriminantHints.enable = "fieldless";
-              lifetimeElisionHints.enable = "skip_trivial";
-              typeHints.hideClosureInitialization = false;
+            # Automatically fix ESLint errors
+            codeActionsOnSave = {
+              mode = "all";
+              "source.fixAll.eslint" = true;
+            };
+            quiet = false;
+            experimental = {
+              # Support for the modern ESLint configuration format
+              useFlatConfig = true;
             };
           };
         };
       };
-    };
-    settings = {
-      editor = {
-        bufferline = "always";
-        completion-timeout = 5;
-        completion-trigger-len = 1;
-        line-number = "relative";
-        cursorline = true;
-        color-modes = true;
-        cursor-shape = {
-          insert = "bar";
-          normal = "block";
-          select = "underline";
-        };
-        lsp = {
-          display-inlay-hints = true;
-        };
-        indent-guides = {
-          render = true;
-          skip-levels = 1;
-        };
-        soft-wrap = {
-          enable = true;
-          max-indent-retain = 80;
-        };
-      };
-      keys = {
-        normal = {
-          "C-y" =
-            ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open %{buffer_name}";
-        };
-      };
-      theme = "catppuccin_mocha";
     };
   };
 }

@@ -81,6 +81,10 @@
 
     # Enable thermald (only necessary for Intel CPUs)
     thermald.enable = true;
+
+    fwupd.enable = true;
+
+    fprintd.enable = true;
   };
 
   powerManagement = {

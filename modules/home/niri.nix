@@ -80,6 +80,8 @@ in
           repeat = false;
           hotkey-overlay.title = "Session menu";
         };
+
+        # Notifications
         "Mod+N" = {
           action.spawn = [
             noctalia-shell
@@ -90,6 +92,17 @@ in
           ];
           repeat = false;
           hotkey-overlay.title = "Show notifications";
+        };
+        "Mod+Ctrl+N" = {
+          action.spawn = [
+            noctalia-shell
+            "ipc"
+            "call"
+            "notifications"
+            "clear"
+          ];
+          repeat = false;
+          hotkey-overlay.title = "Clear notifications";
         };
 
         # Media keys
@@ -292,28 +305,33 @@ in
           hotkey-overlay.title = "Decrease window height";
         };
         "Mod+Z" = {
-          action.switch-focus-between-floating-and-tiling = { };
+          action.toggle-window-floating = { };
           repeat = false;
           hotkey-overlay.title = "Toggle floating";
         };
+        "Mod+T" = {
+          action.toggle-column-tabbed-display = { };
+          repeat = false;
+          hotkey-overlay.title = "Toggle tabbed column";
+        };
 
         # Window and column movement
-        "Mod+Up" = {
+        "Mod+K" = {
           action.focus-window-or-monitor-up = { };
           repeat = false;
           hotkey-overlay.title = "Focus window up";
         };
-        "Mod+Down" = {
+        "Mod+J" = {
           action.focus-window-or-monitor-down = { };
           repeat = false;
           hotkey-overlay.title = "Focus window down";
         };
-        "Mod+Left" = {
+        "Mod+H" = {
           action.focus-column-or-monitor-left = { };
           repeat = false;
           hotkey-overlay.title = "Focus window left";
         };
-        "Mod+Right" = {
+        "Mod+L" = {
           action.focus-column-or-monitor-right = { };
           repeat = false;
           hotkey-overlay.title = "Focus window right";
@@ -328,44 +346,44 @@ in
           repeat = false;
           hotkey-overlay.title = "Move window right";
         };
-        "Mod+Shift+Up" = {
+        "Mod+Shift+K" = {
           action.move-column-to-monitor-up = { };
           repeat = false;
           hotkey-overlay.title = "Move column up";
         };
-        "Mod+Shift+Down" = {
+        "Mod+Shift+J" = {
           action.move-column-to-monitor-down = { };
           repeat = false;
           hotkey-overlay.title = "Move column down";
         };
-        "Mod+Shift+Left" = {
+        "Mod+Shift+H" = {
           action.move-column-left-or-to-monitor-left = { };
           repeat = false;
           hotkey-overlay.title = "Move column left";
         };
-        "Mod+Shift+Right" = {
+        "Mod+Shift+L" = {
           action.move-column-right-or-to-monitor-right = { };
           repeat = false;
           hotkey-overlay.title = "Move column right";
         };
 
         # Workspaces
-        "Mod+Ctrl+Up" = {
+        "Mod+Ctrl+K" = {
           action.focus-workspace-up = { };
           repeat = false;
           hotkey-overlay.title = "Focus workspace up";
         };
-        "Mod+Ctrl+Down" = {
+        "Mod+Ctrl+J" = {
           action.focus-workspace-down = { };
           repeat = false;
           hotkey-overlay.title = "Focus workspace down";
         };
-        "Mod+Ctrl+Shift+Up" = {
+        "Mod+Ctrl+Shift+K" = {
           action.move-column-to-workspace-up = { };
           repeat = false;
           hotkey-overlay.title = "Move column to workspace up";
         };
-        "Mod+Ctrl+Shift+Down" = {
+        "Mod+Ctrl+Shift+J" = {
           action.move-column-to-workspace-down = { };
           repeat = false;
           hotkey-overlay.title = "Move column to workspace down";
@@ -381,12 +399,31 @@ in
       window-rules = [
         {
           geometry-corner-radius = {
-            bottom-left = 5.0;
-            bottom-right = 5.0;
-            top-left = 5.0;
-            top-right = 5.0;
+            bottom-left = 10.0;
+            bottom-right = 10.0;
+            top-left = 10.0;
+            top-right = 10.0;
           };
           clip-to-geometry = true;
+        }
+        # Unfortunately windows like firefox extensions set their titles after spawning preventing
+        # the window rules from being applied. There is a script to fix this but it is pretty hacky.
+        # {
+        #   matches = [
+        #     {
+        #       title = "^Extension:.*";
+        #       app-id = "firefox";
+        #     }
+        #   ];
+        #   open-floating = true;
+        # }
+        {
+          matches = [
+            { app-id = "foot"; }
+            { app-id = "Alacritty"; }
+          ];
+          opacity = 0.93;
+          default-column-width.proportion = 0.4;
         }
       ];
       layer-rules = [
@@ -397,7 +434,7 @@ in
         }
       ];
       prefer-no-csd = true;
-      screenshot-path = "${config.xdg.userDirs.extraConfig.XDG_SCREENSHOTS_DIR}/%Y%m%d-%H%M%S.png";
+      screenshot-path = "${config.xdg.userDirs.extraConfig.SCREENSHOTS}/%Y%m%d-%H%M%S.png";
       hotkey-overlay = {
         skip-at-startup = true;
       };
@@ -406,12 +443,16 @@ in
       #   { argv = [ "noctalia-shell" ]; }
       # ];
       cursor = {
-        size = 16;
-        theme = "catppuccin-mocha-dark-cursors";
+        size = config.stylix.cursor.size;
+        theme = config.stylix.cursor.name;
         hide-when-typing = true;
       };
       gestures = {
         hot-corners.enable = false;
+      };
+      xwayland-satellite = {
+        enable = true;
+        path = lib.getExe pkgs.xwayland-satellite-unstable;
       };
       environment = {
         "NIXOS_OZONE_WL" = "1";
@@ -420,7 +461,7 @@ in
         # Allows notification actions and window activation from Noctalia.
         honor-xdg-activation-with-invalid-serial = { };
       };
-      # Support for external 'inclues' sounds like it is in the works.
+      # Support for external 'includes' sounds like it is in the works.
       # Will just have to wait until then for noctalia color scheme integration.
     };
   };

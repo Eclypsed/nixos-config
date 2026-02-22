@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -18,17 +19,17 @@
       font = {
         normal = {
           size = 12;
-          normal = "JetBrainsMono Nerd Font";
+          normal = "${config.stylix.fonts.sansSerif.name}";
         };
       };
       theme = {
         light = {
           name = "noctalia";
-          icon_theme = "MoreWaita";
+          icon_theme = "${config.stylix.icons.light}";
         };
         dark = {
           name = "noctalia";
-          icon_theme = "MoreWaita";
+          icon_theme = "${config.stylix.icons.dark}";
         };
       };
     };

@@ -14,6 +14,8 @@
     settings = {
       general = {
         avatarImage = "~/.face";
+        autoStartAuth = true;
+        allowPasswordWithFprintd = true;
       };
       location.name = "Washington DC";
       bar = {
@@ -45,6 +47,10 @@
       };
       templates = {
         activeTemplates = [
+          {
+            enabled = true;
+            id = "alacritty";
+          }
           {
             enabled = true;
             id = "discord";
@@ -91,7 +97,7 @@
       wallpaper = {
         enabled = true;
         overviewEnabled = true;
-        directory = "${config.xdg.userDirs.extraConfig.XDG_WALLPAPERS_DIR}";
+        directory = "${config.xdg.userDirs.extraConfig.WALLPAPERS}";
       };
       colorSchemes.predefinedScheme = "Catppuccin";
     };

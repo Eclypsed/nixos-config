@@ -5,6 +5,21 @@
 }:
 {
   programs = {
+    alacritty = {
+      enable = true;
+      settings = {
+        general = {
+          import = [ "${config.xdg.configHome}/alacritty/themes/noctalia.toml" ];
+        };
+        font = {
+          normal = {
+            family = "${config.stylix.fonts.monospace.name}";
+            style = "Regular";
+          };
+          size = config.stylix.fonts.sizes.terminal;
+        };
+      };
+    };
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -19,6 +34,8 @@
         main = {
           term = "xterm-256color";
           include = "${config.xdg.configHome}/foot/themes/noctalia";
+          dpi-aware = "no";
+          font = "${config.stylix.fonts.monospace.name}:size=${toString config.stylix.fonts.sizes.terminal}";
         };
         mouse = {
           hide-when-typing = "yes";
@@ -35,18 +52,18 @@
       settings = {
         add_newline = true;
         format = pkgs.lib.concatStrings [
-          "[ ╭─$username([@](bold 3)$hostname) $directory( $git_branch $git_status)](5)"
+          "[ ╭─[\\[](1)$username([@](bold 2)$hostname)[\\]:](1) $directory( $git_branch)](5)"
           "$line_break"
           "[ ╰─$character](5)"
         ];
         username = {
           style_root = "white";
-          format = "[$user](5)";
+          format = "[$user](3)";
           disabled = false;
           show_always = true;
         };
         hostname = {
-          format = "[$hostname](bold 7)";
+          format = "[$hostname](bold 4)";
           disabled = false;
           ssh_only = false;
         };
@@ -57,7 +74,7 @@
         };
         directory = {
           read_only = "";
-          format = "[ $path](blue)";
+          format = "[ $path](5)";
           read_only_style = "bold white";
           truncation_length = 5;
         };
@@ -65,20 +82,6 @@
           symbol = "";
           style = "bright-black";
           format = "[$symbol $branch]($style)";
-        };
-        git_status = {
-          format = "([$all_status$ahead_behind](1))";
-          conflicted = "󱐋";
-          ahead = "⇡\${count}";
-          behind = "⇣\${count}";
-          diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-          up_to_date = "";
-          untracked = "?\${count}";
-          stashed = "$${count}";
-          modified = "!\${count}";
-          staged = "+\${count}";
-          renamed = "»\${count}";
-          deleted = "✘\${count}";
         };
         scan_timeout = 100;
       };

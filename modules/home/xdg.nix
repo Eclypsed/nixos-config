@@ -18,10 +18,17 @@
       enable = true;
       createDirectories = true;
       extraConfig = {
-        XDG_DEV_DIR = "${config.home.homeDirectory}/Dev";
-        XDG_WALLPAPERS_DIR = "${config.xdg.userDirs.pictures}/Wallpapers";
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+        DEV = "${config.home.homeDirectory}/Dev";
+        WALLPAPERS = "${config.xdg.userDirs.pictures}/Wallpapers";
+        SCREENSHOTS = "${config.xdg.userDirs.pictures}/Screenshots";
       };
     };
+  };
+
+  home.file.".face".source = ../../assets/profile-picture.jpg;
+
+  home.file."${config.xdg.userDirs.extraConfig.WALLPAPERS}" = {
+    source = ../../assets/wallpapers;
+    recursive = true;
   };
 }

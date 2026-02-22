@@ -1,9 +1,5 @@
 {
-  ...
-}:
-{
   imports = [
-    ./assets.nix
     ./firefox.nix
     ./git.nix
     ./helix.nix
@@ -21,6 +17,6 @@
     ./xdg.nix
     ./yazi.nix
     ./zed.nix
-    ./zen-browser.nix
+    # ./zen-browser.nix
   ];
 }
