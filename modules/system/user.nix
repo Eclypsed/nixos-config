@@ -35,6 +35,7 @@
       "wheel"
       "scanner"
       "lp"
+      "dialout"
     ];
     hashedPasswordFile = config.age.secrets.eclypse-password.path;
     shell = pkgs.zsh;

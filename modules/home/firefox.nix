@@ -76,6 +76,8 @@
       isDefault = true;
       extensions = {
         force = true;
+        # For a list of available packaged extensions, see:
+        # https://github.com/nix-community/nur-combined/blob/main/repos/rycee/pkgs/firefox-addons/addons.json
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           bitwarden

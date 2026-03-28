@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -30,6 +31,7 @@
     foot = {
       enable = true;
       server.enable = false;
+      package = pkgs.foot;
       settings = {
         main = {
           term = "xterm-256color";
@@ -51,7 +53,7 @@
       enableZshIntegration = true;
       settings = {
         add_newline = true;
-        format = pkgs.lib.concatStrings [
+        format = lib.strings.concatStrings [
           "[ ╭─[\\[](1)$username([@](bold 2)$hostname)[\\]:](1) $directory( $git_branch)](5)"
           "$line_break"
           "[ ╰─$character](5)"
@@ -84,14 +86,6 @@
           format = "[$symbol $branch]($style)";
         };
         scan_timeout = 100;
-      };
-    };
-    zellij = {
-      enable = true;
-      enableZshIntegration = true;
-      settings = {
-        theme = "catppuccin-mocha";
-        show_startup_tips = false;
       };
     };
     zoxide = {

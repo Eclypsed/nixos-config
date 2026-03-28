@@ -49,6 +49,15 @@
     noto-fonts-color-emoji
   ];
 
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      sansSerif = [ "Noto Sans" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
+
   gtk = {
     enable = true;
     colorScheme = config.stylix.polarity;

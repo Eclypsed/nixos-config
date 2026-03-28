@@ -42,7 +42,11 @@ in
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       emmet-language-server # Emmet support based on LSP
       prettier # Formatter for HTML/CSS/JSON/ESLint languages
-      superhtml # HTML Language Server and Templating Language Library
+      superhtml # HTML Language server and Templating Language Library
+      ruby-lsp # Ruby language server
+      solargraph # Alternative  ruby language server
+      rubocop # Ruby linter and formatter
+      jdt-language-server # Java language server
     ];
     settings = {
       editor = {
@@ -294,6 +298,25 @@ in
             ];
           };
         }
+        {
+          name = "ruby";
+          language-servers = [
+            "ruby-lsp"
+            "solargraph"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "rubocop";
+            args = [
+              "--stdin"
+              "placeholder.rb"
+              "-a"
+              "--stderr"
+              "--fail-level"
+              "fatal"
+            ];
+          };
+        }
       ];
       language-server = {
         basedpyright.config.python.analysis.typeCheckingMode = "strict";
@@ -314,6 +337,20 @@ in
               # Support for the modern ESLint configuration format
               useFlatConfig = true;
             };
+          };
+        };
+        ruby-lsp = {
+          command = "ruby-lsp";
+          config = {
+            diagnostics = true;
+            formatting = true;
+          };
+        };
+        solargraph = {
+          command = "solargraph";
+          config = {
+            diagnostics = true;
+            formatting = false;
           };
         };
       };

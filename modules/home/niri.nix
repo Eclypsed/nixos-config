@@ -8,6 +8,7 @@ let
   # Executables
   foot = lib.getExe' config.programs.foot.package "foot";
   vicinae = lib.getExe' config.programs.vicinae.package "vicinae";
+  yazi = lib.getExe' config.programs.yazi.package "yazi";
   noctalia-shell = lib.getExe' config.programs.noctalia-shell.package "noctalia-shell";
   playerctl = lib.getExe' pkgs.playerctl "playerctl";
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
@@ -68,6 +69,15 @@ in
           ];
           repeat = false;
           hotkey-overlay.title = "Launcher";
+        };
+        "Mod+E" = {
+          action.spawn = [
+            foot
+            "-e"
+            yazi
+          ];
+          repeat = false;
+          hotkey-overlay.title = "File Explorer";
         };
         "Mod+Escape" = {
           action.spawn = [
@@ -422,7 +432,7 @@ in
             { app-id = "foot"; }
             { app-id = "Alacritty"; }
           ];
-          opacity = 0.93;
+          opacity = 0.90;
           default-column-width.proportion = 0.4;
         }
       ];
@@ -438,10 +448,9 @@ in
       hotkey-overlay = {
         skip-at-startup = true;
       };
-      # If not using systemd for noctalia, use this
-      # spawn-at-startup = [
-      #   { argv = [ "noctalia-shell" ]; }
-      # ];
+      spawn-at-startup = [
+        { argv = [ "noctalia-shell" ]; }
+      ];
       cursor = {
         size = config.stylix.cursor.size;
         theme = config.stylix.cursor.name;

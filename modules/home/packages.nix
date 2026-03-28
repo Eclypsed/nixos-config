@@ -14,6 +14,9 @@
     devenv
     htop
     obsidian
+    upscayl
+    trayscale
+    nautilus
 
     # CD Stuff
     picard
@@ -22,5 +25,7 @@
 
     playerctl
     brightnessctl
+    monique
+    opencode
   ];
 }

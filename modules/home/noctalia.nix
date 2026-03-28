@@ -10,7 +10,6 @@
 
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true; # Replaces spawn-at-startup in niri
     settings = {
       general = {
         avatarImage = "~/.face";
@@ -111,6 +110,10 @@
       ];
       states = {
         tailscale = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        activate-linux = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
