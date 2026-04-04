@@ -50,7 +50,7 @@ in
         noctalia
         ssh
         starship
-        stylix
+        styling
         swappy
         vesktop
         vicinae
@@ -77,7 +77,6 @@ in
         obsidian
         upscayl
         trayscale
-        nautilus
 
         # CD Stuff
         picard

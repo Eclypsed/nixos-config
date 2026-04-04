@@ -46,6 +46,19 @@
       brightnessctl = lib.getExe' pkgs.brightnessctl "brightnessctl";
     in
     {
+      home.packages = [
+        pkgs.nautilus
+      ];
+
+      xdg.portal = {
+        enable = true;
+        configPackages = [ pkgs.gnome-session ];
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-gnome
+          xdg-desktop-portal-gtk
+        ];
+      };
+
       programs.niri = {
         # Niri is enabled by niri.nixosModules.niri
         settings = {
@@ -483,8 +496,8 @@
             { argv = [ "noctalia-shell" ]; }
           ];
           cursor = {
-            size = config.stylix.cursor.size;
-            theme = config.stylix.cursor.name;
+            size = config.home.pointerCursor.size;
+            theme = config.home.pointerCursor.name;
             hide-when-typing = true;
           };
           gestures = {

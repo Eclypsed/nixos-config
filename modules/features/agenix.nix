@@ -10,8 +10,8 @@
   perSystem =
     { config, pkgs, ... }:
     {
-      devShells.nix = pkgs.mkShell {
-        nativeBuildInputs = [ config.agenix-rekey.package ];
+      devShells.default = pkgs.mkShell {
+        packages = [ config.agenix-rekey.package ];
       };
 
       agenix-rekey.nixosConfigurations = inputs.self.nixosConfigurations;

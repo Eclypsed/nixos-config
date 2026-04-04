@@ -10,7 +10,7 @@
             term = "xterm-256color";
             include = "${config.xdg.configHome}/foot/themes/noctalia";
             dpi-aware = "no";
-            font = "${config.stylix.fonts.monospace.name}:size=${toString config.stylix.fonts.sizes.terminal}";
+            font = "JetBrainsMono Nerd Font:size=12";
           };
           mouse = {
             hide-when-typing = "yes";

@@ -21,7 +21,7 @@ buildPythonApplication rec {
   pythonImportsCheck = [ "pywalfox" ];
 
   meta = {
-    description = " Native app used alongside the Pywalfox addon";
+    description = "Native app used alongside the Pywalfox addon";
     homepage = "https://github.com/Frewacom/pywalfox-native";
     license = lib.licenses.mpl20;
   };
