@@ -55,6 +55,11 @@
 
     nix-jmu-cs345.url = "github:Eclypsed/nix-jmu-cs345";
 
+    assets = {
+      flake = false;
+      url = "path:./assets";
+    };
+
     packages = {
       flake = false;
       url = "path:./packages";

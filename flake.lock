@@ -47,6 +47,18 @@
         "type": "github"
       }
     },
+    "assets": {
+      "flake": false,
+      "locked": {
+        "path": "./assets",
+        "type": "path"
+      },
+      "original": {
+        "path": "./assets",
+        "type": "path"
+      },
+      "parent": []
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -483,6 +495,7 @@
       "inputs": {
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
+        "assets": "assets",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager_2",
         "import-tree": "import-tree",

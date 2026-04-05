@@ -38,6 +38,7 @@ in
     {
       imports = with self.modules.homeManager; [
         inputs.nix-jmu-cs345.homeManagerModules.bernstdh
+        assets
         direnv
         fastfetch
         firefox
@@ -67,6 +68,9 @@ in
         homeDirectory = "/home/${username}";
         stateVersion = "25.05";
       };
+
+      profilePicture = "${inputs.assets}/profile-picture.jpg";
+      wallpaperDir = "${inputs.assets}/wallpapers";
 
       programs.home-manager.enable = true;
       programs.nix-jmu-cs345.enable = true;
