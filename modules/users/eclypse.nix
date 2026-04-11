@@ -39,7 +39,9 @@ in
       imports = with self.modules.homeManager; [
         inputs.nix-jmu-cs345.homeManagerModules.bernstdh
         assets
+        bat
         direnv
+        eza
         fastfetch
         firefox
         fonts
