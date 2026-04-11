@@ -89,7 +89,6 @@ in
 
         playerctl
         brightnessctl
-        monique
         opencode
       ];
     };

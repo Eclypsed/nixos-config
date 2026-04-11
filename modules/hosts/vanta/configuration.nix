@@ -20,6 +20,7 @@
         fprintd
         gdm
         niri
+        # monique
 
         # Users
         home-manager

@@ -29,13 +29,13 @@
         ];
       };
       packages = {
-        monique = pkgs.callPackage "${inputs.packages}/monique.nix" { };
+        # monique = pkgs.callPackage "${inputs.packages}/monique.nix" { };
         heybrochecklog = pkgs.callPackage "${inputs.packages}/heybrochecklog.nix" { };
         pywalfox-native = pkgs.callPackage "${inputs.packages}/pywalfox-native.nix" { };
       };
       overlayAttrs = {
         inherit (config.packages)
-          monique
+          # monique
           heybrochecklog
           pywalfox-native
           ;
