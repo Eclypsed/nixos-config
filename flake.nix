@@ -39,19 +39,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri-blur = {
+      url = "github:niri-wm/niri/wip/branch";
+      flake = false;
+    };
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.niri-unstable.follows = "niri-blur";
     };
 
-    # zen-browser = {
-    #   url = "github:0xc000022070/zen-browser-flake";
-    #   inputs = {
-    #     # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
-    #     nixpkgs.follows = "nixpkgs";
-    #     home-manager.follows = "home-manager";
-    #   };
-    # };
+    monique.url = "github:ToRvaLDz/monique";
+
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
 
     nix-jmu-cs345.url = "github:Eclypsed/nix-jmu-cs345";
 
