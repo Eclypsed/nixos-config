@@ -11,6 +11,7 @@
         bluetooth
         boot
         firmware
+        fonts
         network
         nix
         pipewire

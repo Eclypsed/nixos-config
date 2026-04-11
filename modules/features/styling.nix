@@ -14,21 +14,6 @@
           x11.enable = true;
           gtk.enable = true;
         };
-        packages = with pkgs; [
-          nerd-fonts.jetbrains-mono
-          noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-color-emoji
-        ];
-      };
-
-      fonts.fontconfig = {
-        enable = true;
-        defaultFonts = {
-          sansSerif = [ "Noto Sans" ];
-          monospace = [ "JetBrainsMono Nerd Font" ];
-          emoji = [ "Noto Color Emoji" ];
-        };
       };
 
       gtk = {
@@ -56,8 +41,8 @@
               style = "Breeze";
             };
             Fonts = {
-              fixed = "\"JetBrainsMono Nerd Font,12\"";
-              general = "\"Noto Sans,12\"";
+              fixed = "\"${builtins.head config.fonts.fontconfig.defaultFonts.monospace},12\"";
+              general = "\"${builtins.head config.fonts.fontconfig.defaultFonts.sansSerif},12\"";
             };
           };
         in

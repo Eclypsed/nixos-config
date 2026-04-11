@@ -10,7 +10,8 @@
             term = "xterm-256color";
             include = "${config.xdg.configHome}/foot/themes/noctalia";
             dpi-aware = "no";
-            font = "JetBrainsMono Nerd Font:size=12";
+            font = "${builtins.head config.fonts.fontconfig.defaultFonts.monospace}:size=12";
+            pad = "10x10";
           };
           mouse = {
             hide-when-typing = "yes";

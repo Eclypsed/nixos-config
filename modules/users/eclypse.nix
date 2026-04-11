@@ -42,6 +42,7 @@ in
         direnv
         fastfetch
         firefox
+        fonts
         foot
         fzf
         git

@@ -35,7 +35,7 @@
             truncation_length = 5;
           };
           git_branch = {
-            symbol = "";
+            symbol = "";
             style = "bright-black";
             format = "[$symbol $branch]($style)";
           };
