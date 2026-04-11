@@ -43,7 +43,6 @@ in
         direnv
         eza
         fastfetch
-        firefox
         fonts
         foot
         fzf
@@ -62,6 +61,7 @@ in
         yazi
         zed
         zellij
+        zen-browser
         zoxide
         zsh
       ];

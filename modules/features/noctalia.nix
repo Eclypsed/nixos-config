@@ -65,10 +65,6 @@
               }
               {
                 enabled = true;
-                id = "gtk";
-              }
-              {
-                enabled = true;
                 id = "helix";
               }
               {
