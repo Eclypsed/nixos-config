@@ -77,12 +77,22 @@
               Default = false;
               Locked = true;
             };
+            Preferences = {
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            };
             PrimaryPassword = false;
             SearchBar = "unified";
             ShowHomeButton = true;
             SkipTermsOfUse = true;
           };
           profiles.default = {
+            id = 0;
+            name = "default";
+            isDefault = true;
+            settings = {
+              # Auto-enable extensions
+              "extensions.autoDisableScopes" = 0;
+            };
             search = {
               force = true;
               default = "google";
@@ -158,10 +168,6 @@
                     definedAliases = [ "@suru" ];
                   };
                 };
-            };
-            settings = {
-              # Auto-enable extensions
-              "extensions.autoDisableScopes" = 0;
             };
           };
         };

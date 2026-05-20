@@ -38,6 +38,9 @@
             theme = "catppuccin-mocha";
             show_startup_tips = false;
             default_mode = "locked";
+            session_serialization = false;
+            on_force_close = "quit";
+            support_kitty_keyboard_protocol = false;
 
             ui._children = [
               {
@@ -62,19 +65,51 @@
                   }
                 ])
                 (sharedExcept
-                  [ "locked" "normal" "renamepane" "renametab" ]
+                  [ "locked" "renamepane" "renametab" ]
                   [
                     {
                       keys = "Esc";
+                      actions = [ (switchMode "Locked") ];
+                    }
+                  ]
+                )
+                (sharedExcept
+                  [ "locked" "normal" "renamepane" "renametab" ]
+                  [
+                    {
+                      keys = "${mod} n";
                       actions = [ (switchMode "Normal") ];
                     }
                   ]
                 )
+                (sharedExcept
+                  [ "locked" "pane" "renamepane" "renametab" ]
+                  [
+                    {
+                      keys = "${mod} p";
+                      actions = [ (switchMode "Pane") ];
+                    }
+                  ]
+                )
+                (sharedExcept
+                  [ "locked" "tab" "renamepane" "renametab" ]
+                  [
+                    {
+                      keys = "${mod} t";
+                      actions = [ (switchMode "Tab") ];
+                    }
+                  ]
+                )
+                (sharedExcept
+                  [ "locked" "resize" "renamepane" "renametab" ]
+                  [
+                    {
+                      keys = "${mod} r";
+                      actions = [ (switchMode "Resize") ];
+                    }
+                  ]
+                )
                 (modeBinds "normal" [
-                  {
-                    keys = "Esc";
-                    actions = [ (switchMode "Locked") ];
-                  }
                   {
                     keys = "h";
                     actions = [ (actionWith "MoveFocusOrTab" [ "Left" ]) ];
@@ -98,18 +133,6 @@
                   {
                     keys = "L";
                     actions = [ (action "GoToNextTab") ];
-                  }
-                  {
-                    keys = "p";
-                    actions = [ (switchMode "Pane") ];
-                  }
-                  {
-                    keys = "t";
-                    actions = [ (switchMode "Tab") ];
-                  }
-                  {
-                    keys = "r";
-                    actions = [ (switchMode "Resize") ];
                   }
                 ])
                 (modeBinds "pane" [

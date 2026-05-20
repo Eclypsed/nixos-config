@@ -65,7 +65,9 @@
       };
     };
 
-    nix-jmu-cs345.url = "github:Eclypsed/nix-jmu-cs345";
+    helium = {
+      url = "gitlab:ntgn/helium-flake";
+    };
 
     assets = {
       flake = false;

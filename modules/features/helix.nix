@@ -92,7 +92,7 @@
             {
               normal = {
                 "C-y" =
-                  ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open %{buffer_name}";
+                  ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open \"%{buffer_name}\"";
               }
               // arrow_keys;
               insert = {

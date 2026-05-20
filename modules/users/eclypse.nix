@@ -37,12 +37,13 @@ in
     { pkgs, ... }:
     {
       imports = with self.modules.homeManager; [
-        inputs.nix-jmu-cs345.homeManagerModules.bernstdh
         assets
         bat
+        btop
         direnv
         eza
         fastfetch
+        firefox
         fonts
         foot
         fzf
@@ -61,7 +62,6 @@ in
         yazi
         zed
         zellij
-        zen-browser
         zoxide
         zsh
       ];
@@ -76,7 +76,6 @@ in
       wallpaperDir = "${inputs.assets}/wallpapers";
 
       programs.home-manager.enable = true;
-      programs.nix-jmu-cs345.enable = true;
 
       home.packages = with pkgs; [
         devenv
@@ -84,11 +83,13 @@ in
         obsidian
         upscayl
         trayscale
+        cura-appimage
 
         # CD Stuff
         picard
         heybrochecklog
         rsgain
+        vlc
 
         playerctl
         brightnessctl
