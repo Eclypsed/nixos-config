@@ -33,67 +33,16 @@ in
       };
     };
 
-  flake.modules.homeManager.${username} =
-    { pkgs, ... }:
-    {
-      imports = with self.modules.homeManager; [
-        assets
-        bat
-        btop
-        direnv
-        eza
-        fastfetch
-        firefox
-        fonts
-        foot
-        fzf
-        git
-        helix
-        kanshi
-        niri
-        noctalia
-        ssh
-        starship
-        styling
-        swappy
-        vesktop
-        vicinae
-        xdg
-        yazi
-        zed
-        zellij
-        zoxide
-        zsh
-      ];
-
-      home = {
-        inherit username;
-        homeDirectory = "/home/${username}";
-        stateVersion = "25.05";
-      };
-
-      profilePicture = "${inputs.assets}/profile-picture.jpg";
-      wallpaperDir = "${inputs.assets}/wallpapers";
-
-      programs.home-manager.enable = true;
-
-      home.packages = with pkgs; [
-        devenv
-        htop
-        obsidian
-        upscayl
-        trayscale
-        cura-appimage
-
-        # CD Stuff
-        picard
-        heybrochecklog
-        rsgain
-        vlc
-
-        playerctl
-        brightnessctl
-        opencode
-      ];
+  flake.modules.homeManager.${username} = {
+    home = {
+      inherit username;
+      homeDirectory = "/home/${username}";
+      stateVersion = "25.05";
     };
+
+    profilePicture = "${inputs.assets}/profile-picture.jpg";
+    wallpaperDir = "${inputs.assets}/wallpapers";
+
+    programs.home-manager.enable = true;
+  };
 }

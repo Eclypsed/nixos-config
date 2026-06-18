@@ -9,23 +9,96 @@
   };
 
   flake.modules.nixos.vanta =
-    { ... }:
+    { pkgs, ... }:
     {
       imports = with self.modules.nixos; [
         vantaHardware
         profiles-intel
-        host
-        base
+        agenix
+        bluetooth
+        boot
         eclypsecloud-shares
+        firmware
+        fonts
         fprintd
         gdm
+        network
         niri
-        # monique
+        nix
+        pipewire
+        power-management
+        printing
+        tailscale
+        wayland
+        yubikey
+        zsh
 
         # Users
         home-manager
         eclypse
       ];
+
+      home-manager.users.eclypse = {
+        imports = with self.modules.homeManager; [
+          assets
+          bat
+          btop
+          direnv
+          eza
+          fastfetch
+          firefox
+          fonts
+          foot
+          fzf
+          git
+          helix
+          kanshi
+          noctalia
+          ssh
+          starship
+          styling
+          swappy
+          vesktop
+          vicinae
+          xdg
+          yazi
+          zed
+          zellij
+          zoxide
+          zsh
+        ];
+        home.packages = with pkgs; [
+          devenv
+          htop
+          obsidian
+          upscayl
+          trayscale
+          cura-appimage
+
+          # CD Stuff
+          picard
+          heybrochecklog
+          rsgain
+          vlc
+
+          playerctl
+          brightnessctl
+          opencode
+        ];
+      };
+
+      programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+
+      environment = {
+        systemPackages = with pkgs; [
+          vim
+          git
+          disktui
+        ];
+        variables = {
+          EDITOR = "vim";
+        };
+      };
 
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaDVBJdMDFL8r9NQCbaLe+DPHGhGzRv2N7+7m1/U8DP";
 

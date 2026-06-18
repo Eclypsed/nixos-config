@@ -351,7 +351,7 @@
             default_tab_template {
               pane size=2 borderless=true {
                 plugin location="file:${zjstatus}/bin/zjstatus.wasm" {
-                  hide_frame_except_for_search "true"
+                  hide_frame_except_for_search "false"
 
                   border_enabled  "true"
                   border_char     "─"

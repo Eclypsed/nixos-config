@@ -34,7 +34,9 @@
     };
 
     nixpkgs = {
-      config.allowUnfree = true;
+      config = {
+        allowUnfree = true;
+      };
       overlays = [
         self.overlays.default
       ];

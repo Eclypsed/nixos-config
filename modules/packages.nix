@@ -22,6 +22,9 @@
     {
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
+        config = {
+          allowUnfree = true;
+        };
         overlays = [
           (final: prev: {
             pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [ python-extensions ];
@@ -32,12 +35,14 @@
         # monique = pkgs.callPackage "${inputs.packages}/monique.nix" { };
         heybrochecklog = pkgs.callPackage "${inputs.packages}/heybrochecklog.nix" { };
         pywalfox-native = pkgs.callPackage "${inputs.packages}/pywalfox-native.nix" { };
+        sysand = pkgs.callPackage "${inputs.packages}/sysand.nix" { };
       };
       overlayAttrs = {
         inherit (config.packages)
           # monique
           heybrochecklog
           pywalfox-native
+          sysand
           ;
 
         pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [ python-extensions ];

@@ -11,6 +11,14 @@
         pkgs.age-plugin-yubikey
       ];
 
-      services.yubikey-agent.enable = true;
+      services = {
+        yubikey-agent.enable = true;
+        udev = {
+          enable = true;
+          packages = with pkgs; [
+            yubikey-personalization
+          ];
+        };
+      };
     };
 }

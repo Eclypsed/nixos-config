@@ -6,7 +6,7 @@
     }:
     {
       home.packages = with pkgs; [
-        wl-clipboard-rs
+        wl-clipboard # Don't use wl-clipboard-rs because it doesn't work properly on WSL
         dragon-drop
         trash-cli
       ];
@@ -154,14 +154,14 @@
 
             prepend_fetchers = [
               {
-                id = "git";
                 url = "*";
                 run = "git";
+                group = "git";
               }
               {
-                id = "git";
                 url = "*/";
                 run = "git";
+                group = "git";
               }
             ];
           };

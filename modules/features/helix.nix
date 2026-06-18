@@ -1,11 +1,13 @@
 {
   flake.modules.homeManager.helix =
     {
+      config,
       pkgs,
+      lib,
       ...
     }:
     let
-      yazi-picker = pkgs.writeShellApplication {
+      zellij-yazi-picker = pkgs.writeShellApplication {
         name = "yazi-picker";
         text = ''
           paths=$(yazi --chooser-file=/dev/stdout)
@@ -22,7 +24,9 @@
       };
     in
     {
-      home.packages = [ yazi-picker ];
+      home.packages = [
+        (lib.mkIf (config.programs.zellij.enable) zellij-yazi-picker)
+      ];
 
       programs.helix = {
         enable = true;
@@ -92,7 +96,18 @@
             {
               normal = {
                 "C-y" =
-                  ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open \"%{buffer_name}\"";
+                  if (config.programs.zellij.enable) then
+                    ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open \"%{buffer_name}\""
+                  else
+                    [
+                      ":sh rm -f /tmp/unique-ca1ea106"
+                      ":insert-output yazi \"%{buffer_name}\" --chooser-file=/tmp/unique-ca1ea106"
+                      ":sh printf \"\\x1b[?1049h\\x1b[?2004h\" > /dev/tty"
+                      ":open %sh{cat /tmp/unique-ca1ea106}"
+                      ":redraw"
+                      ":set mouse false"
+                      ":set mouse true"
+                    ];
               }
               // arrow_keys;
               insert = {

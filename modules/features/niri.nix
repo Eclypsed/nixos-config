@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   ...
 }:
@@ -26,6 +27,10 @@
       };
 
       environment.systemPackages = [ pkgs.xwayland-satellite-unstable ];
+
+      home-manager.sharedModules = [
+        self.modules.homeManager.niri
+      ];
     };
 
   flake.modules.homeManager.niri =

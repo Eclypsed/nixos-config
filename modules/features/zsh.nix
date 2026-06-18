@@ -47,6 +47,10 @@
           # switch group using `<` and `>`
           zstyle ':fzf-tab:*' switch-group '<' '>'
         '';
+        sessionVariables = {
+          COLORTERM = "truecolor";
+          TERM = "xterm-256color";
+        };
         syntaxHighlighting.enable = true;
         shellAliases = {
           ff = "fastfetch";

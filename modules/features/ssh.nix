@@ -3,15 +3,15 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         "*" = {
-          addKeysToAgent = "yes";
-          identityFile = [ "~/.ssh/id_ed25519_sk_rk" ];
+          AddKeysToAgent = "yes";
+          IdentityFile = "~/.ssh/id_ed25519_sk_rk";
         };
         "stu" = {
-          hostname = "stu.cs.jmu.edu";
-          user = "tamassno";
-          localForwards = [
+          Hostname = "stu.cs.jmu.edu";
+          User = "tamassno";
+          LocalForward = [
             {
               bind.port = 5432;
               host = {
@@ -20,13 +20,19 @@
               };
             }
           ];
-          serverAliveCountMax = 5;
-          serverAliveInterval = 60;
+          ServerAliveCountMax = 5;
+          ServerAliveInterval = 60;
         };
         "cluster" = {
-          hostname = "login02.cluster.cs.jmu.edu";
-          user = "tamassno";
-          proxyJump = "stu";
+          Hostname = "login02.cluster.cs.jmu.edu";
+          User = "tamassno";
+          ProxyJump = "stu";
+        };
+        "kbr-azure-devops" = {
+          Hostname = "bwi-tfs.wyle.com";
+          User = "git";
+          IdentityFile = "~/.ssh/id_rsa";
+          IdentitiesOnly = "yes";
         };
       };
     };
