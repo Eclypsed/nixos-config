@@ -33,16 +33,23 @@ in
       };
     };
 
-  flake.modules.homeManager.${username} = {
-    home = {
-      inherit username;
-      homeDirectory = "/home/${username}";
-      stateVersion = "25.05";
+  flake.modules.homeManager.${username} =
+    { config, ... }:
+    {
+      home = {
+        inherit username;
+        homeDirectory = "/home/${username}";
+        stateVersion = "25.05";
+
+        file = {
+          "${config.xdg.userDirs.extraConfig.WALLPAPERS}" = {
+            source = "${inputs.assets}/wallpapers";
+            recursive = true;
+          };
+          ".face".source = "${inputs.assets}/profile-picture.jpg";
+        };
+      };
+
+      programs.home-manager.enable = true;
     };
-
-    profilePicture = "${inputs.assets}/profile-picture.jpg";
-    wallpaperDir = "${inputs.assets}/wallpapers";
-
-    programs.home-manager.enable = true;
-  };
 }

@@ -33,7 +33,6 @@
 
       home-manager.users.eclypse = {
         imports = with self.modules.homeManager; [
-          assets
           bat
           btop
           direnv

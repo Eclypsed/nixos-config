@@ -32,15 +32,15 @@
         ];
       };
       packages = {
-        # monique = pkgs.callPackage "${inputs.packages}/monique.nix" { };
         heybrochecklog = pkgs.callPackage "${inputs.packages}/heybrochecklog.nix" { };
+        niri-display-manager = pkgs.callPackage "${inputs.packages}/niri-display-manager.nix" { };
         pywalfox-native = pkgs.callPackage "${inputs.packages}/pywalfox-native.nix" { };
         sysand = pkgs.callPackage "${inputs.packages}/sysand.nix" { };
       };
       overlayAttrs = {
         inherit (config.packages)
-          # monique
           heybrochecklog
+          niri-display-manager
           pywalfox-native
           sysand
           ;

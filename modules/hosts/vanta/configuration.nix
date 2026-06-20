@@ -21,10 +21,13 @@
         firmware
         fonts
         fprintd
-        gdm
+        # gdm
+        # kde
+        # monique
         network
         niri
         nix
+        noctalia
         pipewire
         power-management
         printing
@@ -40,7 +43,6 @@
 
       home-manager.users.eclypse = {
         imports = with self.modules.homeManager; [
-          assets
           bat
           btop
           direnv
@@ -53,7 +55,6 @@
           git
           helix
           kanshi
-          noctalia
           ssh
           starship
           styling

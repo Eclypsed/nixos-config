@@ -19,9 +19,12 @@
 
       programs.firefox = {
         enable = true;
+        configPath = ".mozilla/firefox"; # This is legacy, but sticking with it for now
+        # configPath = "${config.xdg.configHome}/mozilla/firefox"; This doesn't work properly for some reason
         languagePacks = [ "en-US" ];
         nativeMessagingHosts = with pkgs; [
           pywalfox-native
+          kdePackages.plasma-integration
         ];
         policies = {
           DefaultDownloadDirectory = config.xdg.userDirs.download;

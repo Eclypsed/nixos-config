@@ -31,25 +31,33 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nvf = {
-    #   url = "github:notashelf/nvf";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri-blur = {
-      url = "github:niri-wm/niri/wip/branch";
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri-unstable = {
+      url = "github:niri-wm/niri";
       flake = false;
     };
 
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.niri-unstable.follows = "niri-blur";
+      inputs.niri-unstable.follows = "niri-unstable";
     };
 
     monique.url = "github:ToRvaLDz/monique";
