@@ -21,9 +21,6 @@
         firmware
         fonts
         fprintd
-        # gdm
-        # kde
-        # monique
         network
         niri
         nix
@@ -32,7 +29,6 @@
         power-management
         printing
         tailscale
-        wayland
         yubikey
         zsh
 

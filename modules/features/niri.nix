@@ -19,11 +19,13 @@
           package = pkgs.niri-unstable;
         };
         uwsm = {
+          enable = true;
           waylandCompositors.niri = {
             prettyName = "Niri";
             binPath = "/run/current-system/sw/bin/niri-session";
           };
         };
+        xwayland.enable = true;
       };
 
       environment.systemPackages = with pkgs; [
