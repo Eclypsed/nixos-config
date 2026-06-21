@@ -22,16 +22,6 @@
             family = "JetBrainsMono Nerd Font";
           };
         };
-        theme = {
-          light = {
-            name = "noctalia";
-            icon_theme = "MoreWaita";
-          };
-          dark = {
-            name = "noctalia";
-            icon_theme = "MoreWaita";
-          };
-        };
       };
     };
   };

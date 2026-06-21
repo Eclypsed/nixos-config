@@ -38,23 +38,15 @@
           direnv
           eza
           fastfetch
-          # firefox
           fonts
-          # foot
           fzf
           git
           helix
-          # kanshi
-          # noctalia
           ssh
           starship
           styling
-          # swappy
-          # vesktop
-          # vicinae
           xdg
           yazi
-          # zed
           zellij
           zoxide
           zsh

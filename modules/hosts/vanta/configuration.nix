@@ -50,7 +50,7 @@
           fzf
           git
           helix
-          kanshi
+          shikane
           ssh
           starship
           styling
@@ -97,6 +97,7 @@
         };
       };
 
+      services.openssh.generateHostKeys = true;
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaDVBJdMDFL8r9NQCbaLe+DPHGhGzRv2N7+7m1/U8DP";
 
       networking.hostName = "vanta";

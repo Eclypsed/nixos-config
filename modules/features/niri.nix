@@ -57,39 +57,15 @@
     {
       xdg.portal = {
         enable = true;
-        configPackages = [ pkgs.gnome-session ];
+        xdgOpenUsePortal = true;
+        config.common.default = "*";
         extraPortals = with pkgs; [
-          xdg-desktop-portal-gnome
           xdg-desktop-portal-gtk
         ];
       };
 
-      # home.packages = with pkgs; [
-      #   niri-display-manager
-      # ];
-
-      # systemd.user.services.niri-display-manager-daemon = {
-      #   Unit = {
-      #     Description = "Niri Display Manager Hotplug Daemon";
-      #     PartOf = [ "graphical-session.target" ];
-      #     After = [ "graphical-session.target" ];
-      #   };
-      #   Service = {
-      #     Type = "simple";
-      #     ExecStart = "${lib.getExe pkgs.niri-display-manager} --daemon";
-      #     Restart = "on-failure";
-      #     RestartSec = 5;
-      #   };
-      #   Install = {
-      #     WantedBy = [ "graphical-session.target" ];
-      #   };
-      # };
-
       programs.niri = {
         settings = {
-          # includes = with config.lib.niri.include; [
-          #   (optional "monitors.kdl")
-          # ];
           input = {
             keyboard = {
               xkb = {
@@ -149,6 +125,7 @@
           };
           environment = {
             "NIXOS_OZONE_WL" = "1";
+            "EDITOR" = "hx"; # For yazi hotkey
           };
           binds = {
             # General
@@ -563,8 +540,6 @@
             # Allows notification actions and window activation from Noctalia.
             honor-xdg-activation-with-invalid-serial = { };
           };
-          # # Support for external 'includes' sounds like it is in the works.
-          # Will just have to wait until then for noctalia color scheme integration.
         };
       };
     };

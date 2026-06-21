@@ -46,10 +46,16 @@
       programs.noctalia = {
         enable = true;
         settings = {
+          shell = {
+            font_family = "Noto Sans";
+            avatar_path = "${inputs.assets}/profile-picture.jpg";
+            show_location = false;
+          };
           theme = {
             mode = "dark";
-            source = "builtin";
+            source = "community";
             builtin = "Catppuccin";
+            community_palette = "Catppuccin Lavender";
           };
           location = {
             auto_locate = false;
@@ -62,26 +68,70 @@
               auto_hide = false;
               layer = "top";
 
-              start = [ "workspaces" ];
+              thickness = 38;
+              background_opacity = 0.85;
+
+              capsule = true;
+              capsule_padding = 7.0;
+
+              start = [
+                "workspaces"
+                "privacy"
+              ];
               center = [ "clock" ];
               end = [
                 "tray"
                 "notifications"
-                "battery"
+                "clipboard"
+                "wallpaper"
                 "volume"
                 "brightness"
+                "battery"
                 "control-center"
               ];
             };
           };
+          widget = {
+            clock = {
+              format = "%H:%M %a, %b %d";
+            };
+            privacy = {
+              hide_inactive = true;
+            };
+            workspaces = {
+              display = "none";
+            };
+          };
           wallpaper = {
             enabled = true;
-            directory = "${config.xdg.userDirs.extraConfig.WALLPAPERS}";
+            directory = config.xdg.userDirs.extraConfig.WALLPAPERS;
           };
           backdrop = {
             enabled = true;
             blur_intensity = 0.5;
             tint_intensity = 0.3;
+          };
+          idle = {
+            pre_action_fade_seconds = 0; # The pre-fade can look a bit jank when fading to lock screen
+            behavior = {
+              lock = {
+                timeout = 300;
+                command = "noctalia:session lock";
+                enabled = true;
+              };
+              screen-off = {
+                timeout = 450;
+                command = "noctalia:dpms-off";
+                resume_command = "noctalia:dpms-on";
+                enabled = true;
+              };
+              suspend = {
+                timeout = 600;
+                command = "noctalia:session suspend";
+                lock_before_suspend = true;
+                enabled = true;
+              };
+            };
           };
         };
         # plugins = {
