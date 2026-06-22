@@ -35,14 +35,12 @@
         heybrochecklog = pkgs.callPackage "${inputs.packages}/heybrochecklog.nix" { };
         niri-display-manager = pkgs.callPackage "${inputs.packages}/niri-display-manager.nix" { };
         pywalfox-native = pkgs.callPackage "${inputs.packages}/pywalfox-native.nix" { };
-        sysand = pkgs.callPackage "${inputs.packages}/sysand.nix" { };
       };
       overlayAttrs = {
         inherit (config.packages)
           heybrochecklog
           niri-display-manager
           pywalfox-native
-          sysand
           ;
 
         pythonPackagesExtensions = pkgs.pythonPackagesExtensions ++ [ python-extensions ];

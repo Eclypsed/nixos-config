@@ -33,6 +33,7 @@
 
       home-manager.users.eclypse = {
         imports = with self.modules.homeManager; [
+          # inputs.private-modules.homeModules.work
           bat
           btop
           direnv
@@ -54,7 +55,6 @@
         home.packages = with pkgs; [
           devenv
           opencode
-          sysand
         ];
       };
 

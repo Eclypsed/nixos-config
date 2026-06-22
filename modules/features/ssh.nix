@@ -28,12 +28,6 @@
           User = "tamassno";
           ProxyJump = "stu";
         };
-        "kbr-azure-devops" = {
-          Hostname = "bwi-tfs.wyle.com";
-          User = "git";
-          IdentityFile = "~/.ssh/id_rsa";
-          IdentitiesOnly = "yes";
-        };
       };
     };
   };

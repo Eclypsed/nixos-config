@@ -18,6 +18,8 @@
         inputs.nixos-wsl.nixosModules.default
       ];
 
+      boot.kernelModules = [ "vhci-hcd" ]; # Needed for usbip auto-attach
+
       wsl = {
         enable = true;
         defaultUser = "eclypse";
