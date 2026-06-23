@@ -16,7 +16,7 @@
     }:
     {
       imports = with self.modules.nixos; [
-        profiles-wsl
+        wsl
         agenix
         fonts
         network

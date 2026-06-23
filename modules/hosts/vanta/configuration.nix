@@ -13,7 +13,7 @@
     {
       imports = with self.modules.nixos; [
         vantaHardware
-        profiles-intel
+        intel
         agenix
         bluetooth
         boot

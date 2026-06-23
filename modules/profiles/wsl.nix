@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.nixos.profiles-wsl =
+  flake.modules.nixos.wsl =
     { pkgs, ... }:
     {
       # Edit this configuration file to define what should be installed on

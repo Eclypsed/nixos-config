@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.profiles-intel =
+  flake.modules.nixos.intel =
     {
       pkgs,
       ...
