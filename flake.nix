@@ -94,13 +94,13 @@
       url = "path:./secrets";
     };
 
-    # private-modules = {
-    #   url = "git+ssh://git@github.com/Eclypsed/nix-private-modules.git?ref=main";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     home-manager.follows = "home-manager";
-    #   };
-    # };
+    private-modules = {
+      url = "git+ssh://git@github.com/Eclypsed/nix-private-modules.git?ref=main";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
