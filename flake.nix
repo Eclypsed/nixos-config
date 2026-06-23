@@ -60,8 +60,6 @@
       inputs.niri-unstable.follows = "niri-unstable";
     };
 
-    monique.url = "github:ToRvaLDz/monique";
-
     zjstatus = {
       url = "github:dj95/zjstatus";
     };
@@ -73,10 +71,6 @@
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
-    };
-
-    helium = {
-      url = "gitlab:ntgn/helium-flake";
     };
 
     assets = {
