@@ -12,7 +12,6 @@
           setSessionVariables = true;
           createDirectories = true;
           extraConfig = {
-            DEV = "${config.home.homeDirectory}/Dev";
             SCREENSHOTS = "${config.xdg.userDirs.pictures}/Screenshots";
             WALLPAPERS = "${config.xdg.userDirs.pictures}/Wallpapers";
           };
