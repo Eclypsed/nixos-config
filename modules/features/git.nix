@@ -38,6 +38,29 @@
           enableZshIntegration = true;
           shellWrapperName = "lg";
         };
+        gh = {
+          enable = true;
+          hosts = {
+            "github.com" = {
+              user = name;
+            };
+          };
+          settings = {
+            git_protocol = "ssh";
+            prompt = "enabled";
+            prefer_editor_prompt = "enabled";
+            pager = "${config.programs.bat.package}";
+            aliases = {
+              co = "pr checkout";
+            };
+            color_labes = "enabled";
+            accessible_colors = "disabled";
+            accessible_prompter = "disabled";
+            spinner = "enabled";
+            telemetry = "disabled";
+          };
+        };
+        # gh-dash?
       };
     };
 }

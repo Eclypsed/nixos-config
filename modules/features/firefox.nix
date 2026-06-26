@@ -22,10 +22,10 @@
         configPath = ".mozilla/firefox"; # This is legacy, but sticking with it for now
         # configPath = "${config.xdg.configHome}/mozilla/firefox"; This doesn't work properly for some reason
         languagePacks = [ "en-US" ];
-        nativeMessagingHosts = with pkgs; [
-          pywalfox-native
-          kdePackages.plasma-integration
-        ];
+        # nativeMessagingHosts = with pkgs; [
+        #   pywalfox-native
+        #   kdePackages.plasma-integration
+        # ];
         policies = {
           DefaultDownloadDirectory = config.xdg.userDirs.download;
           DisableFirefoxAccounts = true;
@@ -88,7 +88,8 @@
             packages = with pkgs.nur.repos.rycee.firefox-addons; [
               ublock-origin
               bitwarden
-              pywalfox
+              firefox-color # TODO: Declarative Firefox colors
+              # pywalfox
             ];
             settings = {
               "uBlock0@raymondhill.net".settings = {

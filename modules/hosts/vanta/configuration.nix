@@ -66,7 +66,6 @@
         ];
         home.packages = with pkgs; [
           devenv
-          htop
           obsidian
           upscayl
           trayscale
@@ -78,8 +77,6 @@
           rsgain
           vlc
 
-          playerctl
-          brightnessctl
           opencode
         ];
       };

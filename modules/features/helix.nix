@@ -3,11 +3,10 @@
     {
       config,
       pkgs,
-      lib,
       ...
     }:
     let
-      zellij-yazi-picker = pkgs.writeShellApplication {
+      yazi-picker = pkgs.writeShellApplication {
         name = "yazi-picker";
         text = ''
           paths=$(yazi --chooser-file=/dev/stdout)
@@ -24,10 +23,6 @@
       };
     in
     {
-      home.packages = [
-        (lib.mkIf (config.programs.zellij.enable) zellij-yazi-picker)
-      ];
-
       programs.helix = {
         enable = true;
         defaultEditor = true;
@@ -97,7 +92,7 @@
               normal = {
                 "C-y" =
                   if (config.programs.zellij.enable) then
-                    ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- yazi-picker open \"%{buffer_name}\""
+                    ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- ${yazi-picker} open \"%{buffer_name}\""
                   else
                     [
                       ":sh rm -f /tmp/unique-ca1ea106"
