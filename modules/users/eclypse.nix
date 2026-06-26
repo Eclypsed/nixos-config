@@ -10,7 +10,6 @@ in
   flake.modules.nixos.${username} =
     { config, pkgs, ... }:
     {
-      users.mutableUsers = false;
       users.users.${username} = {
         isNormalUser = true;
         uid = 1000;

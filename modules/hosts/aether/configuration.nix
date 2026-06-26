@@ -17,15 +17,11 @@
     {
       imports = with self.modules.nixos; [
         wsl
+        system-base
         agenix
-        fonts
-        network
-        nix
         yubikey
-        zsh
 
         # Users
-        home-manager
         eclypse
       ];
 
@@ -58,39 +54,9 @@
         ];
       };
 
-      environment = {
-        systemPackages = with pkgs; [
-          vim
-          git
-          disktui
-        ];
-        variables = {
-          EDITOR = "vim";
-        };
-      };
-
       hostPubkey = "age1cpm5d20hyxppslel6xa3nmzhk4307w5r4wuyzvf7jka9c0zr4daqzqpe39";
 
       networking.hostName = "aether";
-
-      # Set your time zone.
-      time.timeZone = "America/New_York";
-
-      # Select internationalisation properties.
-      i18n = {
-        defaultLocale = "en_US.UTF-8";
-        extraLocaleSettings = {
-          LC_ADDRESS = "en_US.UTF-8";
-          LC_IDENTIFICATION = "en_US.UTF-8";
-          LC_MEASUREMENT = "en_US.UTF-8";
-          LC_MONETARY = "en_US.UTF-8";
-          LC_NAME = "en_US.UTF-8";
-          LC_NUMERIC = "en_US.UTF-8";
-          LC_PAPER = "en_US.UTF-8";
-          LC_TELEPHONE = "en_US.UTF-8";
-          LC_TIME = "en_US.UTF-8";
-        };
-      };
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

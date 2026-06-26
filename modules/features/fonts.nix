@@ -1,36 +1,32 @@
 {
-  flake.modules.nixos.fonts =
+  flake.modules.homeManager.fonts =
     { pkgs, ... }:
     {
-      fonts = {
-        packages = with pkgs; [
-          # Maple Mono
-          maple-mono.truetype
-          maple-mono.NF-unhinted
-          maple-mono.NF-CN-unhinted
+      home.packages = with pkgs; [
+        # Maple Mono
+        maple-mono.truetype
+        maple-mono.NF-unhinted
+        maple-mono.NF-CN-unhinted
 
-          # JetBrains Mono
-          nerd-fonts.jetbrains-mono
+        # JetBrains Mono
+        nerd-fonts.jetbrains-mono
 
-          # Noto
-          noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-color-emoji
-        ];
+        # Noto
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
+      ];
+
+      fonts.fontconfig = {
+        enable = true;
+        defaultFonts = {
+          sansSerif = [ "Noto Sans" ];
+          monospace = [
+            "Maple Mono"
+            "JetBrainsMono Nerd Font"
+          ];
+          emoji = [ "Noto Color Emoji" ];
+        };
       };
     };
-
-  flake.modules.homeManager.fonts = {
-    fonts.fontconfig = {
-      enable = true;
-      defaultFonts = {
-        sansSerif = [ "Noto Sans" ];
-        monospace = [
-          "Maple Mono"
-          "JetBrainsMono Nerd Font"
-        ];
-        emoji = [ "Noto Color Emoji" ];
-      };
-    };
-  };
 }

@@ -14,26 +14,22 @@
       imports = with self.modules.nixos; [
         vantaHardware
         intel
+        system-base
         agenix
         bluetooth
         boot
         eclypsecloud-shares
         firmware
-        fonts
         fprintd
-        network
         niri
-        nix
         noctalia
         pipewire
         power-management
         printing
         tailscale
         yubikey
-        zsh
 
         # Users
-        home-manager
         eclypse
       ];
 
@@ -81,42 +77,12 @@
         ];
       };
 
-      programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
-
-      environment = {
-        systemPackages = with pkgs; [
-          vim
-          git
-          disktui
-        ];
-        variables = {
-          EDITOR = "vim";
-        };
-      };
+      # programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ]; # Enable this in a module that needs it
 
       services.openssh.generateHostKeys = true;
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaDVBJdMDFL8r9NQCbaLe+DPHGhGzRv2N7+7m1/U8DP";
 
       networking.hostName = "vanta";
-
-      # Set your time zone.
-      time.timeZone = "America/New_York";
-
-      # Select internationalisation properties.
-      i18n = {
-        defaultLocale = "en_US.UTF-8";
-        extraLocaleSettings = {
-          LC_ADDRESS = "en_US.UTF-8";
-          LC_IDENTIFICATION = "en_US.UTF-8";
-          LC_MEASUREMENT = "en_US.UTF-8";
-          LC_MONETARY = "en_US.UTF-8";
-          LC_NAME = "en_US.UTF-8";
-          LC_NUMERIC = "en_US.UTF-8";
-          LC_PAPER = "en_US.UTF-8";
-          LC_TELEPHONE = "en_US.UTF-8";
-          LC_TIME = "en_US.UTF-8";
-        };
-      };
 
       # This option defines the first version of NixOS you have installed on this particular machine,
       # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

@@ -3,6 +3,7 @@
     {
       config,
       pkgs,
+      lib,
       ...
     }:
     let
@@ -92,7 +93,7 @@
               normal = {
                 "C-y" =
                   if (config.programs.zellij.enable) then
-                    ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- ${yazi-picker} open \"%{buffer_name}\""
+                    ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- ${lib.getExe yazi-picker} open \"%{buffer_name}\""
                   else
                     [
                       ":sh rm -f /tmp/unique-ca1ea106"
