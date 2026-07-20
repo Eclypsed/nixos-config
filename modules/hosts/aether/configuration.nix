@@ -35,7 +35,6 @@
           direnv
           eza
           fastfetch
-          fonts
           fzf
           git
           helix
