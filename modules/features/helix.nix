@@ -49,6 +49,8 @@
           solargraph # Alternative  ruby language server
           rubocop # Ruby linter and formatter
           jdt-language-server # Java language server
+          yaml-language-server # Yaml language server
+          yamlfmt # Yaml formatter
         ];
         settings = {
           editor = {
@@ -329,6 +331,15 @@
                   "fatal"
                 ];
               };
+            }
+            {
+              name = "yaml";
+              file-types = [
+                "yml"
+                "yaml"
+                "ksy" # Kaitai struct files
+              ];
+              auto-format = true;
             }
           ];
           language-server = {
