@@ -29,6 +29,7 @@
         inputs.agenix-rekey.nixosModules.default
       ];
 
+      # On second thought, at some point it would be nice to be able to remove this option.
       # Host public age key. Should be provisioned on dev machine, sending the private key to the target host before deployment.
       options.hostPubkey = lib.mkOption {
         type = lib.types.nullOr lib.types.str;
@@ -36,13 +37,12 @@
         description = "The public key of the host. Will be null until generated on first rebuild";
       };
 
-      # Again, need to have config here for some reason
       config.age =
         let
           agekey_identity_path = "/etc/host.age";
         in
         {
-          # Need to explicitly set identity paths because OpenSSH daemon is disabled
+          # Need to explicitly set identity paths in case OpenSSH daemon is disabled
           # but the host keys are still generated via services.openssh.generateHostKeys = true
           identityPaths = map (key: key.path) config.services.openssh.hostKeys ++ [ agekey_identity_path ];
           rekey = {

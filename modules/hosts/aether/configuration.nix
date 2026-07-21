@@ -32,7 +32,7 @@
           inputs.private-modules.homeModules.work
           bat
           btop
-          direnv
+          devenv
           eza
           fastfetch
           fzf
@@ -48,7 +48,6 @@
           zsh
         ];
         home.packages = with pkgs; [
-          devenv
           opencode
         ];
       };

@@ -73,6 +73,8 @@
       };
     };
 
+    textfox.url = "github:adriankarlen/textfox";
+
     assets = {
       flake = false;
       url = "path:./assets";

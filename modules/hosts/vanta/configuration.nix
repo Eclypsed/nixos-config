@@ -37,7 +37,7 @@
         imports = with self.modules.homeManager; [
           bat
           btop
-          direnv
+          devenv
           eza
           fastfetch
           firefox
@@ -61,7 +61,6 @@
           zsh
         ];
         home.packages = with pkgs; [
-          devenv
           obsidian
           upscayl
           trayscale

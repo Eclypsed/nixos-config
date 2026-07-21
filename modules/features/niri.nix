@@ -58,8 +58,9 @@
       xdg.portal = {
         enable = true;
         xdgOpenUsePortal = true;
-        config.common.default = "*";
+        configPackages = with pkgs; [ gnome-session ];
         extraPortals = with pkgs; [
+          xdg-desktop-portal-gnome
           xdg-desktop-portal-gtk
         ];
       };
@@ -108,6 +109,9 @@
             };
             focus-ring = {
               width = 4;
+              active = {
+                color = "#b4befe";
+              };
             };
             border = {
               enable = false;
