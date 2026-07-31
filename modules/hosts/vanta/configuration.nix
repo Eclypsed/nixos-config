@@ -12,7 +12,6 @@
     { pkgs, ... }:
     {
       imports = with self.modules.nixos; [
-        vantaHardware
         intel
         system-base
         agenix
@@ -46,7 +45,6 @@
           fzf
           git
           helix
-          shikane
           ssh
           starship
           styling

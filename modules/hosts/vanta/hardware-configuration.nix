@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.nixos.vantaHardware =
+  flake.modules.nixos.vanta =
     {
       config,
       lib,
