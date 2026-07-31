@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.vanta = {
-    home-manager.shared-modules = [
+    home-manager.sharedModules = [
       {
         services.shikane = {
           enable = true;
