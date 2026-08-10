@@ -532,6 +532,14 @@
               matches = [ { namespace = "^noctalia-backdrop"; } ];
               place-within-backdrop = true;
             }
+            {
+              matches = [ { namespace = "vicinae"; } ];
+              opacity = 0.85;
+              background-effect = {
+                blur = true;
+                xray = true;
+              };
+            }
           ];
           gestures = {
             hot-corners.enable = false;
