@@ -33,11 +33,13 @@
         ];
       };
       packages = {
+        ccase = pkgs.callPackage "${inputs.packages}/ccase.nix" { };
         heybrochecklog = pkgs.callPackage "${inputs.packages}/heybrochecklog.nix" { };
         pywalfox-native = pkgs.callPackage "${inputs.packages}/pywalfox-native.nix" { };
       };
       overlayAttrs = {
         inherit (config.packages)
+          ccase
           heybrochecklog
           pywalfox-native
           ;

@@ -84,11 +84,25 @@
           };
           keys =
             let
+              ccase = lib.getExe pkgs.ccase;
               arrow_keys = {
                 "up" = "jump_view_up";
                 "down" = "jump_view_down";
                 "left" = "jump_view_left";
                 "right" = "jump_view_right";
+              };
+              ccase_mode = {
+                "~" = {
+                  "~" = "switch_case";
+                  "l" = "switch_to_lowercase";
+                  "u" = "switch_to_uppercase";
+                  "c" = ":pipe ${ccase} --to camel";
+                  "p" = ":pipe ${ccase} --to pascal";
+                  "k" = ":pipe ${ccase} --to kebab";
+                  "K" = ":pipe ${ccase} --to cobol"; # UPPER-KEBAB-CASE
+                  "s" = ":pipe ${ccase} --to snake";
+                  "S" = ":pipe ${ccase} --to constant"; # UPPER_SNAKE_CASE
+                };
               };
             in
             {
@@ -107,7 +121,8 @@
                       ":set mouse true"
                     ];
               }
-              // arrow_keys;
+              // arrow_keys
+              // ccase_mode;
               insert = {
                 "C-k" = "move_visual_line_up";
                 "C-j" = "move_visual_line_down";
@@ -115,7 +130,7 @@
                 "C-l" = "move_char_right";
               }
               // arrow_keys;
-              select = { } // arrow_keys;
+              select = { } // arrow_keys // ccase_mode;
             };
           theme = "catppuccin_mocha";
         };
