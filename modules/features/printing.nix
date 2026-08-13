@@ -9,6 +9,8 @@
           drivers = with pkgs; [
             gutenprint
             cnijfilter2
+            cups-browsed
+            cups-filters
           ];
         };
 
