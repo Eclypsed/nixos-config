@@ -92,8 +92,7 @@
                 "right" = "jump_view_right";
               };
               ccase_mode = {
-                "~" = {
-                  "~" = "switch_case";
+                "`" = {
                   "l" = "switch_to_lowercase";
                   "u" = "switch_to_uppercase";
                   "c" = ":pipe ${ccase} --to camel";
