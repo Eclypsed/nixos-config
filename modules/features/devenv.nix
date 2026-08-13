@@ -1,14 +1,13 @@
 {
   flake.modules.homeManager.devenv =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     {
       home.packages = with pkgs; [
         devenv
       ];
 
-      programs.direnv = {
-        enable = true;
-        enableZshIntegration = true;
-      };
+      programs.zsh.initContent = ''
+        eval "$(${lib.getExe pkgs.devenv} hook zsh)"
+      '';
     };
 }
