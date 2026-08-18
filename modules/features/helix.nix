@@ -51,6 +51,8 @@
           jdt-language-server # Java language server
           yaml-language-server # Yaml language server
           yamlfmt # Yaml formatter
+          tinymist # Typst language server
+          typstyle # Typse formatter
         ];
         settings = {
           editor = {
@@ -354,6 +356,13 @@
                 "ksy" # Kaitai struct files
               ];
               auto-format = true;
+            }
+            {
+              name = "typst";
+              auto-format = true;
+              formatter = {
+                command = "typstyle";
+              };
             }
           ];
           language-server = {
