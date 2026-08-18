@@ -55,6 +55,10 @@
       brightnessctl = lib.getExe' pkgs.brightnessctl "brightnessctl";
     in
     {
+      home.packages = with pkgs; [
+        nautilus
+      ];
+
       xdg.portal = {
         enable = true;
         xdgOpenUsePortal = true;
