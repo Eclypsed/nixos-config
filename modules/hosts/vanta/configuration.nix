@@ -34,6 +34,7 @@
 
       home-manager.users.eclypse = {
         imports = with self.modules.homeManager; [
+          ai-coding
           bat
           btop
           devenv
