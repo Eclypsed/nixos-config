@@ -689,11 +689,11 @@
         "packages": "packages_2"
       },
       "locked": {
-        "lastModified": 1782221994,
-        "narHash": "sha256-amENyLIqlvUdgbKgkt3D7wna0sMPKPc/Om70+s7/zyk=",
+        "lastModified": 1786649470,
+        "narHash": "sha256-/2wukO+/u8kTg2nfBeEcFTKEPOz3BbxKWkffC/L6ghg=",
         "ref": "main",
-        "rev": "8ce6fdd39f40b64efdacbd55d719c5d2cabf9cee",
-        "revCount": 4,
+        "rev": "db933226d7aecba12dd9280abf3bad08568125b2",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/Eclypsed/nix-private-modules.git"
       },
