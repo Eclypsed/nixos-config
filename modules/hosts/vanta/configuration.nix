@@ -37,6 +37,7 @@
           ai-coding
           bat
           btop
+          cd-audio-tools
           devenv
           eza
           fastfetch
@@ -65,10 +66,6 @@
           trayscale
           cura-appimage
 
-          # CD Stuff
-          picard
-          heybrochecklog
-          rsgain
           vlc
 
         ];
