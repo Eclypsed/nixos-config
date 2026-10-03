@@ -8,8 +8,14 @@
     { pkgs, ... }:
     {
       imports = [
+        inputs.noctalia.nixosModules.default
         inputs.noctalia-greeter.nixosModules.default
       ];
+
+      programs.noctalia = {
+        enable = true;
+        recommendedServices.enable = true;
+      };
 
       programs.noctalia-greeter = {
         enable = true;
@@ -24,10 +30,6 @@
         };
       };
 
-      environment.systemPackages = [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
-
       home-manager.sharedModules = [
         self.modules.homeManager.noctalia
       ];
@@ -36,11 +38,16 @@
   flake.modules.homeManager.noctalia =
     {
       config,
+      pkgs,
       ...
     }:
     {
       imports = [
         inputs.noctalia.homeModules.default
+      ];
+
+      home.packages = with pkgs; [
+        jq # For plugins
       ];
 
       programs.noctalia = {
@@ -50,6 +57,7 @@
             font_family = "Noto Sans";
             avatar_path = "${inputs.assets}/profile-picture.jpg";
             show_location = false;
+            offline_mode = false;
           };
           theme = {
             mode = "dark";
@@ -84,6 +92,7 @@
                 "notifications"
                 "clipboard"
                 "wallpaper"
+                "davemhammer/tailscale:status"
                 "volume"
                 "brightness"
                 "battery"
@@ -99,7 +108,7 @@
               hide_inactive = true;
             };
             workspaces = {
-              display = "none";
+              show_labels = false;
             };
           };
           wallpaper = {
@@ -112,60 +121,36 @@
             tint_intensity = 0.3;
           };
           idle = {
+            behavior_order = [
+              "lock"
+              "screen-off"
+              "suspend"
+            ];
             pre_action_fade_seconds = 0; # The pre-fade can look a bit jank when fading to lock screen
             behavior = {
               lock = {
                 timeout = 300;
-                command = "noctalia:session lock";
+                action = "lock";
                 enabled = true;
               };
               screen-off = {
                 timeout = 450;
-                command = "noctalia:dpms-off";
-                resume_command = "noctalia:dpms-on";
+                action = "screen_off";
                 enabled = true;
               };
               suspend = {
                 timeout = 600;
-                command = "noctalia:session suspend";
+                action = "suspend";
                 lock_before_suspend = true;
                 enabled = true;
               };
             };
           };
+          plugins = {
+            enabled = [ "davemhammer/tailscale" ];
+            auto_update = "none";
+          };
         };
-        # plugins = {
-        #   sources = [
-        #     {
-        #       enabled = true;
-        #       name = "Noctalia Plugins";
-        #       url = "https://github.com/noctalia-dev/noctalia-plugins";
-        #     }
-        #   ];
-        #   states = {
-        #     tailscale = {
-        #       enabled = true;
-        #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        #     };
-        #     activate-linux = {
-        #       enabled = true;
-        #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        #     };
-        #   };
-        #   version = 1;
-        # };
-        # pluginSettings = {
-        #   tailscale = {
-        #     refreshInterval = 5000;
-        #     compactMode = true;
-        #     showIpAddress = false;
-        #     showPeerCount = false;
-        #     hideDisconnected = false;
-        #     terminalCommand = "foot";
-        #     pingCount = 5;
-        #     defaultPeerAction = "copy-ip";
-        #   };
-        # };
       };
     };
 }

@@ -91,6 +91,7 @@
               scroll-method = "two-finger";
               tap = true;
               tap-button-map = "left-right-middle"; # Mouse button click to register when tapping with 1, 2, or 3 fingers
+              accel-speed = 0.25;
             };
             warp-mouse-to-focus = {
               enable = true;
@@ -520,7 +521,7 @@
               background-effect.blur = true;
             }
             {
-              matches = [ { app-id = "dev.noctalia.Noctalia.Settings"; } ];
+              matches = [ { app-id = "dev.noctalia.Noctalia"; } ];
               open-floating = true;
               default-column-width = {
                 fixed = 1080;
