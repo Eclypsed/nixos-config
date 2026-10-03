@@ -96,7 +96,7 @@
               ublock-origin
               bitwarden
               firefox-color # TODO: Declarative Firefox colors
-              # pywalfox
+              enhancer-for-youtube
             ];
             settings = {
               "uBlock0@raymondhill.net".settings = {

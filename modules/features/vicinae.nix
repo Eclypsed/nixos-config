@@ -1,6 +1,10 @@
 {
   flake.modules.homeManager.vicinae =
-    { config, ... }:
+    {
+      config,
+      pkgs,
+      ...
+    }:
     {
       # Not using Vicinae's flake because the server fucking seg faults immediately
       programs.vicinae = {
@@ -31,6 +35,19 @@
             };
           };
         };
+        extensions = [
+          (config.lib.vicinae.mkExtension {
+            name = "nix";
+            src =
+              pkgs.fetchFromGitHub {
+                owner = "vicinaehq";
+                repo = "extensions";
+                rev = "5d1d31a698d5ac0b25b7391fcce3d920cd9c552e";
+                sha256 = "sha256-u9QmD1FnLf+64o60L4ldx81m88eeK5/EgNYTEAt9qIo=";
+              }
+              + "/extensions/nix";
+          })
+        ];
       };
     };
 }

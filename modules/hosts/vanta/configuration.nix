@@ -50,7 +50,6 @@
           ssh
           starship
           styling
-          swappy
           vesktop
           vicinae
           xdg
@@ -62,12 +61,14 @@
         ];
         home.packages = with pkgs; [
           obsidian
-          upscayl
           trayscale
-          cura-appimage
-
+          teams-for-linux
           vlc
 
+          # Image viewer - use one of these
+          qimgv
+          # gthumb
+          # kdePackages.gwenview
         ];
       };
 
