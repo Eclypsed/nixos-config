@@ -71,7 +71,6 @@
           rsgain
           vlc
 
-          opencode
         ];
       };
 

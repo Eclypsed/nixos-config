@@ -10,7 +10,6 @@
 
   flake.modules.nixos.aether =
     {
-      pkgs,
       lib,
       ...
     }:
@@ -46,9 +45,6 @@
           zellij
           zoxide
           zsh
-        ];
-        home.packages = with pkgs; [
-          opencode
         ];
       };
 
