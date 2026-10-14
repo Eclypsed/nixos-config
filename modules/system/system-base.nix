@@ -29,8 +29,6 @@
         };
       };
 
-      networking.networkmanager.enable = true;
-
       nix = {
         settings = {
           nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
