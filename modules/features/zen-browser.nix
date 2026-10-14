@@ -58,6 +58,19 @@
                 pinned = true;
               };
               "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
+              "enhancerforyoutube@maximerf.addons.mozilla.org" = "enhancer-for-youtube";
+            };
+            FirefoxHome = {
+              Search = true;
+              TopSites = true;
+              SponsoredTopSites = false;
+              Highlights = false;
+              Pocket = false;
+              Stories = false;
+              SponsoredPocket = false;
+              SponsoredStories = false;
+              Snippets = true;
+              Locked = true;
             };
             FirefoxSuggest = {
               WebSuggestions = true;
@@ -77,21 +90,32 @@
               Default = false;
               Locked = true;
             };
-            Preferences = {
-              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            };
             PrimaryPassword = false;
             SearchBar = "unified";
             ShowHomeButton = true;
             SkipTermsOfUse = true;
           };
-          profiles.default = {
+          profiles.${config.home.username} = {
             id = 0;
-            name = "default";
+            name = "${config.home.username}";
             isDefault = true;
             settings = {
               # Auto-enable extensions
               "extensions.autoDisableScopes" = 0;
+            };
+            extensions = {
+              force = true;
+              settings = {
+                "uBlock0@raymondhill.net".settings = {
+                  selectedFilterLists = [
+                    "ublock-filters"
+                    "ublock-badware"
+                    "ublock-privacy"
+                    "ublock-unbreak"
+                    "ublock-quick-fixes"
+                  ];
+                };
+              };
             };
             search = {
               force = true;

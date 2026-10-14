@@ -22,7 +22,10 @@ buildPythonApplication rec {
 
   nativeBuildInputs = [
     poetry-core
+    pythonRelaxDepsHook
   ];
+
+  pythonRelaxDeps = [ "chardet" ];
 
   propagatedBuildInputs = [
     faust-cchardet
@@ -32,8 +35,8 @@ buildPythonApplication rec {
 
   postPatch = ''
     substituteInPlace pyproject.toml \
-      --replace 'poetry.masonry.api' 'poetry.core.masonry.api' \
-      --replace 'poetry>=' 'poetry-core>='
+      --replace-warn 'poetry.masonry.api' 'poetry.core.masonry.api' \
+      --replace-warn 'poetry>=' 'poetry-core>='
   '';
 
   meta = {

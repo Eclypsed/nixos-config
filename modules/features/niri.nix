@@ -11,7 +11,9 @@
         inputs.niri.nixosModules.niri
       ];
 
-      nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+      nixpkgs.overlays = [
+        inputs.niri.overlays.niri
+      ];
 
       programs = {
         niri = {
@@ -113,7 +115,7 @@
               bottom = 0;
             };
             focus-ring = {
-              width = 4;
+              width = 3;
               active = {
                 color = "#b4befe";
               };
@@ -515,7 +517,15 @@
             #   open-floating = true;
             # }
             {
-              matches = [ { app-id = "foot"; } ];
+              matches = [
+                # Regular terminal
+                { app-id = "foot"; }
+                # Terminal apps launched from .desktop files
+                {
+                  title = "foot";
+                  app-id = "\\.desktop$";
+                }
+              ];
               opacity = 0.85;
               default-column-width.proportion = 0.4;
               background-effect.blur = true;

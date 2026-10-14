@@ -1,8 +1,4 @@
 {
-  inputs,
-  ...
-}:
-{
   flake.modules.homeManager.zellij =
     { pkgs, ... }:
     {
@@ -336,72 +332,66 @@
               };
             };
 
-            # simplified_ui = true;
-            # pane_frames = true;
+            simplified_ui = true;
+            stacked_pane_list = false;
             copy_on_select = true;
           };
         };
 
-      xdg.configFile."zellij/layouts/default.kdl".text =
-        let
-          zjstatus = inputs.zjstatus.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        in
-        ''
-          layout {
-            default_tab_template {
-              pane size=2 borderless=true {
-                plugin location="file:${zjstatus}/bin/zjstatus.wasm" {
-                  hide_frame_except_for_search "false"
+      xdg.configFile."zellij/layouts/default.kdl".text = ''
+        layout {
+          default_tab_template {
+            pane size=2 borderless=true {
+              plugin location="file:${pkgs.zellijPlugins.zjstatus}" {
+                border_enabled  "true"
+                border_char     "─"
+                border_format   "#[fg=#6C7086]{char}"
+                border_position "bottom"
 
-                  border_enabled  "true"
-                  border_char     "─"
-                  border_format   "#[fg=#6C7086]{char}"
-                  border_position "bottom"
+                format_left   " {mode} #[fg=#6c7086]│ #[fg=#eba0ac] {session}"
+                format_center "{tabs}"
+                format_right  ""
+                format_space  ""
 
-                  format_left   " {mode} #[fg=#6c7086]│ #[fg=#eba0ac] {session}"
-                  format_center "{tabs}"
-                  format_right  ""
-                  format_space  ""
+                format_hide_on_overlength "true"
+                format_precedence         "crl"
 
-                  format_hide_on_overlength "true"
-                  format_precedence         "crl"
+                tab_normal    "#[fg=#f5e0dc] {name}{fullscreen_indicator}{sync_indicator}{floating_indicator} "
+                tab_active    "#[fg=#1e1e2e,bg=#fab387] {name}{fullscreen_indicator}{sync_indicator}{floating_indicator} "
+                tab_fullscreen_indicator " □"
+                tab_sync_indicator       " "
+                tab_floating_indicator   " 󰉈"
+                tab_separator "#[fg=#6C7086] │ "
 
-                  tab_normal    "#[fg=#f5e0dc] {name}{fullscreen_indicator}{sync_indicator}{floating_indicator} "
-                  tab_active    "#[fg=#1e1e2e,bg=#fab387] {name}{fullscreen_indicator}{sync_indicator}{floating_indicator} "
-                  tab_fullscreen_indicator " □"
-                  tab_sync_indicator       " "
-                  tab_floating_indicator   " 󰉈"
-                  tab_separator "#[fg=#6C7086] │ "
+                mode_normal        "#[fg=#a6da95]NORMAL"
+                mode_locked        "#[fg=#6e738d]LOCKED "
+                mode_resize        "#[fg=#f38ba8]RESIZE"
+                mode_pane          "#[fg=#89b4fa]PANE"
+                mode_tab           "#[fg=#b4befe]TAB"
+                mode_scroll        "#[fg=#f9e2af]SCROLL"
+                mode_enter_search  "#[fg=#8aadf4]ENT-SEARCH"
+                mode_search        "#[fg=#8aadf4]SEARCHARCH"
+                mode_rename_tab    "#[fg=#b4befe]RENAME-TAB"
+                mode_rename_pane   "#[fg=#89b4fa]RENAME-PANE"
+                mode_session       "#[fg=#74c7ec]SESSION"
+                mode_move          "#[fg=#f5c2e7]MOVE"
+                mode_prompt        "#[fg=#8aadf4]PROMPT"
+                mode_tmux          "#[fg=#f5a97f]TMUX"
 
-                  mode_normal        "#[fg=#a6da95]NORMAL"
-                  mode_locked        "#[fg=#6e738d]LOCKED "
-                  mode_resize        "#[fg=#f38ba8]RESIZE"
-                  mode_pane          "#[fg=#89b4fa]PANE"
-                  mode_tab           "#[fg=#b4befe]TAB"
-                  mode_scroll        "#[fg=#f9e2af]SCROLL"
-                  mode_enter_search  "#[fg=#8aadf4]ENT-SEARCH"
-                  mode_search        "#[fg=#8aadf4]SEARCHARCH"
-                  mode_rename_tab    "#[fg=#b4befe]RENAME-TAB"
-                  mode_rename_pane   "#[fg=#89b4fa]RENAME-PANE"
-                  mode_session       "#[fg=#74c7ec]SESSION"
-                  mode_move          "#[fg=#f5c2e7]MOVE"
-                  mode_prompt        "#[fg=#8aadf4]PROMPT"
-                  mode_tmux          "#[fg=#f5a97f]TMUX"
+                command_host_command    "uname -n"
+                command_host_format     "{stdout}"
+                command_host_interval   "0"
+                command_host_rendermode "static"
 
-                  command_host_command    "uname -n"
-                  command_host_format     "{stdout}"
-                  command_host_interval   "0"
-                  command_host_rendermode "static"
-
-                  command_user_command    "whoami"
-                  command_user_format     "{stdout}"
-                  command_user_interval   "0"
-                  command_user_rendermode "static"
-                }
+                command_user_command    "whoami"
+                command_user_format     "{stdout}"
+                command_user_interval   "0"
+                command_user_rendermode "static"
               }
-              children
             }
+            children
           }
-        '';
+        }
+      '';
     };
 }

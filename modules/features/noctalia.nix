@@ -91,6 +91,7 @@
                 "tray"
                 "notifications"
                 "clipboard"
+                "caffeine"
                 "wallpaper"
                 "davemhammer/tailscale:status"
                 "volume"
@@ -138,12 +139,13 @@
                 action = "screen_off";
                 enabled = true;
               };
-              suspend = {
-                timeout = 600;
-                action = "suspend";
-                lock_before_suspend = true;
-                enabled = true;
-              };
+              # I want to figure out the dock-monitor issues before I re-enable this
+              # suspend = {
+              #   timeout = 600;
+              #   action = "suspend";
+              #   lock_before_suspend = true;
+              #   enabled = true;
+              # };
             };
           };
           plugins = {

@@ -52,7 +52,7 @@
           yaml-language-server # Yaml language server
           yamlfmt # Yaml formatter
           tinymist # Typst language server
-          typstyle # Typse formatter
+          typstyle # Typst formatter
         ];
         settings = {
           editor = {
@@ -367,7 +367,13 @@
           ];
           language-server = {
             basedpyright.config.python.analysis.typeCheckingMode = "strict";
-            rust-analyzer.config.check.command = "clippy";
+            rust-analyzer.config = {
+              # Give rust-analyzer its own target dir so it doesn't fight any terminal `cargo build`/`cargo run`
+              # commands for the build lock or invalidate each other's caches
+              cargo.targetDir = true;
+              check.command = "check";
+              check.workspace = false;
+            };
             emmet-language-server = {
               command = "emmet-language-server";
               args = [ "--stdio" ];

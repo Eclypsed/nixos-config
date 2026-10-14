@@ -56,6 +56,7 @@
           yazi
           zed
           zellij
+          zen-browser
           zoxide
           zsh
         ];

@@ -31,14 +31,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     noctalia-greeter = {
@@ -57,10 +49,6 @@
       inputs.niri-unstable.follows = "niri-unstable";
     };
 
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -71,6 +59,8 @@
     };
 
     textfox.url = "github:adriankarlen/textfox";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     assets = {
       flake = false;

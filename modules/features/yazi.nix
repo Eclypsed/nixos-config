@@ -2,12 +2,12 @@
   flake.modules.homeManager.yazi =
     {
       pkgs,
-      lib,
       ...
     }:
     {
       home.packages = with pkgs; [
         wl-clipboard # Don't use wl-clipboard-rs because it doesn't work properly on WSL
+        ripdrag # For `plugin drag`
         trash-cli
       ];
 
@@ -17,6 +17,7 @@
         shellWrapperName = "y";
         plugins = with pkgs.yaziPlugins; {
           inherit
+            drag
             git
             full-border
             chmod
@@ -38,8 +39,8 @@
           mgr.prepend_keymap = [
             {
               on = "<C-d>";
-              run = "shell -- ${lib.getExe pkgs.dragon-drop} -x -i -T %h";
-              desc = "Open a prompt to drag and drop a file";
+              run = "plugin drag";
+              desc = "Drag Files";
             }
             {
               on = "<C-c>";
