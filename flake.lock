@@ -249,24 +249,6 @@
         "type": "github"
       }
     },
-    "flake-parts_5": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_2"
-      },
-      "locked": {
-        "lastModified": 1778716662,
-        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -337,21 +319,6 @@
         "owner": "vic",
         "repo": "import-tree",
         "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "import-tree",
-        "type": "github"
-      }
-    },
-    "import-tree_2": {
-      "locked": {
-        "lastModified": 1778781969,
-        "narHash": "sha256-Jjuz5CmSkur8KvLDoGa+vylEp+RkQtv4mt/qcMznpH0=",
-        "owner": "vic",
-        "repo": "import-tree",
-        "rev": "d321337efd0f23a9eb14a42adb7b2c29313ab274",
         "type": "github"
       },
       "original": {
@@ -463,11 +430,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1777732699,
-        "narHash": "sha256-2uX/XtOWZ/oy2rerRynVhqVA//ZXZ3Fo60PikLHEPQc=",
+        "lastModified": 1789164534,
+        "narHash": "sha256-DoYGPM6QpnYBLWj9gGw6ZwAzIX+HrAVov1BoT+8Jixo=",
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "rev": "5482f113fd31ebac131d1ebeb2ae90bf0d5e41f5",
+        "rev": "72c92b11bb8289e6651c7fef29cc0a885fd6a255",
         "type": "github"
       },
       "original": {
@@ -508,21 +475,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib_2": {
-      "locked": {
-        "lastModified": 1777168982,
-        "narHash": "sha256-GOkGPcboWE9BmGCRMLX3worL4EMnsnG8MyKmXNeYuhQ=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "f5901329dade4a6ea039af1433fb087bd9c1fe14",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1791031588,
@@ -541,11 +493,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1776169885,
-        "narHash": "sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM=",
+        "lastModified": 1789006805,
+        "narHash": "sha256-xB8mKMOx1IA9vTDNLmJZ6n4wCMq/cuWBBOzGCRnqxrU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9",
+        "rev": "8ce4ef6cb6f871616146b9fe26d2a5ae594e94fe",
         "type": "github"
       },
       "original": {
@@ -672,20 +624,6 @@
       },
       "parent": []
     },
-    "packages_2": {
-      "flake": false,
-      "locked": {
-        "path": "./packages",
-        "type": "path"
-      },
-      "original": {
-        "path": "./packages",
-        "type": "path"
-      },
-      "parent": [
-        "private-modules"
-      ]
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -709,33 +647,6 @@
         "type": "github"
       }
     },
-    "private-modules": {
-      "inputs": {
-        "flake-parts": "flake-parts_5",
-        "home-manager": [
-          "home-manager"
-        ],
-        "import-tree": "import-tree_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "packages": "packages_2"
-      },
-      "locked": {
-        "lastModified": 1786649470,
-        "narHash": "sha256-/2wukO+/u8kTg2nfBeEcFTKEPOz3BbxKWkffC/L6ghg=",
-        "ref": "main",
-        "rev": "db933226d7aecba12dd9280abf3bad08568125b2",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/Eclypsed/nix-private-modules.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/Eclypsed/nix-private-modules.git"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -754,7 +665,6 @@
         "noctalia-greeter": "noctalia-greeter",
         "nur": "nur",
         "packages": "packages",
-        "private-modules": "private-modules",
         "secrets": "secrets",
         "textfox": "textfox",
         "zen-browser": "zen-browser"

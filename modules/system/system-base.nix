@@ -5,7 +5,7 @@
 }:
 {
   flake.modules.nixos.system-base =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       imports = [
         inputs.nur.modules.nixos.default
@@ -30,6 +30,7 @@
       };
 
       networking.networkmanager.enable = true;
+      networking.wireless.enable = lib.mkForce false;
 
       nix = {
         settings = {
