@@ -51,8 +51,6 @@
       services.openssh.generateHostKeys = true;
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO6iCfLqH4gSdq1jlyPdEukFmsy4BSk+JMzraUvjMqV1";
 
-      environment.variables.SSH_SK_HELPER = "/mnt/c/Windows/System32/OpenSSH/ssh-sk-helper.exe";
-
       networking.hostName = "aether";
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
