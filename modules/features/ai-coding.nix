@@ -18,6 +18,12 @@
           configDir = "${config.xdg.configHome}/claude";
           settings = {
             theme = "dark";
+
+            attribution = {
+              commit = "";
+              pr = "";
+            };
+
             permissions = {
               blockReadsOutsideWorkingDirectories = true;
               disableBypassPermissionsMode = "disable";

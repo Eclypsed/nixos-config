@@ -12,10 +12,13 @@
         ];
         extraPackages = [ pkgs.nixd ];
 
+        mutableUserDebug = false;
+        mutableUserKeymaps = false;
+        mutableUserSettings = false;
+        mutableUserTasks = false;
+
         userSettings = {
-          features = {
-            edit_prediction_provider = "copilot";
-          };
+          helix_mode = true;
         };
       };
     };
