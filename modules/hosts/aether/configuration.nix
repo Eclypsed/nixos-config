@@ -24,11 +24,8 @@
         eclypse
       ];
 
-      wsl.usbip.autoAttach = [ "2-1" ];
-
       home-manager.users.eclypse = {
         imports = with self.modules.homeManager; [
-          # inputs.private-modules.homeModules.work
           bat
           btop
           devenv
