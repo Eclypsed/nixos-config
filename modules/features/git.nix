@@ -1,15 +1,15 @@
 {
-  flake.modules.homeManager.git =
+  flake.factory.homeManager.git =
+    {
+      name,
+      email,
+      signingKey,
+    }:
     {
       pkgs,
       config,
       ...
     }:
-    let
-      name = "Eclypsed";
-      email = "Ec1ypsed@proton.me";
-      signingKey = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB2h6y1Al2OVotYIpwPZMjiBLAncAI2pAPgES2+gVbJqAAAABHNzaDo= ssh:";
-    in
     {
       home.packages = with pkgs; [ git-ignore ];
 

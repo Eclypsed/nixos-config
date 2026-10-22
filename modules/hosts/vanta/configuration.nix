@@ -33,33 +33,41 @@
       ];
 
       home-manager.users.eclypse = {
-        imports = with self.modules.homeManager; [
-          ai-coding
-          bat
-          btop
-          cd-audio-tools
-          devenv
-          eza
-          fastfetch
-          firefox
-          fonts
-          foot
-          fzf
-          git
-          helix
-          ssh
-          starship
-          styling
-          vesktop
-          vicinae
-          xdg
-          yazi
-          zed
-          zellij
-          zen-browser
-          zoxide
-          zsh
-        ];
+        imports =
+          with self.modules.homeManager;
+          [
+            ai-coding
+            bat
+            btop
+            cd-audio-tools
+            devenv
+            eza
+            fastfetch
+            firefox
+            fonts
+            foot
+            fzf
+            helix
+            ssh
+            starship
+            styling
+            vesktop
+            vicinae
+            xdg
+            yazi
+            zed
+            zellij
+            zen-browser
+            zoxide
+            zsh
+          ]
+          ++ (with self.factory.homeManager; [
+            (git {
+              name = "Eclypsed";
+              email = "Ec1ypsed@proton.me";
+              signingKey = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB2h6y1Al2OVotYIpwPZMjiBLAncAI2pAPgES2+gVbJqAAAABHNzaDo= ssh:";
+            })
+          ]);
         home.packages = with pkgs; [
           obsidian
           trayscale

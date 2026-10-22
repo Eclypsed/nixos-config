@@ -25,24 +25,32 @@
       ];
 
       home-manager.users.eclypse = {
-        imports = with self.modules.homeManager; [
-          bat
-          btop
-          devenv
-          eza
-          fastfetch
-          fzf
-          git
-          helix
-          ssh
-          starship
-          styling
-          xdg
-          yazi
-          zellij
-          zoxide
-          zsh
-        ];
+        imports =
+          with self.modules.homeManager;
+          [
+            bat
+            btop
+            devenv
+            eza
+            fastfetch
+            fzf
+            helix
+            ssh
+            starship
+            styling
+            xdg
+            yazi
+            zellij
+            zoxide
+            zsh
+          ]
+          ++ (with self.factory.homeManager; [
+            (git {
+              name = "Eclypsed";
+              email = "Ec1ypsed@proton.me";
+              signingKey = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB2h6y1Al2OVotYIpwPZMjiBLAncAI2pAPgES2+gVbJqAAAABHNzaDo= ssh:";
+            })
+          ]);
       };
 
       services.openssh.generateHostKeys = true;
