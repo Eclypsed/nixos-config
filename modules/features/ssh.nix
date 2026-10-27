@@ -1,12 +1,12 @@
 {
-  flake.modules.homeManager.ssh = {
+  flake.modules.homeManager.ssh = { config, ... }: {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
       settings = {
         "*" = {
           AddKeysToAgent = "yes";
-          IdentityFile = "~/.ssh/id_ed25519_sk_rk";
+          IdentityFile = "${config.home.homeDirectory}/.ssh/id_ed25519_sk_rk";
         };
         "stu" = {
           Hostname = "stu.cs.jmu.edu";
