@@ -1,0 +1,18 @@
+{
+  "pins": {
+    "mattstruble-skills": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "mattstruble",
+        "repo": "skills"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "6f146b652254f1077b27f0ea593465f8581c7766",
+      "url": "https://github.com/mattstruble/skills/archive/6f146b652254f1077b27f0ea593465f8581c7766.tar.gz",
+      "hash": "sha256-L++qz6WwkU+ZfmsbvQ3dlDumNGkPUwx6PYYPXvkgLWw="
+    }
+  },
+  "version": 8
+}

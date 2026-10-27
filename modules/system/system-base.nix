@@ -23,6 +23,7 @@
           vim
           git
           disktui
+          npins
         ];
         variables = {
           EDITOR = "vim";

@@ -1,7 +1,12 @@
 {
   inputs,
+  self,
   ...
 }:
+
+let
+  npins = import "${self}/npins";
+in
 {
   flake.modules.homeManager.ai-coding =
     { pkgs, config, ... }:
@@ -41,6 +46,9 @@
                 "Bash(git push *)"
               ];
             };
+          };
+          skills = with npins; {
+            nix-dendritic = "${mattstruble-skills}/nix-dendritic";
           };
         };
         opencode = {
