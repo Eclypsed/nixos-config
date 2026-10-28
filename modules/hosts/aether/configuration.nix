@@ -28,6 +28,7 @@
         imports =
           with self.modules.homeManager;
           [
+            ai-coding
             bat
             btop
             devenv
