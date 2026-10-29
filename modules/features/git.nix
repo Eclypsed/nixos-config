@@ -13,24 +13,24 @@
     {
       home.packages = with pkgs; [ git-ignore ];
 
-      xdg.configFile."git/allowed_signers".text = ''
-        ${email} namespaces="git" ${signingKey}
-      '';
-
       programs = {
         git = {
           enable = true;
           settings = {
-            user = { inherit name email; };
+            user = {
+              inherit name email;
+              signingKey = "${config.home.homeDirectory}/.ssh/id_ed25519_sk_rk.pub";
+            };
             init = {
               defaultBranch = "main";
             };
-            gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
           };
           signing = {
             format = "ssh";
-            key = "${config.home.homeDirectory}/.ssh/id_ed25519_sk_rk.pub";
             signByDefault = true;
+            allowedSigners = ''
+              ${email} namespaces="git" ${signingKey}
+            '';
           };
         };
         lazygit = {
