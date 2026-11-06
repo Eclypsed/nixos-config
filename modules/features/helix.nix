@@ -28,7 +28,7 @@
         enable = true;
         defaultEditor = true;
         extraPackages = with pkgs; [
-          basedpyright # Python static type checker
+          ty # Python static type checker
           ruff # Pyhton linter and formatter
           nixd # Nix language server
           nixfmt # Nix formatter
@@ -142,7 +142,7 @@
             {
               name = "python";
               language-servers = [
-                "basedpyright"
+                "ty"
                 "ruff"
               ];
               auto-format = true;
@@ -366,7 +366,6 @@
             }
           ];
           language-server = {
-            basedpyright.config.python.analysis.typeCheckingMode = "strict";
             rust-analyzer.config = {
               # Give rust-analyzer its own target dir so it doesn't fight any terminal `cargo build`/`cargo run`
               # commands for the build lock or invalidate each other's caches
