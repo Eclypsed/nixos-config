@@ -1,5 +1,5 @@
 {
-  inputs,
+  self,
   ...
 }:
 {
@@ -21,7 +21,7 @@
         ];
       };
 
-      age.secrets.tailscale-auth.rekeyFile = "${inputs.secrets}/tailscale-auth.age";
+      age.secrets.tailscale-auth.rekeyFile = "${self}/secrets/tailscale-auth.age";
 
       # Taildrop
       systemd.user.services.taildrop = {

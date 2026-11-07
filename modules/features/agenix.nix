@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   ...
 }:
@@ -46,9 +47,9 @@
           # but the host keys are still generated via services.openssh.generateHostKeys = true
           identityPaths = map (key: key.path) config.services.openssh.hostKeys ++ [ agekey_identity_path ];
           rekey = {
-            masterIdentities = [ (inputs.secrets + "/age-yubikey-identity-d9ed335b.pub") ];
+            masterIdentities = [ "${self}/secrets/age-yubikey-identity-d9ed335b.pub" ];
             storageMode = "local";
-            localStorageDir = inputs.secrets + "/rekeyed/${config.networking.hostName}";
+            localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
           }
           # We only set the hostPubkey if one is supplied. For new hosts the pub key will not
           # exist until it is generated after the first rebuild. Runtime decryption will fail

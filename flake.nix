@@ -61,21 +61,6 @@
     textfox.url = "github:adriankarlen/textfox";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
-
-    assets = {
-      flake = false;
-      url = "path:./assets";
-    };
-
-    packages = {
-      flake = false;
-      url = "path:./packages";
-    };
-
-    secrets = {
-      flake = false;
-      url = "path:./secrets";
-    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

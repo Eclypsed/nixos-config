@@ -55,7 +55,7 @@
         settings = {
           shell = {
             font_family = "Noto Sans";
-            avatar_path = "${inputs.assets}/profile-picture.jpg";
+            avatar_path = "${config.home.homeDirectory}/.face";
             show_location = false;
             offline_mode = false;
           };

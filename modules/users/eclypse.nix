@@ -1,6 +1,5 @@
 {
   self,
-  inputs,
   ...
 }:
 let
@@ -25,7 +24,7 @@ in
         shell = pkgs.zsh;
       };
 
-      age.secrets.eclypse-password.rekeyFile = "${inputs.secrets}/eclypse-password.age";
+      age.secrets.eclypse-password.rekeyFile = "${self}/secrets/eclypse-password.age";
 
       home-manager.users.${username} = {
         imports = [ self.modules.homeManager.${username} ];
@@ -42,10 +41,10 @@ in
 
         file = {
           "${config.xdg.userDirs.extraConfig.WALLPAPERS}" = {
-            source = "${inputs.assets}/wallpapers";
+            source = "${self}/assets/wallpapers";
             recursive = true;
           };
-          ".face".source = "${inputs.assets}/profile-picture.jpg";
+          ".face".source = "${self}/assets/profile-picture.jpg";
         };
       };
 

@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   ...
 }:
@@ -17,7 +18,7 @@
     }:
     let
       python-extensions = python-final: python-prev: {
-        pprp = python-final.callPackage "${inputs.packages}/pprp.nix" { };
+        pprp = python-final.callPackage "${self}/packages/pprp.nix" { };
       };
     in
     {
@@ -33,9 +34,9 @@
         ];
       };
       packages = {
-        ccase = pkgs.callPackage "${inputs.packages}/ccase.nix" { };
-        heybrochecklog = pkgs.callPackage "${inputs.packages}/heybrochecklog.nix" { };
-        pywalfox-native = pkgs.callPackage "${inputs.packages}/pywalfox-native.nix" { };
+        ccase = pkgs.callPackage "${self}/packages/ccase.nix" { };
+        heybrochecklog = pkgs.callPackage "${self}/packages/heybrochecklog.nix" { };
+        pywalfox-native = pkgs.callPackage "${self}/packages/pywalfox-native.nix" { };
       };
       overlayAttrs = {
         inherit (config.packages)

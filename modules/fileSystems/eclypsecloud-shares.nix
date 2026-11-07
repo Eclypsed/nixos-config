@@ -1,5 +1,4 @@
 {
-  inputs,
   self,
   ...
 }:
@@ -28,7 +27,7 @@
         })
       ];
 
-      age.secrets.eclypsecloud-eclypse.rekeyFile = "${inputs.secrets}/eclypsecloud-eclypse.age";
+      age.secrets.eclypsecloud-eclypse.rekeyFile = "${self}/secrets/eclypsecloud-eclypse.age";
 
       environment.systemPackages = with pkgs; [
         cifs-utils
