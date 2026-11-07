@@ -147,7 +147,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "ruff";
+                command = lib.getExe pkgs.ruff;
                 args = [
                   "format"
                   "-"
@@ -159,21 +159,21 @@
               language-servers = [ "nixd" ];
               auto-format = true;
               formatter = {
-                command = "nixfmt";
+                command = lib.getExe pkgs.nixfmt;
               };
             }
             {
               name = "rust";
               auto-format = true;
               formatter = {
-                command = "rustfmt";
+                command = lib.getExe pkgs.rustfmt;
               };
             }
             {
               name = "markdown";
               auto-format = true;
               formatter = {
-                command = "rumdl";
+                command = lib.getExe pkgs.rumdl;
                 args = [
                   "fmt"
                   "-"
@@ -188,7 +188,7 @@
               ]; # "h" is currently missing from the default config
               auto-format = true;
               formatter = {
-                command = "clang-format";
+                command = lib.getExe' pkgs.libclang "clang-format";
                 args = [
                   "--style=WebKit"
                 ];
@@ -203,7 +203,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "typescript"
@@ -219,7 +219,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "typescript"
@@ -235,7 +235,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "typescript"
@@ -251,7 +251,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "typescript"
@@ -262,7 +262,7 @@
               name = "json";
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "json"
@@ -273,7 +273,7 @@
               name = "jsonc";
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "jsonc"
@@ -292,7 +292,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "html"
@@ -307,7 +307,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "css"
@@ -322,7 +322,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "prettier";
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "scss"
@@ -337,7 +337,7 @@
               ];
               auto-format = true;
               formatter = {
-                command = "rubocop";
+                command = lib.getExe pkgs.rubocop;
                 args = [
                   "--stdin"
                   "placeholder.rb"
@@ -361,7 +361,7 @@
               name = "typst";
               auto-format = true;
               formatter = {
-                command = "typstyle";
+                command = lib.getExe pkgs.typstyle;
               };
             }
           ];
@@ -374,7 +374,7 @@
               check.workspace = false;
             };
             emmet-language-server = {
-              command = "emmet-language-server";
+              command = lib.getExe pkgs.emmet-language-server;
               args = [ "--stdio" ];
             };
             vscode-eslint-language-server = {
@@ -392,14 +392,14 @@
               };
             };
             ruby-lsp = {
-              command = "ruby-lsp";
+              command = lib.getExe pkgs.ruby-lsp;
               config = {
                 diagnostics = true;
                 formatting = true;
               };
             };
             solargraph = {
-              command = "solargraph";
+              command = lib.getExe pkgs.solargraph;
               config = {
                 diagnostics = true;
                 formatting = false;
