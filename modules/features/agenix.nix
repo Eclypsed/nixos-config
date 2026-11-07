@@ -38,25 +38,21 @@
         description = "The public key of the host. Will be null until generated on first rebuild";
       };
 
-      config.age =
-        let
-          agekey_identity_path = "/etc/host.age";
-        in
-        {
-          # Need to explicitly set identity paths in case OpenSSH daemon is disabled
-          # but the host keys are still generated via services.openssh.generateHostKeys = true
-          identityPaths = map (key: key.path) config.services.openssh.hostKeys ++ [ agekey_identity_path ];
-          rekey = {
-            masterIdentities = [ "${self}/secrets/age-yubikey-identity-d9ed335b.pub" ];
-            storageMode = "local";
-            localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
-          }
-          # We only set the hostPubkey if one is supplied. For new hosts the pub key will not
-          # exist until it is generated after the first rebuild. Runtime decryption will fail
-          # but then the ssh host key will be generated in /etc/ssh and can be supplied
-          // lib.optionalAttrs (config.hostPubkey != null) {
-            hostPubkey = config.hostPubkey;
-          };
+      config.age = {
+        # Need to explicitly set identity paths in case OpenSSH daemon is disabled
+        # but the host keys are still generated via services.openssh.generateHostKeys = true
+        identityPaths = map (key: key.path) config.services.openssh.hostKeys;
+        rekey = {
+          masterIdentities = [ "${self}/secrets/age-yubikey-identity-d9ed335b.pub" ];
+          storageMode = "local";
+          localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
+        }
+        # We only set the hostPubkey if one is supplied. For new hosts the pub key will not
+        # exist until it is generated after the first rebuild. Runtime decryption will fail
+        # but then the ssh host key will be generated in /etc/ssh and can be supplied
+        // lib.optionalAttrs (config.hostPubkey != null) {
+          hostPubkey = config.hostPubkey;
         };
+      };
     };
 }
