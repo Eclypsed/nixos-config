@@ -24,6 +24,9 @@
             init = {
               defaultBranch = "main";
             };
+            pull = {
+              rebase = true;
+            };
           };
           signing = {
             format = "ssh";
