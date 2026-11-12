@@ -10,15 +10,21 @@
       yazi-picker = pkgs.writeShellApplication {
         name = "yazi-picker";
         text = ''
-          paths=$(yazi --chooser-file=/dev/stdout)
+          mapfile -t paths < <(yazi --chooser-file=/dev/stdout)
 
-          if [[ -n "$paths" ]]; then
-            zellij action toggle-floating-panes
-          	zellij action write 27 # send <Escape> key
-          	zellij action write-chars ":$1 $paths"
-          	zellij action write 13 # send <Enter> key
-          else
-          	zellij action toggle-floating-panes
+          zellij action toggle-floating-panes
+
+          if (( ''${#paths[@]} > 0 )); then
+            command=":$1 --"
+            for path in "''${paths[@]}"; do
+              # Helix single-quoted arguments escape apostrophes by doubling them.
+              escaped_path=''${path//\'/\'\'}
+              command+=" '$escaped_path'"
+            done
+
+            zellij action write 27 # send <Escape> key
+            zellij action write-chars "$command"
+            zellij action write 13 # send <Enter> key
           fi
         '';
       };
